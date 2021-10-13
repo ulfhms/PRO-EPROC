@@ -34,4 +34,5 @@ Route::prefix('warek/pengadaanBarang')->group(function (){
     Route::get('/pesertaPengadaan', [PengadaanBarangController::class, 'pesertaPengadaan'])->name('warek.pengadaanBarang.pesertaPengadaan');
     Route::get('/detailPesertaPengadaan', [PengadaanBarangController::class, 'detailPesertaPengadaan'])->name('warek.pengadaanBarang.detailPesertaPengadaan');
     Route::get('/hasilEvaluasi', [PengadaanBarangController::class, 'hasilEvaluasi'])->name('warek.pengadaanBarang.hasilEvaluasi');
+    Route::get('/pemenang', [PengadaanBarangController::class, 'pemenang'])->name('warek.pengadaanBarang.pemenang');
 });

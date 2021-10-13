@@ -35,6 +35,11 @@ class PengadaanBarangController extends Controller
         return view('warek/pengadaanBarang/hasilEvaluasi');
 
     }
+
+    public function pemenang(){
+        return view('warek/pengadaanBarang/pemenang/pemenang');
+
+    }
     /**
      * Show the form for creating a new resource.
      *

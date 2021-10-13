@@ -16,43 +16,43 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>CV Merah Putih</td>
+      <td><a href="{{ route('warek.pengadaanBarang.detailPesertaPengadaan') }}">CV Merah Putih</a></td>
       <td>01.234.567.8-123.000</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <td>Rp 70.000.000</td>
+      <td>Rp 65.000.000</td>
+      <td>Rp 5.000.000</td>
     </tr>
     <tr>
       <th scope="row">2</th>
       <td>CV Kartika Raya</td>
       <td>01.234.567.8-123.001</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
+      <td>Rp 75.000.000</td>
+      <td>Rp 70.000.000</td>
+      <td>Rp 5.000.000</td>
     </tr>
     <tr>
       <th scope="row">3</th>
       <td >CV Medali</td>
       <td>01.234.567.8-123.002</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
+      <td>Rp 65.000.000</td>
+      <td>Rp 60.000.000</td>
+      <td>Rp 5.000.000</td>
     </tr>
     <tr>
       <th scope="row">4</th>
       <td >CV Permata</td>
       <td>01.234.567.8-123.003</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
+      <td>Rp 60.000.000</td>
+      <td>Rp 55.000.000</td>
+      <td>Rp 5.000.000</td>
     </tr>
     <tr>
       <th scope="row">5</th>
-      <td >CV Berlian</td>
+      <td >CV Murah Hati</td>
       <td>01.234.567.8-123.004</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
+      <td>Rp 50.000.000</td>
+      <td>Rp 50.000.000</td>
+      <td>Rp 0</td>
     </tr>
   </tbody>
 </table>

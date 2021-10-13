@@ -22,10 +22,19 @@ class PengadaanBarangController extends Controller
     }
 
     public function pesertaPengadaan(){
-        return view('warek/pengadaanBarang/pesertaPengadaan');
+        return view('warek/pengadaanBarang/pesertaPengadaan/pesertaPengadaan');
 
     }
 
+    public function detailPesertaPengadaan(){
+        return view('warek/pengadaanBarang/pesertaPengadaan/detailPesertaPengadaan');
+
+    }
+
+    public function hasilEvaluasi(){
+        return view('warek/pengadaanBarang/hasilEvaluasi');
+
+    }
     /**
      * Show the form for creating a new resource.
      *

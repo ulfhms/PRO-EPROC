@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PengadaanBarangController;
 use App\Http\Controllers\SupplierBarangController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,8 @@ Route::prefix('supplier')->group(function (){
 
 Route::prefix('supplier/barang')->group(function (){
     Route::get('/profile', [SupplierBarangController::class, 'index'])->name('supplier.barang.profile');
+});
+
+Route::prefix('warek/pengadaanBarang')->group(function (){
+    Route::get('/index', [PengadaanBarangController::class, 'index'])->name('warek.pengadaanBarang.index');
 });

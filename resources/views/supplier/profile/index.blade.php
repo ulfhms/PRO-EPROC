@@ -1,4 +1,4 @@
-@extends('layouts/main-layout')
+@extends('layouts/supplier/main-layout')
 @section('title', 'Profile')
 @section('content')
 <div class="card ">

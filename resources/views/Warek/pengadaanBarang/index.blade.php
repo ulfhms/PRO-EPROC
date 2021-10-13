@@ -19,7 +19,7 @@
   <tbody>
     <tr>
       <th scope="row">PBA - 0001</th>
-      <td><a href="">Pengadaan Komputer dan Serve untuk Laboratorium Komputer</a></td>
+      <td><a href="{{ route('warek.pengadaanBarang.detailPaket') }}">Pengadaan Komputer dan Serve untuk Laboratorium Komputer</a></td>
       <td>Fakultas Psikologi dan Ilmu Pendidikan</td>
       <td> <a href="#" class="btn badge bg-primary">Proses</a></td>
       <td>Rp. 100.000.000,-</td>

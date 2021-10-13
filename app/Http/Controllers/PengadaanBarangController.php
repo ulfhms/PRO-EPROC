@@ -16,6 +16,11 @@ class PengadaanBarangController extends Controller
         return view('warek/pengadaanBarang/index');
     }
 
+    public function detailPaket(){
+        return view('warek/pengadaanBarang/detail');
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

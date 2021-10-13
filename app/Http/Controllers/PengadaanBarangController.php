@@ -16,8 +16,13 @@ class PengadaanBarangController extends Controller
         return view('warek/pengadaanBarang/index');
     }
 
-    public function detailPaket(){
-        return view('warek/pengadaanBarang/detail');
+    public function pengumumanPengadaan(){
+        return view('warek/pengadaanBarang/pengumumanPengadaan');
+
+    }
+
+    public function pesertaPengadaan(){
+        return view('warek/pengadaanBarang/pesertaPengadaan');
 
     }
 

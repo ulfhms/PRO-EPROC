@@ -13,7 +13,7 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td><a href="">CV Malioboro</a></td>
+      <td><a href="{{ route('warek.badanUsaha.detailBadanUsaha') }}">CV Malioboro</a></td>
       <td>Pengadaan Barang Alat Kesehatan</td>
     </tr>
     <tr>

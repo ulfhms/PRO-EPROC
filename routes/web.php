@@ -41,4 +41,5 @@ Route::prefix('warek/pengadaanBarang')->group(function (){
 
 Route::prefix('warek/badanUsaha')->group(function (){
     Route::get('/index', [BadanUsahaController::class, 'index'])->name('warek.badanUsaha.index');
+    Route::get('/detailBadanUsaha', [BadanUsahaController::class, 'detailBadanUsaha'])->name('warek.badanUsaha.detailBadanUsaha');
 });

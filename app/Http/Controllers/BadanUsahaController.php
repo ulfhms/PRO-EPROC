@@ -16,6 +16,10 @@ class BadanUsahaController extends Controller
         return view('warek/badanUsaha/index');
     }
 
+    public function detailBadanUsaha(){
+        return view('warek/badanUsaha/detailBadanUsaha');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

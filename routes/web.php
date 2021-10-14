@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BadanUsahaController;
 use App\Http\Controllers\PengadaanBarangController;
+use App\Http\Controllers\PeroranganController;
 use App\Http\Controllers\SupplierBarangController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
@@ -43,3 +44,9 @@ Route::prefix('warek/badanUsaha')->group(function (){
     Route::get('/index', [BadanUsahaController::class, 'index'])->name('warek.badanUsaha.index');
     Route::get('/detailBadanUsaha', [BadanUsahaController::class, 'detailBadanUsaha'])->name('warek.badanUsaha.detailBadanUsaha');
 });
+
+Route::prefix('warek/perorangan')->group(function (){
+    Route::get('/index', [PeroranganController::class, 'index'])->name('warek.perorangan.index');
+    Route::get('/detailPerorangan', [PeroranganController::class, 'detailPerorangan'])->name('warek.perorangan.detailPerorangan');
+});
+

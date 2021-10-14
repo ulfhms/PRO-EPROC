@@ -62,8 +62,8 @@
                     <span>Jasa Konsultasi Badan Usaha</span></a>
             </li>
 
-            <li class="nav-item {{ request()->is('warek/pengadaanBarang/index') ? 'active' : ''}}">
-                <a class="nav-link" href="{{ route('warek.pengadaanBarang.index') }}">
+            <li class="nav-item {{ request()->is('warek/perorangan/index') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('warek.perorangan.index') }}">
                     <i class="fas fa-user-alt"></i>
                     <span>jasa konsultasi Perorangan</span></a>
             </li>

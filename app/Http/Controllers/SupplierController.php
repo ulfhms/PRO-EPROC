@@ -16,6 +16,12 @@ class SupplierController extends Controller
         return view('supplier/profile/index');
     }
 
+    public function editProfile()
+    {
+        return view('supplier/profile/editProfile');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -55,6 +61,7 @@ class SupplierController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
+    
     {
         //
     }

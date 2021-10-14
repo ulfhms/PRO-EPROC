@@ -1,16 +1,21 @@
 @extends('layouts/supplier/main-layout')
 @section('title', 'Profile')
 @section('content')
+<div class="d-flex justify-content-end">
+</div>
 <div class="card ">
-    <p class="card-header fw-bold">Profile Information</p>
-    <div class="card-body">
+  <p class="card-header fw-bold">Profile Information</p>
+  <div class="card-body">
     <div class="row">
-        <div class="col-2">
-            <img src="{{ asset('logo/ikea.svg') }}" alt="">
-        </div>
-        <div class="col">
-            <h3 class="">CV Merah Putih</h3>
-            <p class="card-text">Supplier</p>
+      <div class="col-2">
+        <img src="{{ asset('logo/ikea.svg') }}" alt="">
+      </div>
+      <div class="col">
+        <h3 class="">
+          CV Merah Putih
+          <a href="{{ route('supplier.editProfile') }}" class="btn btn-sm bg-warning"><i class="far fa-edit"></i></a>
+        </h3>
+        <p class="card-text">Supplier</p>
         </div>
     </div>
     <div class="row pt-4">

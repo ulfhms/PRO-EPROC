@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::prefix('supplier')->group(function (){
     Route::get('/profile', [SupplierController::class, 'index'])->name('supplier.profile');
+    Route::get('/editProfile', [SupplierController::class, 'editProfile'])->name('supplier.editProfile');
 });
 
 Route::prefix('supplier/barang')->group(function (){

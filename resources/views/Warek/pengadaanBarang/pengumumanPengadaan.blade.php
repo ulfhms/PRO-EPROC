@@ -3,7 +3,7 @@
 @section('content')
 {{-- navbar --}}
 @include('warek/pengadaanBarang/navbarPengadaan')
-<table class="table mt-4">
+<table class="table mt-4 table-responsive">
   <tbody>
     <tr>
       <th scope="row">Sistem Pengadaan</th>

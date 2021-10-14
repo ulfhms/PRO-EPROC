@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BadanUsahaController;
 use App\Http\Controllers\PengadaanBarangController;
 use App\Http\Controllers\SupplierBarangController;
 use App\Http\Controllers\SupplierController;
@@ -36,4 +37,8 @@ Route::prefix('warek/pengadaanBarang')->group(function (){
     Route::get('/detailPesertaPengadaan', [PengadaanBarangController::class, 'detailPesertaPengadaan'])->name('warek.pengadaanBarang.detailPesertaPengadaan');
     Route::get('/hasilEvaluasi', [PengadaanBarangController::class, 'hasilEvaluasi'])->name('warek.pengadaanBarang.hasilEvaluasi');
     Route::get('/pemenang', [PengadaanBarangController::class, 'pemenang'])->name('warek.pengadaanBarang.pemenang');
+});
+
+Route::prefix('warek/badanUsaha')->group(function (){
+    Route::get('/index', [BadanUsahaController::class, 'index'])->name('warek.badanUsaha.index');
 });

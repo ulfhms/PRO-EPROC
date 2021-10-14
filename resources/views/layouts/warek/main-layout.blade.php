@@ -56,8 +56,8 @@
                     <span>Pekerjaan Konstruksi</span></a>
             </li>
 
-            <li class="nav-item {{ request()->is('warek/pengadaanBarang/index') ? 'active' : ''}}">
-                <a class="nav-link" href="{{ route('warek.pengadaanBarang.index') }}">
+            <li class="nav-item {{ request()->is('warek/badanUsaha/index') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('warek.badanUsaha.index') }}">
                     <i class="fas fa-users"></i>
                     <span>Jasa Konsultasi Badan Usaha</span></a>
             </li>

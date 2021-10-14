@@ -30,6 +30,7 @@
       <option value="1">Pengadaan Barang Alat Kesehatan</option>
       <option value="2">Pengadaan Barang Elektikal</option>
       <option value="3">Jasa Konsultasi Bagunan</option>
+      <option value="4">Pengadaan Barang Alat IT</option>
     </select>
   </div>
   <div class="mb-3">
@@ -39,6 +40,9 @@
   <div class="mb-3">
     <label for="formFileSm" class="form-label fw-bold">Foto</label>
     <input class="form-control form-control-sm" id="formFileSm" type="file">
+  </div>
+  <div class="d-flex justify-content-end">
+    <a href="#" class="btn btn-sm btn-primary">Simpan</a>
   </div>
 </div>
 @endsection

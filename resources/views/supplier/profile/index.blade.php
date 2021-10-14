@@ -37,11 +37,6 @@
                 <td>01.234.567.8-123.000</td>
               </tr>
               <tr>
-                <th scope="row">4</th>
-                <td>Alamat</td>
-                <td>Jl.Simpang Kanan Sidoarjo</td>
-              </tr>
-              <tr>
                 <th scope="row">5</th>
                 <td>Telepon</td>
                 <td>0895642343678</td>
@@ -53,8 +48,18 @@
               </tr>
               <tr>
                 <th scope="row">7</th>
+                <td>No Rekening</td>
+                <td>3259876</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
                 <td>Bidang Usaha</td>
-                <td>Komputer</td>
+                <td>Pengadaan Barang Alat IT</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td>Alamat</td>
+                <td>Jl.Simpang Kanan Sidoarjo</td>
               </tr>
             </tbody>
           </table>

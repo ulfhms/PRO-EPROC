@@ -30,7 +30,7 @@
       <th scope="row">PBA - 0002</th>
       <td><a href="">Pengadaan Mesin CNC untuk Laboratorium Mesin</a></td>
       <td>Fakultas sains dan teknologi</td>
-      <td><a href="#" class="btn badge bg-success">Selesai</a></td>
+      <td><a href="{{ route('warek.pengadaanBarang.detailTahap') }}" class="btn badge bg-success">Acc</a></td>
       <td>Rp. 600.000.000,-</td>
       <td><a href="#" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
     </tr>

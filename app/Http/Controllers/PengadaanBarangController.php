@@ -21,6 +21,11 @@ class PengadaanBarangController extends Controller
         return view('warek/pengadaanBarang/tahap/editTahap');
     }
 
+    public function detailTahap()
+    {
+        return view('warek/pengadaanBarang/tahap/detailTahap');
+    }
+
     public function pengumumanPengadaan(){
         return view('warek/pengadaanBarang/pengumumanPengadaan');
 

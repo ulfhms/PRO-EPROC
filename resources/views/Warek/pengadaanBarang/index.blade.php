@@ -24,7 +24,7 @@
       <td>Fakultas Psikologi dan Ilmu Pendidikan</td>
       <td> <a href="#" class="btn badge bg-primary">Proses</a></td>
       <td>Rp. 100.000.000,-</td>
-      <td><a href="#" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
+      <td><a href="{{ route('warek.pengadaanBarang.editTahap') }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
     </tr>
     <tr>
       <th scope="row">PBA - 0002</th>

@@ -3,7 +3,7 @@
 @section('content')
     <h5 class="btn btn-sm btn-warning fw-bold fs-5">Daftar Barang</h5>
     <div class="d-flex justify-content-end mb-2">
-        <a href="#" class="btn btn-sm btn-primary">Tambah</a>
+        <a href="{{ route('supplier.barang.create') }}" class="btn btn-sm btn-primary">Tambah</a>
     </div>
     <div class="d-flex justify-content-between flex-wrap">
         <div class="card mb-3" style="width: 10rem;">
@@ -14,7 +14,7 @@
                 <span class="card-text text-primary">Rp 399.000</span>
                 <div class="d-flex justify-content-between mt-2">
                     <a href="{{ route('supplier.barang.detail') }}" class="btn btn-sm btn-primary">Detail</a>
-                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{ route('supplier.barang.edit') }}" class="btn btn-sm btn-warning">Edit</a>
                 </div>
             </div>
         </div>

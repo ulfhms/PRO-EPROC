@@ -27,7 +27,12 @@ class SupplierBarangController extends Controller
      */
     public function create()
     {
-        //
+        return view('supplier/barang/create');
+    }
+
+    public function edit()
+    {
+        return view('supplier/barang/edit');
     }
 
     /**
@@ -58,10 +63,7 @@ class SupplierBarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.

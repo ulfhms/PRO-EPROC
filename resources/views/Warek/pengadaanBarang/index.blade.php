@@ -34,6 +34,22 @@
       <td>Rp. 600.000.000,-</td>
       <td><a href="#" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
     </tr>
+    <tr>
+      <th scope="row">PBA - 0003</th>
+      <td><a href="">Pengadaan Mesin CNC untuk Laboratorium Mesin</a></td>
+      <td>Fakultas sains dan teknologi</td>
+      <td><a href="{{ route('warek.pengadaanBarang.detailTahap') }}" class="btn badge bg-warning">Revisi</a></td>
+      <td>Rp. 600.000.000,-</td>
+      <td><a href="#" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
+    </tr>
+    <tr>
+      <th scope="row">PBA - 0004</th>
+      <td><a href="">Pengadaan Mesin CNC untuk Laboratorium Mesin</a></td>
+      <td>Fakultas sains dan teknologi</td>
+      <td><a href="{{ route('warek.pengadaanBarang.detailTahap') }}" class="btn badge bg-danger">Tolas</a></td>
+      <td>Rp. 600.000.000,-</td>
+      <td><a href="#" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
+    </tr>
   </tbody>
 </table>
 @endsection

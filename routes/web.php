@@ -28,7 +28,8 @@ Route::prefix('supplier')->group(function (){
 });
 
 Route::prefix('supplier/barang')->group(function (){
-    Route::get('/profile', [SupplierBarangController::class, 'index'])->name('supplier.barang.profile');
+    Route::get('/index', [SupplierBarangController::class, 'index'])->name('supplier.barang.index');
+    Route::get('/detail', [SupplierBarangController::class, 'detail'])->name('supplier.barang.detail');
 });
 
 Route::prefix('warek/pengadaanBarang')->group(function (){

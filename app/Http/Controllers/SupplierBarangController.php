@@ -16,6 +16,10 @@ class SupplierBarangController extends Controller
         return view('supplier/barang/index');
     }
 
+    public function detail()
+    {
+        return view('supplier/barang/detail');
+    }
     /**
      * Show the form for creating a new resource.
      *

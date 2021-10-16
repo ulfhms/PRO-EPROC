@@ -10,7 +10,19 @@
             <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor</span><br>
+                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
+                <span class="card-text text-primary">Rp 399.000</span>
+                <div class="d-flex justify-content-between mt-2">
+                    <a href="{{ route('supplier.barang.detail') }}" class="btn btn-sm btn-primary">Detail</a>
+                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3" style="width: 10rem;">
+            <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <span class="card-text fs-6">Stok : 999</span><br>
+                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
                 <span class="card-text text-primary">Rp 399.000</span>
                 <div class="d-flex justify-content-between mt-2">
                     <a href="#" class="btn btn-sm btn-primary">Detail</a>
@@ -22,7 +34,7 @@
             <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor</span><br>
+                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
                 <span class="card-text text-primary">Rp 399.000</span>
                 <div class="d-flex justify-content-between mt-2">
                     <a href="#" class="btn btn-sm btn-primary">Detail</a>
@@ -34,7 +46,7 @@
             <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor</span><br>
+                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
                 <span class="card-text text-primary">Rp 399.000</span>
                 <div class="d-flex justify-content-between mt-2">
                     <a href="#" class="btn btn-sm btn-primary">Detail</a>
@@ -46,7 +58,7 @@
             <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor</span><br>
+                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
                 <span class="card-text text-primary">Rp 399.000</span>
                 <div class="d-flex justify-content-between mt-2">
                     <a href="#" class="btn btn-sm btn-primary">Detail</a>
@@ -58,19 +70,7 @@
             <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor</span><br>
-                <span class="card-text text-primary">Rp 399.000</span>
-                <div class="d-flex justify-content-between mt-2">
-                    <a href="#" class="btn btn-sm btn-primary">Detail</a>
-                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3" style="width: 10rem;">
-            <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor</span><br>
+                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
                 <span class="card-text text-primary">Rp 399.000</span>
                 <div class="d-flex justify-content-between mt-2">
                     <a href="#" class="btn btn-sm btn-primary">Detail</a>

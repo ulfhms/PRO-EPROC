@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">4</th>
-      <td><a href="">Pengadaan Komputer dan Serve untuk Laboratorium Komputer</a></td>
+      <td><a href="{{ route('supplier.status.detailValidasi') }}">Pengadaan Komputer dan Serve untuk Laboratorium Komputer</a></td>
       <td><a href="#" class="badge badge-secondary text-decoration-none">Validasi</a></td>
     </tr>
     <tr>

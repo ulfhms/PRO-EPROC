@@ -28,6 +28,14 @@ class SupplierStatusController extends Controller
         return view('supplier/status/detailTolak');
     }
 
+    public function detailValidasi(){
+        return view('supplier/status/detailValidasi');
+    }
+
+    public function detailValidasi(){
+        return view('supplier/status/detailValidasi');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

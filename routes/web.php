@@ -39,6 +39,8 @@ Route::prefix('supplier/barang')->group(function (){
 Route::prefix('supplier/status')->group(function (){
     Route::get('/index', [SupplierStatusController::class, 'index'])->name('supplier.status.index');
     Route::get('/detailProses', [SupplierStatusController::class, 'detailProses'])->name('supplier.status.detailProses');
+    Route::get('/detailAcc', [SupplierStatusController::class, 'detailAcc'])->name('supplier.status.detailAcc');
+    Route::get('/detailTolak', [SupplierStatusController::class, 'detailTolak'])->name('supplier.status.detailTolak');
 });
 
 // Route::prefix('supplier/status/acc')->group(function (){

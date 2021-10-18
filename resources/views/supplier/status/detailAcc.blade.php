@@ -9,7 +9,7 @@
     </tr>
     <tr>
       <th scope="row">Status</th>
-      <td><div class="badge badge-primary text-decoration-none">Proses</div></td>
+      <td><div class="badge badge-success text-decoration-none">Acc</div></td>
     </tr>
     <tr>
       <th scope="row">Nama Paket</th>
@@ -29,9 +29,7 @@
     </tr>
     <tr>
       <th scope="row">Harga Terkoreksi</th>
-      <td>
-          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan harga Terkoreksi">
-      </td>
+      <td>Rp 45.000.000,-</td>
     </tr>
     <tr>
       <th scope="row"></th>

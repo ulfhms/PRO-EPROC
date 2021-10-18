@@ -20,6 +20,14 @@ class SupplierStatusController extends Controller
         return view('supplier/status/detailProses');
     }
 
+    public function detailAcc(){
+        return view('supplier/status/detailAcc');
+    }
+
+    public function detailTolak(){
+        return view('supplier/status/detailTolak');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

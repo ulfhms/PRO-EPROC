@@ -56,6 +56,27 @@
                     <span>Barang</span></a>
             </li>
 
+            <li class="nav-item {{ request()->is('supplier/status/index') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('supplier.status.index') }}">
+                    <i class="far fa-envelope"></i>
+                    <span>Status</span></a>
+            </li>
+
+            {{-- <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <i class="far fa-envelope"></i>
+                    <span>Status</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Status Menu</h6>
+                        <a class="collapse-item fw-bold" href="{{ route('supplier.status.acc.index') }}"><i class="fas fa-check-circle text-primary"></i> Acc</a>
+                        <a class="collapse-item fw-bold" href="{{ route('supplier.status.acc.index') }}"><i class="fas fa-clock text-warning"></i> Process</a>
+                        <a class="collapse-item fw-bold" href="#"><i class="fas fa-times-circle text-danger"></i> Tolak</a>
+                    </div>
+                </div>
+            </li> --}}
+
 
         </ul>
         <!-- End of Sidebar -->

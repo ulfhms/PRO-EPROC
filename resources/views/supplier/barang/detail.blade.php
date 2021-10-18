@@ -1,15 +1,15 @@
 @extends('layouts/supplier/main-layout')
-@section('title', 'Kursi Kantor')
+@section('title', 'Komputer')
 @section('content')
 <table class="table table-borderless">
   <tbody>
     <tr>
       <th class="text-center">
-        <img src="{{ asset('image/kursi.jpg') }}" class="img-fluid" alt="">
+        <img src="{{ asset('image/komputer.jpg') }}" class="img-fluid" alt="">
       </th>
       <td>
-              <h4 class="fw-bold text-primary">Kursi Kantor Direksi 8899</h4>
-              <h4>Rp.399.000 ,-</h4>
+              <h4 class="fw-bold text-primary">Komputer</h4>
+              <h4>Rp.5.000.000 ,-</h4>
         </td>
     </tr>
     <tr>
@@ -27,24 +27,10 @@
       <th scope="row" colspan="3" class="text-primary"><h5>Deskripsi Produk</h5></th>
     </tr>
     <tr>
-      <td colspan="2">                  READY Hitam
-
-        Specification
-        - Bahan : Kulit sitensis
-        - Sandaran bisa diatur sampai 160 derajat
-        - Ada Sandaran kaki
-        - Ada Fitur Massage(Getar) Dipunggung
-        - Kaki : Besi Chrome
-        - Sistem hidrolis (bisa naik dan turun)
-        - Rotasi 360 derajat
-        - Tinggi Kursi 110-120 Cm
-          Tinggi Sandaran 71 Cm
-          Tinggi dudukan dari Lantai 50-60 Cm
-          Lebar dudukan 50 Cm
-
-        (powerbank putih tidak termasuk, hanya contoh saja)
-
-        untuk pengiriman Jne,sicepat,Jnt Dikirim belum rakit.</td>
+      <td colspan="2">Intel Core i3,
+        Monitor 19 inchi,
+        Hardisk 320 Gb,
+        M/B ECS</td>
     </tr>
   </tbody>
 </table>

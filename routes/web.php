@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AccContorller;
 use App\Http\Controllers\BadanUsahaController;
 use App\Http\Controllers\PengadaanBarangController;
 use App\Http\Controllers\PeroranganController;
 use App\Http\Controllers\SupplierBarangController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SupplierStatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +35,16 @@ Route::prefix('supplier/barang')->group(function (){
     Route::get('/create', [SupplierBarangController::class, 'create'])->name('supplier.barang.create');
     Route::get('/edit', [SupplierBarangController::class, 'edit'])->name('supplier.barang.edit');
 });
+
+Route::prefix('supplier/status')->group(function (){
+    Route::get('/index', [SupplierStatusController::class, 'index'])->name('supplier.status.index');
+    Route::get('/detailProses', [SupplierStatusController::class, 'detailProses'])->name('supplier.status.detailProses');
+});
+
+// Route::prefix('supplier/status/acc')->group(function (){
+//     Route::get('/index', [AccContorller::class, 'index'])->name('supplier.status.acc.index');
+//     Route::get('/detail', [AccContorller::class, 'detail'])->name('supplier.status.acc.detail');
+// });
 
 Route::prefix('warek/pengadaanBarang')->group(function (){
     Route::get('/index', [PengadaanBarangController::class, 'index'])->name('warek.pengadaanBarang.index');

@@ -7,76 +7,150 @@
     </div>
     <div class="d-flex justify-content-between flex-wrap">
         <div class="card mb-3" style="width: 10rem;">
-            <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
+            <img src="{{ asset('image/Komputer.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
-                <span class="card-text text-primary">Rp 399.000</span>
+                <a href="{{ route('supplier.barang.detail') }}" class="card-title fw-bold text-decoration-none text-dark">Komputer </a><br>
+                <span class="card-text text-primary">Rp 5.000.000</span>
                 <div class="d-flex justify-content-between mt-2">
-                    <a href="{{ route('supplier.barang.detail') }}" class="btn btn-sm btn-primary">Detail</a>
                     <a href="{{ route('supplier.barang.edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Hapus
+                    </button>
                 </div>
             </div>
         </div>
         <div class="card mb-3" style="width: 10rem;">
-            <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
+            <img src="{{ asset('image/Komputer.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
-                <span class="card-text text-primary">Rp 399.000</span>
+                <a href="{{ route('supplier.barang.detail') }}" class="card-title fw-bold text-decoration-none text-dark">Komputer </a><br>
+                <span class="card-text text-primary">Rp 5.000.000</span>
                 <div class="d-flex justify-content-between mt-2">
-                    <a href="#" class="btn btn-sm btn-primary">Detail</a>
-                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{ route('supplier.barang.edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Hapus
+                    </button>
                 </div>
             </div>
         </div>
         <div class="card mb-3" style="width: 10rem;">
-            <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
+            <img src="{{ asset('image/Komputer.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
-                <span class="card-text text-primary">Rp 399.000</span>
+                <a href="{{ route('supplier.barang.detail') }}" class="card-title fw-bold text-decoration-none text-dark">Komputer </a><br>
+                <span class="card-text text-primary">Rp 5.000.000</span>
                 <div class="d-flex justify-content-between mt-2">
-                    <a href="#" class="btn btn-sm btn-primary">Detail</a>
-                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{ route('supplier.barang.edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Hapus
+                    </button>
                 </div>
             </div>
         </div>
         <div class="card mb-3" style="width: 10rem;">
-            <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
+            <img src="{{ asset('image/Komputer.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
-                <span class="card-text text-primary">Rp 399.000</span>
+                <a href="{{ route('supplier.barang.detail') }}" class="card-title fw-bold text-decoration-none text-dark">Komputer </a><br>
+                <span class="card-text text-primary">Rp 5.000.000</span>
                 <div class="d-flex justify-content-between mt-2">
-                    <a href="#" class="btn btn-sm btn-primary">Detail</a>
-                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{ route('supplier.barang.edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Hapus
+                    </button>
                 </div>
             </div>
         </div>
         <div class="card mb-3" style="width: 10rem;">
-            <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
+            <img src="{{ asset('image/Komputer.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
-                <span class="card-text text-primary">Rp 399.000</span>
+                <a href="{{ route('supplier.barang.detail') }}" class="card-title fw-bold text-decoration-none text-dark">Komputer </a><br>
+                <span class="card-text text-primary">Rp 5.000.000</span>
                 <div class="d-flex justify-content-between mt-2">
-                    <a href="#" class="btn btn-sm btn-primary">Detail</a>
-                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{ route('supplier.barang.edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Hapus
+                    </button>
                 </div>
             </div>
         </div>
         <div class="card mb-3" style="width: 10rem;">
-            <img src="{{ asset('image/kursi.jpg') }}" class="card-img-top" alt="...">
+            <img src="{{ asset('image/Komputer.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text fs-6">Stok : 999</span><br>
-                <span class="card-title fw-bold">Kursi Kantor Direksi 8899</span><br>
-                <span class="card-text text-primary">Rp 399.000</span>
+                <a href="{{ route('supplier.barang.detail') }}" class="card-title fw-bold text-decoration-none text-dark">Komputer </a><br>
+                <span class="card-text text-primary">Rp 5.000.000</span>
                 <div class="d-flex justify-content-between mt-2">
-                    <a href="#" class="btn btn-sm btn-primary">Detail</a>
-                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{ route('supplier.barang.edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Hapus
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3" style="width: 10rem;">
+            <img src="{{ asset('image/Komputer.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <span class="card-text fs-6">Stok : 999</span><br>
+                <a href="{{ route('supplier.barang.detail') }}" class="card-title fw-bold text-decoration-none text-dark">Komputer </a><br>
+                <span class="card-text text-primary">Rp 5.000.000</span>
+                <div class="d-flex justify-content-between mt-2">
+                    <a href="{{ route('supplier.barang.edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Hapus
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3" style="width: 10rem;">
+            <img src="{{ asset('image/Komputer.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <span class="card-text fs-6">Stok : 999</span><br>
+                <a href="{{ route('supplier.barang.detail') }}" class="card-title fw-bold text-decoration-none text-dark">Komputer </a><br>
+                <span class="card-text text-primary">Rp 5.000.000</span>
+                <div class="d-flex justify-content-between mt-2">
+                    <a href="{{ route('supplier.barang.edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Hapus
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3" style="width: 10rem;">
+            <img src="{{ asset('image/Komputer.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <span class="card-text fs-6">Stok : 999</span><br>
+                <a href="{{ route('supplier.barang.detail') }}" class="card-title fw-bold text-decoration-none text-dark">Komputer </a><br>
+                <span class="card-text text-primary">Rp 5.000.000</span>
+                <div class="d-flex justify-content-between mt-2">
+                    <a href="{{ route('supplier.barang.edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Hapus
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+
+
+{{-- modal --}}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-danger">
+          <h5 class="modal-title text-white" id="exampleModalLabel">Hapus Barang</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <b>Hapus Barang : </b>Komputer
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Hapus</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection

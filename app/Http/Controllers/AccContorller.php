@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SupplierBarangController extends Controller
+class AccContorller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,13 +13,14 @@ class SupplierBarangController extends Controller
      */
     public function index()
     {
-        return view('supplier/barang/index');
+        return view('supplier/status/acc/index');
     }
 
     public function detail()
     {
-        return view('supplier/barang/detail');
+        return view('supplier/status/acc/detail');
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,14 +28,8 @@ class SupplierBarangController extends Controller
      */
     public function create()
     {
-        return view('supplier/barang/create');
+        //
     }
-
-    public function edit()
-    {
-        return view('supplier/barang/edit');
-    }
-
 
     /**
      * Store a newly created resource in storage.
@@ -64,7 +59,10 @@ class SupplierBarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+    public function edit($id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.

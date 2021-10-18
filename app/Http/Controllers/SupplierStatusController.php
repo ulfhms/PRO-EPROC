@@ -32,8 +32,8 @@ class SupplierStatusController extends Controller
         return view('supplier/status/detailValidasi');
     }
 
-    public function detailValidasi(){
-        return view('supplier/status/detailValidasi');
+    public function detailSelesai(){
+        return view('supplier/status/detailSelesai');
     }
 
     /**

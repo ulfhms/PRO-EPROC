@@ -32,7 +32,7 @@
     </tr>
     <tr>
       <th scope="row">4</th>
-      <td><a href="">Pengadaan Komputer dan Serve untuk Laboratorium Komputer</a></td>
+      <td><a href="{{ route('supplier.status.detailSelesai') }}">Pengadaan Komputer dan Serve untuk Laboratorium Komputer</a></td>
       <td><a href="#" class="badge badge-info text-decoration-none">Selesai</a></td>
     </tr>
   </tbody>

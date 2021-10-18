@@ -37,13 +37,6 @@
         <img src="{{ asset('image/struk.jpg') }}" alt="">
       </td>
     </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>
-        <button class="btn btn-sm btn-danger">Gagal</button>
-        <button class="btn btn-sm btn-success">Lunas</button>
-      </td>
-    </tr>
   </tbody>
 </table>
 @endsection

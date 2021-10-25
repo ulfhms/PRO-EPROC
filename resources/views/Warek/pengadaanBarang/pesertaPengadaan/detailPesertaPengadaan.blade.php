@@ -2,6 +2,7 @@
 @section('title', 'CV Murah Hati')
 @section('content')
 <div class="m-2">
+  @include('warek/pengadaanBarang/pesertaPengadaan/navbar')
   <div class="row">
     <div class="col-2">
         <img src="{{ asset('logo/ikea.svg') }}" alt="">

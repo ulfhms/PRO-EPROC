@@ -69,7 +69,7 @@
       </td>
     </tr>
     <tr>
-      <th scope="row">Beri Alasan</th>
+      <th scope="row">Beri Pesan</th>
       <td>
         <div class="mb-3">
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>

@@ -59,6 +59,7 @@ Route::prefix('warek/pengadaanBarang')->group(function (){
     Route::get('/detailPesertaPengadaan', [PengadaanBarangController::class, 'detailPesertaPengadaan'])->name('warek.pengadaanBarang.detailPesertaPengadaan');
     Route::get('/detailProdukPesertaPengadaan', [PengadaanBarangController::class, 'detailProdukPesertaPengadaan'])->name('warek.pengadaanBarang.detailProdukPesertaPengadaan');
     Route::get('/hasilEvaluasi', [PengadaanBarangController::class, 'hasilEvaluasi'])->name('warek.pengadaanBarang.hasilEvaluasi');
+    Route::get('/editHasilEvaluasi', [PengadaanBarangController::class, 'editHasilEvaluasi'])->name('warek.pengadaanBarang.editHasilEvaluasi');
     Route::get('/pemenang', [PengadaanBarangController::class, 'pemenang'])->name('warek.pengadaanBarang.pemenang');
 });
 

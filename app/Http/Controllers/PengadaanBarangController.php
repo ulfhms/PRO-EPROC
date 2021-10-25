@@ -47,7 +47,12 @@ class PengadaanBarangController extends Controller
     }
 
     public function hasilEvaluasi(){
-        return view('warek/pengadaanBarang/hasilEvaluasi');
+        return view('warek/pengadaanBarang/evaluasi/hasilEvaluasi');
+
+    }
+
+    public function editHasilEvaluasi(){
+        return view('warek/pengadaanBarang/evaluasi/editHasilEvaluasi');
 
     }
 

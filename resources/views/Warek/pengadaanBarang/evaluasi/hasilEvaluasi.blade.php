@@ -20,7 +20,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
       <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-        Hasil Evaluasi : CV Merah Putih <a href="{{ route('warek.pengadaanBarang.editHasilEvaluasi') }}" class=" ms-2 btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+        Hasil Evaluasi : CV Merah Putih 
       </button>
     </h2>
     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
@@ -32,7 +32,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
       <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-        Hasil Evaluasi : CV Kartika Raya <a href="{{ route('warek.pengadaanBarang.editHasilEvaluasi') }}" class=" ms-2 btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+        Hasil Evaluasi : CV Kartika Raya 
       </button>
     </h2>
     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
@@ -44,7 +44,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingThree">
       <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-        Hasil Evaluasi : CV Medali <a href="{{ route('warek.pengadaanBarang.editHasilEvaluasi') }}" class=" ms-2 btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+        Hasil Evaluasi : CV Medali 
       </button>
     </h2>
     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">

@@ -1,7 +1,7 @@
 @extends('layouts/warek/main-layout')
 @section('title','Peserta')
 @section('content')
-@include('warek/pengadaanBarang/navbarPengadaan')
+@include('dpal/pengadaanBarang/navbarPengadaan')
 <table class="table mt-4">
   <thead>
     <tr>
@@ -17,13 +17,13 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td><a href="{{ route('warek.pengadaanBarang.detailPesertaPengadaan') }}">CV Merah Putih</a></td>
+      <td><a href="{{ route('dpal.pengadaanBarang.detailPesertaPengadaan') }}">CV Merah Putih</a></td>
       <td>01.234.567.8-123.000</td>
       <td>Rp 70.000.000</td>
       <td>Rp 65.000.000</td>
       <td>Rp 5.000.000</td>
       <td class="text-center">
-        <a href="{{ route('warek.pengadaanBarang.editHasilEvaluasi') }}" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i>
+        <a href="{{ route('dpal.pengadaanBarang.editHasilEvaluasi') }}" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i>
       </td>
     </tr>
     <tr>

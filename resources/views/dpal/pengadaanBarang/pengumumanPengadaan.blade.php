@@ -2,7 +2,7 @@
 @section('title', 'Pengadaan Komputer dan Serve untuk Laboratorium Komputer')
 @section('content')
 {{-- navbar --}}
-@include('warek/pengadaanBarang/navbarPengadaan')
+@include('dpal/pengadaanBarang/navbarPengadaan')
 <table class="table mt-4 table-responsive">
   <tbody>
     <tr>

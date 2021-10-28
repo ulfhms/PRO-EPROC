@@ -78,7 +78,7 @@
     </tr>
     <tr>
       <th scope="row"></th>
-      <td><a href="{{ route('warek.pengadaanBarang.index') }}" class="btn btn-sm btn-primary">Simpan</a></td>
+      <td><a href="{{ route('dpal.pengadaanBarang.index') }}" class="btn btn-sm btn-primary">Simpan</a></td>
     </tr>
   </tbody>
 </table>

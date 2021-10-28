@@ -8,7 +8,7 @@
 </div>
 {{-- <div class="row mb-2">
   <div class="col-sm-12 col-lg-12 d-flex justify-content-end">
-    <a href="{{ route('warek.pengadaanBarang.create') }}" class="btn btn-sm btn-primary rounded mt-1 text-center fw-bold text-white text-decoration-none">Tambah</a>
+    <a href="{{ route('dpal.pengadaanBarang.create') }}" class="btn btn-sm btn-primary rounded mt-1 text-center fw-bold text-white text-decoration-none">Tambah</a>
   </div>
 </div> --}}
 <table class="table overflow-auto table-responsive">
@@ -26,12 +26,12 @@
   <tbody>
     <tr>
       <th scope="row">PBA - 0001</th>
-      <td><a href="{{ route('warek.pengadaanBarang.pengumumanPengadaan') }}">Pengadaan Komputer dan Serve untuk Laboratorium Komputer</a></td>
+      <td><a href="{{ route('dpal.pengadaanBarang.pengumumanPengadaan') }}">Pengadaan Komputer dan Serve untuk Laboratorium Komputer</a></td>
       <td>Fakultas Psikologi dan Ilmu Pendidikan</td>
       <td> <a href="#" class="btn badge bg-primary">ON</a></td>
       <td>Rp. 100.000.000,-</td>
       <td class="text-center">5</td>
-      {{-- <td><a href="{{ route('warek.pengadaanBarang.editTahap') }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td> --}}
+      {{-- <td><a href="{{ route('dpal.pengadaanBarang.editTahap') }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td> --}}
     </tr>
     <tr>
       <th scope="row">PBA - 0002</th>
@@ -55,7 +55,7 @@
       <th scope="row">PBA - 0004</th>
       <td><a href="">Pengadaan Mesin CNC untuk Laboratorium Mesin</a></td>
       <td>Fakultas sains dan teknologi</td>
-      <td><a href="{{ route('warek.pengadaanBarang.detailTahap') }}" class="btn badge bg-danger">OFF</a></td>
+      <td><a href="{{ route('dpal.pengadaanBarang.detailTahap') }}" class="btn badge bg-danger">OFF</a></td>
       <td>Rp. 600.000.000,-</td>
       <td class="text-center">5</td>
       {{-- <td><a href="#" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td> --}}

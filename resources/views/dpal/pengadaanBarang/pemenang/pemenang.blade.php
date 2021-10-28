@@ -1,7 +1,7 @@
 @extends('layouts/warek/main-layout')
 @section('title', 'Pemenang')
 @section('content')
-@include('warek/pengadaanBarang/navbarPengadaan')
+@include('dpal/pengadaanBarang/navbarPengadaan')
 <div class="mt-4">
   <div class="row">
     <div class="col-2">
@@ -83,7 +83,7 @@
     </div>
   </div>
   <div class="d-flex justify-content-center mt-3">
-    <a href="{{ route('warek.pengadaanBarang.pesertaPengadaan') }}" class="btn btn-sm btn-warning">Kembali</a>
+    <a href="{{ route('dpal.pengadaanBarang.pesertaPengadaan') }}" class="btn btn-sm btn-warning">Kembali</a>
   </div>
 </div>
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts/warek/main-layout')
 @section('title', 'Hasil Evaluasi')
 @section('content')
-@include('warek/pengadaanBarang/navbarPengadaan')
+@include('dpal/pengadaanBarang/navbarPengadaan')
 <div class="card">
   <h5 class="card-header bg-success text-white mt-3">Pilih Supplier yang di ACC</h5>
   <div class="card-body">
@@ -12,7 +12,7 @@
       <option value="3">CV Medali</option>
     </select>
     <div class="d-flex justify-content-end mt-2">
-      <a href="{{ route('warek.pengadaanBarang.pemenang') }}" class="btn btn-sm btn-primary">Simpan</a>
+      <a href="{{ route('dpal.pengadaanBarang.pemenang') }}" class="btn btn-sm btn-primary">Simpan</a>
     </div>
   </div>
 </div>

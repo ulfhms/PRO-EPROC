@@ -1,7 +1,7 @@
 @extends('layouts/warek/main-layout')
 @section('title', 'CV Murah Hati')
 @section('content')
-@include('warek/pengadaanBarang/pesertaPengadaan/navbar')
+@include('dpal/pengadaanBarang/pesertaPengadaan/navbar')
 {{-- <iframe height="400"  width="400" src="{{ asset('produk/produk.pdf') }}"></iframe> --}}
 <canvas id="my_canvas"></canvas>
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.10.377/build/pdf.min.js"></script> 

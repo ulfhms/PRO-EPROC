@@ -11,7 +11,7 @@
       <th scope="col">Harga Penawaran</th>
       <th scope="col">Harga Terkoreksi</th>
       <th scope="col">Selisih</th>
-      <th scope="col">Evaluasi</th>
+      {{-- <th scope="col">Evaluasi</th> --}}
     </tr>
   </thead>
   <tbody>
@@ -22,9 +22,9 @@
       <td>Rp 70.000.000</td>
       <td>Rp 65.000.000</td>
       <td>Rp 5.000.000</td>
-      <td class="text-center">
+      {{-- <td class="text-center">
         <a href="{{ route('warek.pengadaanBarang.editHasilEvaluasi') }}" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i>
-      </td>
+      </td> --}}
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -33,7 +33,7 @@
       <td>Rp 75.000.000</td>
       <td>Rp 70.000.000</td>
       <td>Rp 5.000.000</td>
-      <td class="text-center"><a href="#" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i></td>
+      {{-- <td class="text-center"><a href="#" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i></td> --}}
     </tr>
     <tr>
       <th scope="row">3</th>
@@ -42,7 +42,7 @@
       <td>Rp 65.000.000</td>
       <td>Rp 60.000.000</td>
       <td>Rp 5.000.000</td>
-      <td class="text-center"><a href="#" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i></td>
+      {{-- <td class="text-center"><a href="#" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i></td> --}}
     </tr>
     <tr>
       <th scope="row">4</th>
@@ -51,7 +51,7 @@
       <td>Rp 60.000.000</td>
       <td>Rp 55.000.000</td>
       <td>Rp 5.000.000</td>
-      <td class="text-center"><a href="#" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i></td>
+      {{-- <td class="text-center"><a href="#" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i></td> --}}
     </tr>
     <tr>
       <th scope="row">5</th>
@@ -60,7 +60,7 @@
       <td>Rp 50.000.000</td>
       <td>Rp 50.000.000</td>
       <td>Rp 0</td>
-      <td class="text-center"><a href="#" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i></td>
+      {{-- <td class="text-center"><a href="#" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i></td> --}}
     </tr>
   </tbody>
 </table>

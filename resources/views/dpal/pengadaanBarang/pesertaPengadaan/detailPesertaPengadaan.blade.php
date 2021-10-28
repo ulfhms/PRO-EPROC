@@ -2,7 +2,7 @@
 @section('title', 'CV Murah Hati')
 @section('content')
 <div class="m-2">
-  @include('warek/pengadaanBarang/pesertaPengadaan/navbar')
+  @include('dpal/pengadaanBarang/pesertaPengadaan/navbar')
   <div class="row">
     <div class="col-2">
         <img src="{{ asset('logo/ikea.svg') }}" alt="">
@@ -59,7 +59,7 @@
       </table>
   </div>
   <div class="d-flex justify-content-center">
-    <a href="{{ route('warek.pengadaanBarang.pesertaPengadaan') }}" class="btn btn-sm btn-warning">Kembali</a>
+    <a href="{{ route('dpal.pengadaanBarang.pesertaPengadaan') }}" class="btn btn-sm btn-warning">Kembali</a>
   </div>
 </div>
 @endsection

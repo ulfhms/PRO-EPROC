@@ -2,7 +2,7 @@
 @section('title', 'Hasil Evaluasi')
 @section('content')
 @include('warek/pengadaanBarang/navbarPengadaan')
-<div class="card">
+{{-- <div class="card">
   <h5 class="card-header bg-success text-white mt-3">Pilih Supplier yang di ACC</h5>
   <div class="card-body">
     <select class="form-select" aria-label="Default select example">
@@ -15,7 +15,7 @@
       <a href="{{ route('warek.pengadaanBarang.pemenang') }}" class="btn btn-sm btn-primary">Simpan</a>
     </div>
   </div>
-</div>
+</div> --}}
 <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingOne">

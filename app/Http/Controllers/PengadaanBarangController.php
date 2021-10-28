@@ -36,6 +36,11 @@ class PengadaanBarangController extends Controller
 
     }
 
+    public function pesertaEvaluasi(){
+        return view('warek/pengadaanBarang/pesertaPengadaan/pesertaEvaluasi');
+
+    }
+
     public function detailPesertaPengadaan(){
         return view('warek/pengadaanBarang/pesertaPengadaan/detailPesertaPengadaan');
 

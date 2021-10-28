@@ -2,6 +2,20 @@
 @section('title', 'Hasil Evaluasi')
 @section('content')
 @include('warek/pengadaanBarang/navbarPengadaan')
+<div class="card">
+  <h5 class="card-header bg-success text-white mt-3">Pilih Supplier yang di ACC</h5>
+  <div class="card-body">
+    <select class="form-select" aria-label="Default select example">
+      <option selected>Pilih Supplier</option>
+      <option value="1">CV Merah Putih</option>
+      <option value="2">CV Kartika Raya</option>
+      <option value="3">CV Medali</option>
+    </select>
+    <div class="d-flex justify-content-end mt-2">
+      <a href="{{ route('warek.pengadaanBarang.pemenang') }}" class="btn btn-sm btn-primary">Simpan</a>
+    </div>
+  </div>
+</div>
 <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -40,18 +54,5 @@
     </div>
   </div>
 </div>
-<div class="card">
-  <h5 class="card-header bg-success text-white mt-3">Pilih Supplier yang di ACC</h5>
-  <div class="card-body">
-    <select class="form-select" aria-label="Default select example">
-      <option selected>Pilih Supplier</option>
-      <option value="1">CV Merah Putih</option>
-      <option value="2">CV Kartika Raya</option>
-      <option value="3">CV Medali</option>
-    </select>
-    <div class="d-flex justify-content-end mt-2">
-      <a href="{{ route('warek.pengadaanBarang.pemenang') }}" class="btn btn-sm btn-primary">Simpan</a>
-    </div>
-  </div>
-</div>
+
 @endsection

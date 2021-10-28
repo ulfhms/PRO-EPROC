@@ -1,9 +1,8 @@
 @extends('layouts/warek/main-layout')
-@section('title', 'Pengadaan Komputer dan Serve untuk Laboratorium Komputer')
+@section('title','Pengadaan Mesin CNC untuk Laboratorium Mesin')
 @section('content')
-{{-- navbar --}}
-@include('warek/pengadaanBarang/navbarPengadaan')
-<table class="table mt-4 table-responsive">
+<h5 class="bg-warning p-2 rounded col-12">Detail Tahap : Pengadaan Mesin CNC untuk Laboratorium Mesin</h5>
+<table class="table mt-4 ">
   <tbody>
     <tr>
       <th scope="row">Sistem Pengadaan</th>
@@ -11,11 +10,11 @@
     </tr>
     <tr>
       <th scope="row">Kode</th>
-      <td>PBO-0001</td>
+      <td>PBO-0002</td>
     </tr>
     <tr>
       <th scope="row">Nama Paket</th>
-      <td>Pengadaan Komputer dan Server untuk Laboratorium Komputer</td>
+      <td>Pengadaan Mesin CNC untuk Laboratorium Mesin</td>
     </tr>
     <tr>
       <th scope="row">Sumber Dana</th>
@@ -26,20 +25,8 @@
       <td>28 September 2020</td>
     </tr>
     <tr>
-      <th scope="row">Tanggal Penetapan Sistem Pengadaan</th>
-      <td>28 September 2020</td>
-    </tr>
-    <tr>
-      <th scope="row">Tanggal Pengumuman Pengadaan</th>
-      <td>28 September 2020</td>
-    </tr>
-    <tr>
-      <th scope="row">Tanggal Pengumuman Pemenang</th>
-      <td>28 September 2020</td>
-    </tr>
-    <tr>
       <th scope="row">Unit Kerja Pengusul</th>
-      <td>Fakultas Psikologi dan Ilmu Pendidikan</td>
+      <td>Fakultas sains dan teknologi</td>
     </tr>
     <tr>
       <th scope="row">Tahun Anggaran</th>
@@ -47,7 +34,7 @@
     </tr>
     <tr>
       <th scope="row">Nilai HPS</th>
-      <td>Rp. 100.000.000,-</td>
+      <td>Rp. 600.000.000,-</td>
     </tr>
     <tr>
       <th scope="row">Jenis Kontrak</th>
@@ -66,10 +53,22 @@
         </table>
       </td>
     </tr>
-    {{-- <tr>
+    <tr>
       <th scope="row">Peserta</th>
       <td><a href="">5 Peserta</a></td>
-    </tr> --}}
+    </tr>
+    <tr>
+      <th scope="row">Tahap</th>
+      <td><div class="btn btn-sm btn-success">Acc</div></td>
+    </tr>
+    <tr>
+      <th scope="row">Beri Alasan</th>
+      <td>
+        <div class="mb-3">
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly></textarea>
+        </div>
+      </td>
+    </tr>
   </tbody>
 </table>
 @endsection

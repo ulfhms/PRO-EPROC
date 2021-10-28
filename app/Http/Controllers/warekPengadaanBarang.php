@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PengadaanBarangController extends Controller
+class warekPengadaanBarang extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,70 +13,70 @@ class PengadaanBarangController extends Controller
      */
     public function index()
     {
-        return view('dpal/pengadaanBarang/index');
+        return view('warek/pengadaanBarang/index');
     }
 
     public function create()
     {
-        return view('dpal/pengadaanBarang/pengadaanBarang/create');
+        return view('warek/pengadaanBarang/pengadaanBarang/create');
         
     }
     
     public function editTahap()
     {
-        return view('dpal/pengadaanBarang/tahap/editTahap');
+        return view('warek/pengadaanBarang/tahap/editTahap');
     }
 
     public function detailTahap()
     {
-        return view('dpal/pengadaanBarang/tahap/detailTahap');
+        return view('warek/pengadaanBarang/tahap/detailTahap');
     }
 
     public function pengumumanPengadaan(){
-        return view('dpal/pengadaanBarang/pengumumanPengadaan');
+        return view('warek/pengadaanBarang/pengumumanPengadaan');
 
     }
 
     public function pesertaPengadaan(){
-        return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaPengadaan');
+        return view('warek/pengadaanBarang/pesertaPengadaan/pesertaPengadaan');
 
     }
 
     public function pesertaEvaluasi(){
-        return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaEvaluasi');
+        return view('warek/pengadaanBarang/pesertaPengadaan/pesertaEvaluasi');
 
     }
 
     public function detailPesertaPengadaan(){
-        return view('dpal/pengadaanBarang/pesertaPengadaan/detailPesertaPengadaan');
+        return view('warek/pengadaanBarang/pesertaPengadaan/detailPesertaPengadaan');
 
     }
     
     public function detailProdukPesertaPengadaan(){
-        return view('dpal/pengadaanBarang/pesertaPengadaan/detailProdukPesertaPengadaan');
+        return view('warek/pengadaanBarang/pesertaPengadaan/detailProdukPesertaPengadaan');
 
     }
 
     public function hasilEvaluasi(){
-        return view('dpal/pengadaanBarang/evaluasi/hasilEvaluasi');
+        return view('warek/pengadaanBarang/evaluasi/hasilEvaluasi');
 
     }
 
     public function editHasilEvaluasi(){
-        return view('dpal/pengadaanBarang/evaluasi/editHasilEvaluasi');
+        return view('warek/pengadaanBarang/evaluasi/editHasilEvaluasi');
 
     }
 
     public function pemenang(){
-        return view('dpal/pengadaanBarang/pemenang/pemenang');
+        return view('warek/pengadaanBarang/pemenang/pemenang');
 
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-
 
     /**
      * Store a newly created resource in storage.

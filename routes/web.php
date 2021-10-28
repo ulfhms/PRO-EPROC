@@ -7,6 +7,7 @@ use App\Http\Controllers\PeroranganController;
 use App\Http\Controllers\SupplierBarangController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SupplierStatusController;
+use App\Http\Controllers\warekPengadaanBarang;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,18 +52,35 @@ Route::prefix('supplier/status')->group(function (){
 // });
 
 Route::prefix('warek/pengadaanBarang')->group(function (){
-    Route::get('/index', [PengadaanBarangController::class, 'index'])->name('warek.pengadaanBarang.index');
-    Route::get('/editTahap', [PengadaanBarangController::class, 'editTahap'])->name('warek.pengadaanBarang.editTahap');
-    Route::get('/detailTahap', [PengadaanBarangController::class, 'detailTahap'])->name('warek.pengadaanBarang.detailTahap');
-    Route::get('/pengumumanPengadaan', [PengadaanBarangController::class, 'pengumumanPengadaan'])->name('warek.pengadaanBarang.pengumumanPengadaan');
-    Route::get('/pesertaPengadaan', [PengadaanBarangController::class, 'pesertaPengadaan'])->name('warek.pengadaanBarang.pesertaPengadaan');
-    Route::get('/pesertaEvaluasi', [PengadaanBarangController::class, 'pesertaEvaluasi'])->name('warek.pengadaanBarang.pesertaEvaluasi');
-    Route::get('/detailPesertaPengadaan', [PengadaanBarangController::class, 'detailPesertaPengadaan'])->name('warek.pengadaanBarang.detailPesertaPengadaan');
-    Route::get('/detailProdukPesertaPengadaan', [PengadaanBarangController::class, 'detailProdukPesertaPengadaan'])->name('warek.pengadaanBarang.detailProdukPesertaPengadaan');
-    Route::get('/hasilEvaluasi', [PengadaanBarangController::class, 'hasilEvaluasi'])->name('warek.pengadaanBarang.hasilEvaluasi');
-    Route::get('/editHasilEvaluasi', [PengadaanBarangController::class, 'editHasilEvaluasi'])->name('warek.pengadaanBarang.editHasilEvaluasi');
-    Route::get('/pemenang', [PengadaanBarangController::class, 'pemenang'])->name('warek.pengadaanBarang.pemenang');
+    Route::get('/index', [warekPengadaanBarang::class, 'index'])->name('warek.pengadaanBarang.index');
+    Route::get('/create', [warekPengadaanBarang::class, 'create'])->name('warek.pengadaanBarang.create');
+    Route::get('/editTahap', [warekPengadaanBarang::class, 'editTahap'])->name('warek.pengadaanBarang.editTahap');
+    Route::get('/detailTahap', [warekPengadaanBarang::class, 'detailTahap'])->name('warek.pengadaanBarang.detailTahap');
+    Route::get('/pengumumanPengadaan', [warekPengadaanBarang::class, 'pengumumanPengadaan'])->name('warek.pengadaanBarang.pengumumanPengadaan');
+    Route::get('/pesertaPengadaan', [warekPengadaanBarang::class, 'pesertaPengadaan'])->name('warek.pengadaanBarang.pesertaPengadaan');
+    Route::get('/pesertaEvaluasi', [warekPengadaanBarang::class, 'pesertaEvaluasi'])->name('warek.pengadaanBarang.pesertaEvaluasi');
+    Route::get('/detailPesertaPengadaan', [warekPengadaanBarang::class, 'detailPesertaPengadaan'])->name('warek.pengadaanBarang.detailPesertaPengadaan');
+    Route::get('/detailProdukPesertaPengadaan', [warekPengadaanBarang::class, 'detailProdukPesertaPengadaan'])->name('warek.pengadaanBarang.detailProdukPesertaPengadaan');
+    Route::get('/hasilEvaluasi', [warekPengadaanBarang::class, 'hasilEvaluasi'])->name('warek.pengadaanBarang.hasilEvaluasi');
+    Route::get('/editHasilEvaluasi', [warekPengadaanBarang::class, 'editHasilEvaluasi'])->name('warek.pengadaanBarang.editHasilEvaluasi');
+    Route::get('/pemenang', [warekPengadaanBarang::class, 'pemenang'])->name('warek.pengadaanBarang.pemenang');
 });
+
+Route::prefix('dpal/pengadaanBarang')->group(function (){
+    Route::get('/index', [PengadaanBarangController::class, 'index'])->name('dpal.pengadaanBarang.index');
+    Route::get('/create', [PengadaanBarangController::class, 'create'])->name('dpal.pengadaanBarang.create');
+    Route::get('/editTahap', [PengadaanBarangController::class, 'editTahap'])->name('dpal.pengadaanBarang.editTahap');
+    Route::get('/detailTahap', [PengadaanBarangController::class, 'detailTahap'])->name('dpal.pengadaanBarang.detailTahap');
+    Route::get('/pengumumanPengadaan', [PengadaanBarangController::class, 'pengumumanPengadaan'])->name('dpal.pengadaanBarang.pengumumanPengadaan');
+    Route::get('/pesertaPengadaan', [PengadaanBarangController::class, 'pesertaPengadaan'])->name('dpal.pengadaanBarang.pesertaPengadaan');
+    Route::get('/pesertaEvaluasi', [PengadaanBarangController::class, 'pesertaEvaluasi'])->name('dpal.pengadaanBarang.pesertaEvaluasi');
+    Route::get('/detailPesertaPengadaan', [PengadaanBarangController::class, 'detailPesertaPengadaan'])->name('dpal.pengadaanBarang.detailPesertaPengadaan');
+    Route::get('/detailProdukPesertaPengadaan', [PengadaanBarangController::class, 'detailProdukPesertaPengadaan'])->name('dpal.pengadaanBarang.detailProdukPesertaPengadaan');
+    Route::get('/hasilEvaluasi', [PengadaanBarangController::class, 'hasilEvaluasi'])->name('dpal.pengadaanBarang.hasilEvaluasi');
+    Route::get('/editHasilEvaluasi', [PengadaanBarangController::class, 'editHasilEvaluasi'])->name('dpal.pengadaanBarang.editHasilEvaluasi');
+    Route::get('/pemenang', [PengadaanBarangController::class, 'pemenang'])->name('dpal.pengadaanBarang.pemenang');
+});
+
 
 Route::prefix('warek/badanUsaha')->group(function (){
     Route::get('/index', [BadanUsahaController::class, 'index'])->name('warek.badanUsaha.index');

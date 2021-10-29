@@ -1,4 +1,4 @@
-@extends('layouts/warek/main-layout')
+@extends('layouts/dpal/main-layout')
 @section('title', 'CV Merah Putih')
 @section('content')
 <div class=" bg-primary p-2 fw-bold text-white text-center fs-5">

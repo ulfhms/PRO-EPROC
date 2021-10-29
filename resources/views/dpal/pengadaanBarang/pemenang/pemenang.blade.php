@@ -1,4 +1,4 @@
-@extends('layouts/warek/main-layout')
+@extends('layouts/dpal/main-layout')
 @section('title', 'Pemenang')
 @section('content')
 @include('dpal/pengadaanBarang/navbarPengadaan')

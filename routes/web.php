@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AccContorller;
 use App\Http\Controllers\BadanUsahaController;
+use App\Http\Controllers\dpalBadanUsaha;
+use App\Http\Controllers\dpalBadanUsahaController;
+use App\Http\Controllers\dpalPeroranganController;
 use App\Http\Controllers\PengadaanBarangController;
 use App\Http\Controllers\PeroranganController;
 use App\Http\Controllers\SupplierBarangController;
@@ -81,6 +84,16 @@ Route::prefix('dpal/pengadaanBarang')->group(function (){
     Route::get('/pemenang', [PengadaanBarangController::class, 'pemenang'])->name('dpal.pengadaanBarang.pemenang');
 });
 
+
+Route::prefix('dpal/badanUsaha')->group(function (){
+    Route::get('/index', [dpalBadanUsahaController::class, 'index'])->name('dpal.badanUsaha.index');
+    Route::get('/detailBadanUsaha', [dpalBadanUsahaController::class, 'detailBadanUsaha'])->name('dpal.badanUsaha.detailBadanUsaha');
+});
+
+Route::prefix('dpal/perorangan')->group(function (){
+    Route::get('/index', [dpalPeroranganController::class, 'index'])->name('dpal.perorangan.index');
+    Route::get('/detailPerorangan', [dpalPeroranganController::class, 'detailPerorangan'])->name('dpal.perorangan.detailPerorangan');
+});
 
 Route::prefix('warek/badanUsaha')->group(function (){
     Route::get('/index', [BadanUsahaController::class, 'index'])->name('warek.badanUsaha.index');

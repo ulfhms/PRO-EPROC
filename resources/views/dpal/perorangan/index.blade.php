@@ -1,4 +1,4 @@
-@extends('layouts/warek/main-layout')
+@extends('layouts/dpal/main-layout')
 @section('title','Jasa Konsultasi Perorangan')
 @section('content')
 <h5 class="bg-warning p-2 rounded col-lg-6 col-12">Daftar Penyedia Terseleksi (DPT)</h5>
@@ -13,7 +13,7 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td><a href="{{ route('warek.perorangan.detailPerorangan') }}">Budi Hartono</a></td>
+      <td><a href="{{ route('dpal.perorangan.detailPerorangan') }}">Budi Hartono</a></td>
       <td>Pengadaan Barang Alat Kesehatan</td>
     </tr>
     <tr>

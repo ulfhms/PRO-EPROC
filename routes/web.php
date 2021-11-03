@@ -72,6 +72,7 @@ Route::prefix('warek/pengadaanBarang')->group(function (){
 Route::prefix('dpal/pengadaanBarang')->group(function (){
     Route::get('/index', [PengadaanBarangController::class, 'index'])->name('dpal.pengadaanBarang.index');
     Route::get('/create', [PengadaanBarangController::class, 'create'])->name('dpal.pengadaanBarang.create');
+    Route::get('/detail', [PengadaanBarangController::class, 'detail'])->name('dpal.pengadaanBarang.detail');
     Route::get('/editTahap', [PengadaanBarangController::class, 'editTahap'])->name('dpal.pengadaanBarang.editTahap');
     Route::get('/detailTahap', [PengadaanBarangController::class, 'detailTahap'])->name('dpal.pengadaanBarang.detailTahap');
     Route::get('/pengumumanPengadaan', [PengadaanBarangController::class, 'pengumumanPengadaan'])->name('dpal.pengadaanBarang.pengumumanPengadaan');

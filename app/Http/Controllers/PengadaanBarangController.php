@@ -21,6 +21,12 @@ class PengadaanBarangController extends Controller
         return view('dpal/pengadaanBarang/pengadaanBarang/create');
         
     }
+
+    public function detail()
+    {
+        return view('dpal/pengadaanBarang/pengadaanBarang/detail');
+        
+    }
     
     public function editTahap()
     {

@@ -14,7 +14,7 @@
 
 <div class="row mb-2">
   <div class="col-sm-12 col-lg-12 d-flex justify-content-end">
-    <a href="{{ route('dpal.pengadaanBarang.create') }}" class="btn btn-sm btn-primary rounded mt-1 text-center fw-bold text-white text-decoration-none">Detail</a>
+    <a href="{{ route('dpal.pengadaanBarang.detail') }}" class="btn btn-sm btn-primary rounded mt-1 text-center fw-bold text-white text-decoration-none">Detail</a>
   </div>
 </div>
 <table class="table overflow-auto table-responsive">
@@ -37,7 +37,7 @@
         </div>
       </th>
       <th scope="row">PBA - 0001</th>
-      <td><a href="{{ route('dpal.pengadaanBarang.pengumumanPengadaan') }}">Pengadaan Komputer dan Serve untuk Laboratorium Komputer</a></td>
+      <td><a href="{{ route('dpal.pengadaanBarang.pengumumanPengadaan') }}">Pengadaan Server untuk Laboratorium Komputer</a></td>
       <td>Fakultas Psikologi dan Ilmu Pendidikan</td>
       <td> <a href="#" class="btn badge bg-primary">ON</a></td>
       <td>Rp. 100.000.000,-</td>

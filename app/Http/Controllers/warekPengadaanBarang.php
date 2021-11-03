@@ -21,6 +21,12 @@ class warekPengadaanBarang extends Controller
         return view('warek/pengadaanBarang/pengadaanBarang/create');
         
     }
+
+    public function detail()
+    {
+        return view('warek/pengadaanBarang/pengadaanBarang/detail');
+        
+    }
     
     public function editTahap()
     {

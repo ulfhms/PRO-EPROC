@@ -57,6 +57,7 @@ Route::prefix('supplier/status')->group(function (){
 Route::prefix('warek/pengadaanBarang')->group(function (){
     Route::get('/index', [warekPengadaanBarang::class, 'index'])->name('warek.pengadaanBarang.index');
     Route::get('/create', [warekPengadaanBarang::class, 'create'])->name('warek.pengadaanBarang.create');
+    Route::get('/detail', [warekPengadaanBarang::class, 'detail'])->name('warek.pengadaanBarang.detail');
     Route::get('/editTahap', [warekPengadaanBarang::class, 'editTahap'])->name('warek.pengadaanBarang.editTahap');
     Route::get('/detailTahap', [warekPengadaanBarang::class, 'detailTahap'])->name('warek.pengadaanBarang.detailTahap');
     Route::get('/pengumumanPengadaan', [warekPengadaanBarang::class, 'pengumumanPengadaan'])->name('warek.pengadaanBarang.pengumumanPengadaan');

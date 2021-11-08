@@ -31,12 +31,8 @@
       <td>Rp 70.000.000</td>
     </tr>
     <tr>
-      <th scope="row">Harga Terkoreksi</th>
-      <td>Rp 65.000.000</td>
-    </tr>
-    <tr>
-      <th scope="row">Selisih</th>
-      <td>Rp 5.000.000</td>
+      <th scope="row">Hasil Penawaran</th>
+      <td>Untuk penawaran hanya bisa sampai Rp.67.000.000,-</td>
     </tr>
   </tbody>
 </table>

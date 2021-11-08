@@ -5,11 +5,10 @@
 <div class="card">
   <h5 class="card-header bg-success text-white mt-3">Pilih Supplier yang di ACC</h5>
   <div class="card-body">
-    <select class="form-select" aria-label="Default select example">
-      <option selected>Pilih Supplier</option>
-      <option value="1">CV Merah Putih</option>
-      <option value="2">CV Kartika Raya</option>
-      <option value="3">CV Medali</option>
+    <select class="js-example-basic-multiple form-control" aria-label="multiple select example" name="states[]" multiple="multiple">
+      <option value="merah" >CV Merah Putih</option>
+      <option value="kartika">CV Kartika Raya</option>
+      <option value="medali">CV Medali</option>
     </select>
     <div class="d-flex justify-content-end mt-2">
       <a href="{{ route('dpal.pengadaanBarang.pemenang') }}" class="btn btn-sm btn-primary">Simpan</a>
@@ -54,5 +53,7 @@
     </div>
   </div>
 </div>
+
+
 
 @endsection

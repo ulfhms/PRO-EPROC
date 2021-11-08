@@ -19,7 +19,9 @@
       <td>01.234.567.8-123.000</td>
       <td>Rp 70.000.000</td>
       <td>
-        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
+        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="fas fa-times"></i>
+        </button>
         <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>
       </td>
     </tr>
@@ -65,4 +67,34 @@
     </tr>
   </tbody>
 </table>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Tolak Penawaran</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <ul class="list-group">
+            <li class="list-group-item">Pengadaan :Pengadaan Server untuk Laboratorium Komputer</li>
+            <li class="list-group-item">Supplier : CV Merah Putih</li>
+            <li class="list-group-item">Harga Penwaran : 	Rp 70.000.000</li>
+          </ul>
+          <label for="exampleFormControlTextarea1" class="form-label fw-bold mt-3">Alasan Penolakan</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection

@@ -41,7 +41,7 @@
       <td>Fakultas Psikologi dan Ilmu Pendidikan</td>
       <td> <a href="#" class="btn badge bg-primary">ON</a></td>
       <td>Rp. 100.000.000,-</td>
-      <td class="text-center">5</td>
+      <td class="text-center"><a href="{{ route('dpal.pengadaanBarang.pengumumanPengadaan') }}">5</a></td>
       {{-- <td><a href="{{ route('dpal.pengadaanBarang.editTahap') }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td> --}}
     </tr>
     <tr>

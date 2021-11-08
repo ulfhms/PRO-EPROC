@@ -2,7 +2,7 @@
 @section('title', 'CV Murah Hati')
 @section('content')
 <div class="m-2">
-  @include('dpal/pengadaanBarang/pesertaPengadaan/navbar')
+  {{-- @include('dpal/pengadaanBarang/pesertaPengadaan/navbar') --}}
   <div class="row">
     <div class="col-2">
         <img src="{{ asset('logo/ikea.svg') }}" alt="">
@@ -43,7 +43,7 @@
           <tr>
             <th scope="row">6</th>
             <td>Nara Hubung</td>
-            <td>Bapak Budi</td>
+            <td>Budi Utomo</td>
           </tr>
           <tr>
             <th scope="row">7</th>
@@ -53,10 +53,15 @@
           <tr>
             <th scope="row">8</th>
             <td>No Rekening</td>
-            <td>9823947</td>
+            <td>(BCA) 9823947</td>
           </tr>
         </tbody>
       </table>
+  </div>
+  <div class="row">
+    <div class="col text-center mb-5">
+      <div class="fw-bold p-2text-dark fs-6 bg-warning text-decoration-underline">Produk</div>
+    </div>
   </div>
   <div class="d-flex justify-content-center">
     <a href="{{ route('dpal.pengadaanBarang.pesertaPengadaan') }}" class="btn btn-sm btn-warning">Kembali</a>

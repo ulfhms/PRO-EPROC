@@ -31,15 +31,21 @@
       <td>Rp 70.000.000</td>
     </tr>
     <tr>
+      <th scope="row">Harga Terkoreksi</th>
+      <td>Rp 67.000.000</td>
+    </tr>
+    <tr>
       <th scope="row">Hasil Penawaran</th>
       <td>Untuk penawaran hanya bisa sampai Rp.67.000.000,-</td>
     </tr>
+    <tr>
+      <th scope="row">Evaluasi ke Supplier</th>
+      <td>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+      </td>
+    </tr>
   </tbody>
 </table>
-<div class="mb-3 ms-2">
-  <label for="exampleFormControlTextarea1" class="form-label fw-bold">Evaluasi</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
-</div>
 <div class="d-flex justify-content-end">
   <button class="btn btn-sm btn-primary">Simpan</button>
 </div>

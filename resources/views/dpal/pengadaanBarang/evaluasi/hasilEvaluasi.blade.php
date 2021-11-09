@@ -24,7 +24,58 @@
     </h2>
     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
       <div class="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Kode</th>
+              <td>Sup-1</td>
+            </tr>
+            <tr>
+              <th scope="row">NPWP</th>
+              <td>01.234.567.8-123.000</td>
+            </tr>
+            <tr>
+              <th scope="row">Alamat</th>
+              <td>Jl.Simpang Kanan Sidoarjo</td>
+            </tr>
+            <tr>
+              <th scope="row">Telepon</th>
+              <td>0895642343678</td>
+            </tr>
+            <tr>
+              <th scope="row">Nara Hubung</th>
+              <td>Budi Utomo</td>
+            </tr>
+            <tr>
+              <th scope="row">Bidang Usaha</th>
+              <td>Komputer</td>
+            </tr>
+            <tr>
+              <th scope="row">No Rekening</th>
+              <td>(BCA) 9823947</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Penawaran</th>
+              <td>Rp 70.000.000</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Terkoreksi</th>
+              <td>Rp 67.000.000</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Selisih</th>
+              <td>Rp 3.000.000</td>
+            </tr>
+            <tr>
+              <th scope="row">Riwayat Hasil Penawaran Supplier</th>
+              <td>Tidak bisa Maximal Rp 67.000.000,-</td>
+            </tr>
+            <tr>
+              <th scope="row">Riwayat Evaluasi ke Supplier</th>
+              <td>Apa bisa diturunkan ke Rp 65.000.000,-</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

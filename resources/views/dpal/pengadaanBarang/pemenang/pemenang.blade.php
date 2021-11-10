@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td>Nara Hubung</td>
-            <td>Bapak Budi</td>
+            <td>Budi Utomo</td>
           </tr>
           <tr>
             <td>Bidang Usaha</td>
@@ -45,7 +45,7 @@
           </tr>
           <tr>
             <td>No Rekening</td>
-            <td>9823947</td>
+            <td>(BCA) 9823947</td>
           </tr>
           <tr class="table-info">
             <td>Nilai Kontrak</td>
@@ -75,19 +75,19 @@
               </tr>
               <tr>
                 <th scope="row">Harga Terkoreksi</th>
-                <td>Rp 67.000.000</td>
+                <td>Rp 32.500.000</td>
               </tr>
               <tr>
                 <th scope="row">Harga Selisih</th>
-                <td>Rp 3.000.000</td>
+                <td>Rp 37.500.000</td>
               </tr>
               <tr>
                 <th scope="row">Riwayat Hasil Penawaran Supplier</th>
-                <td>Tidak bisa Maximal Rp 67.000.000,-</td>
+                <td>5 unit server dengan total harga = Rp 32.500.000,- diterima </td>
               </tr>
               <tr>
                 <th scope="row">Riwayat Evaluasi ke Supplier</th>
-                <td>Apa bisa diturunkan ke Rp 65.000.000,-</td>
+                <td>Kirim 5 unit server dengan harga perunitnya Rp 6.500.000,- dengan total harga = Rp 32.500.000,-</td>
               </tr>
               <tr>
                 <th scope="row">Bukti Transfer</th>
@@ -106,7 +106,7 @@
         <img src="{{ asset('logo/ikea.svg') }}" alt="">
     </div>
     <div class="col">
-        <h3 class="">CV Merah Putih</h3>
+        <h3 class="">CV Kartika Raya</h3>
         <p class="card-text">Supplier</p>
     </div>
   </div>
@@ -115,27 +115,27 @@
         <tbody>
           <tr>
             <td>Kode</td>
-            <td>Sup-1</td>
+            <td>Sup-2</td>
           </tr>
           <tr>
             <td>Nama Perusahaan</td>
-            <td>CV Merah Putih</td>
+            <td>CV Kartika Raya</td>
           </tr>
           <tr>
             <td>NPWP</td>
-            <td>01.234.567.8-123.000</td>
+            <td>01.234.567.8-123.001</td>
           </tr>
           <tr>
             <td>Alamat</td>
-            <td>Jl.Simpang Kanan Sidoarjo</td>
+            <td>Jl.Simpang Kiri Surabaya</td>
           </tr>
           <tr>
             <td>Telepon</td>
-            <td>0895642343678</td>
+            <td>089564234808</td>
           </tr>
           <tr>
             <td>Nara Hubung</td>
-            <td>Bapak Budi</td>
+            <td>Yudi Sutomo</td>
           </tr>
           <tr>
             <td>Bidang Usaha</td>
@@ -143,7 +143,7 @@
           </tr>
           <tr>
             <td>No Rekening</td>
-            <td>9823947</td>
+            <td>(BCA) 274598</td>
           </tr>
           <tr class="table-info">
             <td>Nilai Kontrak</td>
@@ -173,19 +173,19 @@
               </tr>
               <tr>
                 <th scope="row">Harga Terkoreksi</th>
-                <td>Rp 67.000.000</td>
+                <td>Rp 32.500.000</td>
               </tr>
               <tr>
                 <th scope="row">Harga Selisih</th>
-                <td>Rp 3.000.000</td>
+                <td>Rp 37.500.000</td>
               </tr>
               <tr>
                 <th scope="row">Riwayat Hasil Penawaran Supplier</th>
-                <td>Tidak bisa Maximal Rp 67.000.000,-</td>
+                <td>5 unit server dengan total harga = Rp 32.500.000,- diterima </td>
               </tr>
               <tr>
                 <th scope="row">Riwayat Evaluasi ke Supplier</th>
-                <td>Apa bisa diturunkan ke Rp 65.000.000,-</td>
+                <td>Kirim 5 unit server dengan harga perunitnya Rp 6.500.000,- dengan total harga = Rp 32.500.000,-</td>
               </tr>
               <tr>
                 <th scope="row">Bukti Transfer</th>

@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AccContorller;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BadanUsahaController;
 use App\Http\Controllers\dpalBadanUsaha;
 use App\Http\Controllers\dpalBadanUsahaController;
 use App\Http\Controllers\dpalPeroranganController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PengadaanBarangController;
 use App\Http\Controllers\PeroranganController;
 use App\Http\Controllers\SupplierBarangController;
@@ -26,6 +28,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('auth')->group(function(){
+    Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/registrasi', [AuthController::class, 'registrasi'])->name('auth.registrasi');
+    Route::get('/forget', [AuthController::class, 'forget'])->name('auth.forget');
+});
+
+Route::prefix('home')->group(function(){
+    Route::get('/index', [HomeController::class, 'index'])->name('home.index');
+    Route::get('/about', [HomeController::class, 'about'])->name('home.about');
+    Route::get('/tataCara', [HomeController::class, 'tataCara'])->name('home.tataCara');
+    Route::get('/faq', [HomeController::class, 'faq'])->name('home.faq');
 });
 
 Route::prefix('supplier')->group(function (){

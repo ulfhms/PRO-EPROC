@@ -2,6 +2,7 @@
 @section('title', 'Pengadaan Kursi Kantor untuk Laboratorium Komputer')
 @section('content')
 <table class="table">
+  
   <tbody>
     <tr>
       <th scope="row">Kode</th>
@@ -9,7 +10,7 @@
     </tr>
     <tr>
       <th scope="row">Status</th>
-      <td><div class="badge badge-success text-decoration-none">Acc</div></td>
+      <td><div class="badge badge-success text-decoration-none">ACC</div></td>
     </tr>
     <tr>
       <th scope="row">Nama Paket</th>
@@ -20,23 +21,30 @@
       <td>Komputer</td>
     </tr>
     <tr>
-      <th scope="row">Jumlah</th>
+      <th scope="row">Jumlah Item</th>
       <td>10</td>
     </tr>
     <tr>
       <th scope="row">Harga Penawaran</th>
-      <td>Rp 50.000.000,-</td>
+      <td>Rp 5.000.000,-</td>
     </tr>
     <tr>
       <th scope="row">Harga Terkoreksi</th>
-      <td>Rp 45.000.000,-</td>
+      <td>
+          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan harga yang sudah disepakati bersama DPAL UMSIDA. Bisa menjadi harga akhir kesepakatan">
+      </td>
     </tr>
     <tr>
-      <th scope="row"></th>
-      <td>
-        <button class="btn btn-sm btn-primary">Simpan</button>
-      </td>
+      <th scope="row">Selisih</th>
+      <td>-----</td>
+    </tr>
+    <tr>
+      <th scope="row">Total Pembayaran</th>
+      <td>Jumlah dari harga semua item berdasarkan Harga Terkoreksi.</td>
     </tr>
   </tbody>
 </table>
+<div scope="row" class="d-flex flex-row-reverse bd-highlight">
+  <button class="btn btn-sm btn-primary p-2 bd-highlight"><a href="{{ route('supplier.status.index') }}" style="color:white; text-decoration:none">Simpan</button>
+</div>
 @endsection

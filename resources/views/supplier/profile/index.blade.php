@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-end">
 </div>
 <div class="card ">
-  <p class="card-header fw-bold">Profile Information</p>
+  <p class="card-header fw-bold">Profil Supplier</p>
   <div class="card-body">
     <div class="row">
       <div class="col-2">
@@ -48,16 +48,21 @@
               </tr>
               <tr>
                 <th scope="row">7</th>
-                <td>No Rekening</td>
-                <td>3259876</td>
+                <td>Pemilik Rekening</td>
+                <td>Joko Mulyo</td>
               </tr>
               <tr>
                 <th scope="row">8</th>
+                <td>No Rekening</td>
+                <td>BCA - 3259876567849454</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
                 <td>Bidang Usaha</td>
                 <td>Pengadaan Barang Alat IT</td>
               </tr>
               <tr>
-                <th scope="row">9</th>
+                <th scope="row">10</th>
                 <td>Alamat</td>
                 <td>Jl.Simpang Kanan Sidoarjo</td>
               </tr>

@@ -62,6 +62,7 @@ Route::prefix('supplier/status')->group(function (){
     Route::get('/detailTolak', [SupplierStatusController::class, 'detailTolak'])->name('supplier.status.detailTolak');
     Route::get('/detailValidasi', [SupplierStatusController::class, 'detailValidasi'])->name('supplier.status.detailValidasi');
     Route::get('/detailSelesai', [SupplierStatusController::class, 'detailSelesai'])->name('supplier.status.detailSelesai');
+    Route::get('/detailSubmit', [SupplierStatusController::class, 'detailSubmit'])->name('supplier.status.detailSubmit');
 });
 
 // Route::prefix('supplier/status/acc')->group(function (){

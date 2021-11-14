@@ -5,32 +5,27 @@
   <tbody>
     <tr>
       <th class="text-center">
-        <img src="{{ asset('image/komputer.jpg') }}" class="img-fluid" alt="">
+        <img src="{{ asset('') }}" class="img-fluid" alt="">
       </th>
       <td>
-              <h4 class="fw-bold text-primary">Komputer</h4>
-              <h4>Rp.5.000.000 ,-</h4>
+              <h4 class="fw-bold text-primary">Detail Paket Pengadaan</h4>
+              <h4> </h4>
         </td>
     </tr>
     <tr>
-      <th scope="row" colspan="3" class="text-primary"><h5>Spesifikasi Produk</h5></th>
+      <th scope="row" colspan="3" class="text-primary"><h5></h5></th>
     </tr>
     <tr>
-      <th>Stok</th>
-      <td>999</td>
+      <th>Nama Pengadaan</th>
+      <td>Pengadaan Komputer bla bla</td>
     </tr>
     <tr>
-      <th>Dikirim Dari</th>
-      <td>KAB.TANGGERANG - KOSAMBI, BANTEN, ID</td>
+      <th>Harga Penawaran</th>
+      <td>Rp. 5.000.000 /unit</td>
     </tr>
     <tr>
-      <th scope="row" colspan="3" class="text-primary"><h5>Deskripsi Produk</h5></th>
-    </tr>
-    <tr>
-      <td colspan="2">Intel Core i3,
-        Monitor 19 inchi,
-        Hardisk 320 Gb,
-        M/B ECS</td>
+      <th>File Proposal</th>
+      <td scope="row" colspan="3" class="text-primary"><a href="{{asset('product/beasiswa.pdf')}}">file name</a></td>
     </tr>
   </tbody>
 </table>

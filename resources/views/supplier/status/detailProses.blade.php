@@ -9,7 +9,7 @@
     </tr>
     <tr>
       <th scope="row">Status</th>
-      <td><div class="badge badge-primary text-decoration-none">Proses</div></td>
+      <td><div class="badge badge-warning text-decoration-none">Evaluasi</div></td>
     </tr>
     <tr>
       <th scope="row">Nama Paket</th>
@@ -27,11 +27,25 @@
       <th scope="row">Harga Penawaran</th>
       <td>Rp 50.000.000,-</td>
     </tr>
+    <tr class="table-info">
+      <th> Hasil Evaluasi</th>
+      <td>Bisakah ditawar lagi seharga Rp. 5.000.000</td>
+    </tr>
     <tr>
-      <th scope="row">Harga Terkoreksi</th>
+      <th scope="row">Harga Terkoreksi:</th>
       <td>
-          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan harga Terkoreksi">
+          <input type="Price" class="form-control" id="exampleInputPrice" aria-describedby="priceHelp!" placeholder="Anda bisa mengisi kolom ini untuk harga negosiasi">
       </td>
+    </tr>
+    <tr>
+      <th>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Beri Respon</label>
+          <td>
+             <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+          </td>
+        </div>
+      </th>
     </tr>
     <tr>
       <th scope="row"></th>

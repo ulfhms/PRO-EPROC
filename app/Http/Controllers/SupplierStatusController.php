@@ -36,6 +36,10 @@ class SupplierStatusController extends Controller
         return view('supplier/status/detailSelesai');
     }
 
+    public function detailSubmit(){
+        return view('supplier/status/detailSubmit');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

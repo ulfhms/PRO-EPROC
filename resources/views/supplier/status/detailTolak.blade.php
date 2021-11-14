@@ -31,12 +31,15 @@
       <th scope="row">Harga Terkoreksi</th>
       <td>Rp 45.000.000,-</td>
     </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>
-        <button class="btn btn-sm btn-primary">Simpan</button>
-      </td>
-    </tr>
+    <tr class="table-danger">
+    <th>Alasan</th>
+    <td>
+        Maaf, pengajuan Anda kami tolak karena setelah dikoreksi lebih lanjut, produk ditawarkan kurang efektif untuk memenuhi keperluan kampus.
+    </td> 
   </tbody>
 </table>
+<div scope="row" class="d-flex flex-row-reverse bd-highlight">
+    <button class="btn btn-sm btn-primary p-2 bd-highlight"><a href="{{ route('supplier.status.index') }}" style="color:white; text-decoration:none">Mengerti</button>
+</div>
+
 @endsection

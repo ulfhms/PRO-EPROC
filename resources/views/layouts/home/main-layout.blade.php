@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">  
 
     <!------CSS-->
-    <link href="{{asset('login/css/front.css')}}" rel="stylesheet">
+    <link href="{{asset('template/css/front.css')}}" rel="stylesheet">
     <title>@yield('title')</title>
   </head>
 

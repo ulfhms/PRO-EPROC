@@ -41,16 +41,27 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="POST" action="{{ route('auth.proses_login') }}">
+                                        @csrf
                                         <div class="form-group">
-                                            <input type="tlp" class="form-control form-control-user"
+                                            <input type="text" class="form-control form-control-user"
                                                 id="exampleInputTlp" aria-describedby="tlpHelp"
-                                                placeholder="Enter Telephone or Handphone Number">
+                                                placeholder="username" name="username">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="exampleInputPassword" placeholder="Password" name="password">
                                         </div>
+                                        @error('login_gagal')
+                                        
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            {{-- <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span> --}}
+                                            <span class="alert-inner--text"><strong>Warning!</strong> {{ $message }}</span>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        @enderror
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -58,10 +69,11 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="#" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
+                                        </button>
                                     </form>
+                                    
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="{{route('auth.forget')}}">Forgot Password?</a>

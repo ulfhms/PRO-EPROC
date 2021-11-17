@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <img src="{{asset('login/img/profil.jpg')}}" class="img-fluid" alt="profil">
+        <img src="{{asset('template/img/profil.jpg')}}" class="img-fluid" alt="profil">
     </div>
     <div class="text-side col-6 col-md-4">
         <h4>Selamat Datang di E-Proc UMSIDA</h4><br>

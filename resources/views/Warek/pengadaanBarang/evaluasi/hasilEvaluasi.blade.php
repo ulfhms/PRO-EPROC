@@ -1,4 +1,4 @@
-@extends('layouts/warek/main-layout')
+@extends('layouts/main-layout')
 @section('title', 'Hasil Evaluasi')
 @section('content')
 @include('warek/pengadaanBarang/navbarPengadaan')

@@ -1,4 +1,4 @@
-@extends('layouts/warek/main-layout')
+@extends('layouts/main-layout')
 @section('title','Jasa Konsultasi Perorangan')
 @section('content')
 <h5 class="bg-warning p-2 rounded col-lg-6 col-12">Daftar Penyedia Terseleksi (DPT)</h5>

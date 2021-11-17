@@ -1,4 +1,4 @@
-@extends('layouts/warek/main-layout')
+@extends('layouts/main-layout')
 @section('title','Pengadaan Mesin CNC untuk Laboratorium Mesin')
 @section('content')
 <h5 class="bg-warning p-2 rounded col-12">Detail Tahap : Pengadaan Mesin CNC untuk Laboratorium Mesin</h5>

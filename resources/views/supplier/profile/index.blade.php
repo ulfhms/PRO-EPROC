@@ -1,4 +1,4 @@
-@extends('layouts/supplier/main-layout')
+@extends('layouts/main-layout')
 @section('title', 'Profile')
 @section('content')
 <div class="d-flex justify-content-end">

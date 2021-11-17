@@ -1,4 +1,4 @@
-@extends('layouts/dpal/main-layout')
+@extends('layouts/main-layout')
 @section('title', 'Pengadaan Komputer dan Serve untuk Laboratorium Komputer')
 @section('content')
 <h5 class="bg-warning p-2 rounded col-12">Edit Tahap : Pengadaan Komputer dan Serve untuk Laboratorium Komputer</h5>

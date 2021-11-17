@@ -1,4 +1,4 @@
-@extends('layouts/warek/main-layout')
+@extends('layouts/main-layout')
 @section('title','Tambah Pengadaan Barang')
 @section('content')
 <div class="bg-primary text-center text-white fw-bold p-2 mb-3">Tambah Pengadaan Barang</div>

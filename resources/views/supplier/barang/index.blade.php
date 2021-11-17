@@ -1,4 +1,4 @@
-@extends('layouts/supplier/main-layout')
+@extends('layouts/main-layout')
 @section('title', 'Daftar Barang')
 @section('content')
 <h5 class="bg-warning p-2 rounded text-center">Pengadaan yang Diikuti</h5>

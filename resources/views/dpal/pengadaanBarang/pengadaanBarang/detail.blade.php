@@ -1,4 +1,4 @@
-@extends('layouts/dpal/main-layout')
+@extends('layouts/main-layout')
 @section('title','Detail Beberapa Pengadaan')
 @section('content')
 <div class="container">

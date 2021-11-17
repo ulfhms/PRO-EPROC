@@ -1,4 +1,4 @@
-@extends('layouts/dpal/main-layout')
+@extends('layouts/main-layout')
 @section('title','CV Malioboro')
 @section('content')
 <div class="card ">

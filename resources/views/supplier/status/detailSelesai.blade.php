@@ -1,4 +1,4 @@
-@extends('layouts/supplier/main-layout')
+@extends('layouts/main-layout')
 @section('title', 'Pengadaan Kursi Kantor untuk Laboratorium Komputer')
 @section('content')
 <table class="table">

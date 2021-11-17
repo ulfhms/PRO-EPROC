@@ -1,4 +1,4 @@
-@extends('layouts/warek/main-layout')
+@extends('layouts/main-layout')
 @section('title', 'Pengadaan Komputer dan Serve untuk Laboratorium Komputer')
 @section('content')
 {{-- navbar --}}

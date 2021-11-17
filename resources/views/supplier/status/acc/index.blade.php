@@ -1,4 +1,4 @@
-@extends('layouts/supplier/main-layout')
+@extends('layouts/main-layout')
 @section('title', 'Daftar Ter-Acc')
 @section('content')
 <table class="table">

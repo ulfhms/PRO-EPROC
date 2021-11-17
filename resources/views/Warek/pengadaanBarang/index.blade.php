@@ -1,4 +1,4 @@
-@extends('layouts/warek/main-layout')
+@extends('layouts/main-layout')
 @section('title','Pengadaan Barang / Alat')
 @section('content')
 <div class="row">

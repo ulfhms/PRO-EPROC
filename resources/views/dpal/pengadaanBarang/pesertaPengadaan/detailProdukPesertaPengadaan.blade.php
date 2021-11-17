@@ -1,4 +1,4 @@
-@extends('layouts/dpal/main-layout')
+@extends('layouts/main-layout')
 @section('title', 'CV Murah Hati')
 @section('content')
 @include('dpal/pengadaanBarang/pesertaPengadaan/navbar')

@@ -1,4 +1,4 @@
-@extends('layouts/warek/main-layout')
+@extends('layouts/main-layout')
 @section('title', 'CV Murah Hati')
 @section('content')
 @include('warek/pengadaanBarang/pesertaPengadaan/navbar')

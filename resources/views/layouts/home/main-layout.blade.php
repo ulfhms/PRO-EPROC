@@ -64,9 +64,15 @@
                 <a class="nav-link text-decoration-none text-white" href="{{ route('home.faq') }}">FAQ's</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link text-decoration-none text-white" href="{{ route('auth.login') }}">
+                @auth
+                <a class="nav-link text-decoration-none text-white" href="{{ route('login') }}">
                   Login
                 </a>
+                @else
+                <a class="nav-link text-decoration-none text-white" href="{{ route('login') }}">
+                  Logout
+                </a>
+                @endauth
               </li>
             </ul>
           </div>

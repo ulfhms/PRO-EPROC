@@ -81,7 +81,7 @@
                                         <small id="emailHelp" class="form-text text-muted">Format JPG | PNG | JPEG.</small>
                                       </div>
                                 </div>
-                                <a href="{{ route('auth.login') }}" class="btn btn-primary btn-user btn-block">
+                                <a href="{{ route('login') }}" class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </a>
                             </form>
@@ -90,7 +90,7 @@
                                 <a class="small" href="{{ route('auth.forget') }}">Forgot Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="{{ route('auth.login') }}">Already have an account? Login!</a>
+                                <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

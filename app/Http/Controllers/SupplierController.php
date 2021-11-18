@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SupplierController extends Controller
 {
@@ -13,7 +15,9 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        return view('supplier/profile/index');
+        $profile = User::where('id',auth()->id())->first();
+        // dd($profile);
+        return view('supplier/profile/index', compact('profile'));
     }
 
     public function editProfile()

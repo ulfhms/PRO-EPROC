@@ -12,59 +12,51 @@
       </div>
       <div class="col">
         <h3 class="">
-          CV Merah Putih
+          {{ $profile->nama }}
           <a href="{{ route('supplier.editProfile') }}" class="btn btn-sm bg-warning"><i class="far fa-edit"></i></a>
         </h3>
-        <p class="card-text">Supplier</p>
+        <p class="card-text">{{ ucwords($profile->level) }}</p>
         </div>
     </div>
     <div class="row pt-4">
         <table class="table table-hover">
             <tbody>
-              <tr>
+              {{-- <tr>
                 <th scope="row">1</th>
                 <td>Kode</td>
                 <td>Sup-1</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Nama Perusahaan</td>
+              </tr> --}}
+              {{-- <tr>
+                <th>Nama Perusahaan</th>
                 <td>CV Merah Putih</td>
+              </tr> --}}
+              <tr>
+                <th>NPWP</th>
+                <td>{{ $profile->npwp }}</td>
               </tr>
               <tr>
-                <th scope="row">3</th>
-                <td>NPWP</td>
-                <td>01.234.567.8-123.000</td>
+                <th>Telepon</th>
+                <td>{{ $profile->telepon }}</td>
               </tr>
               <tr>
-                <th scope="row">5</th>
-                <td>Telepon</td>
-                <td>0895642343678</td>
+                <th>Narahubung</th>
+                <td>{{ $profile->narahubung }}</td>
               </tr>
               <tr>
-                <th scope="row">6</th>
-                <td>Nara Hubung</td>
-                <td>Bapak Budi</td>
+                <th>Pemilik Rekening</th>
+                <td>{{ $profile->pemilik_rekening }}</td>
               </tr>
               <tr>
-                <th scope="row">7</th>
-                <td>Pemilik Rekening</td>
-                <td>Joko Mulyo</td>
+                <th>No Rekening</th>
+                <td>{{ $profile->bank }} - {{ $profile->no_rek }}</td>
               </tr>
               <tr>
-                <th scope="row">8</th>
-                <td>No Rekening</td>
-                <td>BCA - 3259876567849454</td>
-              </tr>
-              <tr>
-                <th scope="row">9</th>
-                <td>Bidang Usaha</td>
+                <th>Bidang Usaha</th>
                 <td>Pengadaan Barang Alat IT</td>
               </tr>
               <tr>
-                <th scope="row">10</th>
-                <td>Alamat</td>
-                <td>Jl.Simpang Kanan Sidoarjo</td>
+                <th>Alamat</th>
+                <td>{{ $profile->alamat }}</td>
               </tr>
             </tbody>
           </table>

@@ -20,8 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('narahubung')->nullable();
             $table->string('nama')->nullable();
             $table->string('telepon')->nullable();
+            $table->string('pemilik_rekening')->nullable();
             $table->string('bank')->nullable();
             $table->string('no_rek')->nullable();
+            $table->string('alamat')->nullable();
             $table->string('image')->nullable();
             $table->string('level')->nullable();
             $table->string('email')->unique();

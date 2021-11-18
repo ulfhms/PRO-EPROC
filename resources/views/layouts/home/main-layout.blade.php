@@ -66,11 +66,11 @@
               <li class="nav-item dropdown">
                 @auth
                 <a class="nav-link text-decoration-none text-white" href="{{ route('login') }}">
-                  Login
+                  Dashboard
                 </a>
                 @else
                 <a class="nav-link text-decoration-none text-white" href="{{ route('login') }}">
-                  Logout
+                  Login
                 </a>
                 @endauth
               </li>

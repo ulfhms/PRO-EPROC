@@ -60,29 +60,41 @@
                 <li class="nav-item {{ request()->is('supplier/status/index') ? 'active' : ''}}">
                     <a class="nav-link" href="{{ route('supplier.status.index') }}">
                         <i class="far fa-envelope"></i>
+                      <span>Status</span></a>
+                </li>
+                
               @elseif($user->level == 'dpal')
                 <li class="nav-item {{ request()->is('dpal/pengadaanBarang/index') ? 'active' : ''}}">
                   <a class="nav-link" href="{{ route('dpal.pengadaanBarang.index') }}">
                       <i class="fas fa-box-open"></i>
                       <span>Pengadaan Barang / Alat</span></a>
                 </li>
-
                 <li class="nav-item {{ request()->is('dpal/pengadaanBarang/index') ? 'active' : ''}}">
                     <a class="nav-link" href="{{ route('dpal.pengadaanBarang.index') }}">
                         <i class="fas fa-wrench"></i>
                         <span>Pekerjaan Konstruksi</span></a>
                 </li>
-
                 <li class="nav-item {{ request()->is('dpal/badanUsaha/index') ? 'active' : ''}}">
                     <a class="nav-link" href="{{ route('dpal.badanUsaha.index') }}">
                         <i class="fas fa-users"></i>
                         <span>Jasa Konsultasi Badan Usaha</span></a>
                 </li>
-
                 <li class="nav-item {{ request()->is('dpal/perorangan/index') ? 'active' : ''}}">
                     <a class="nav-link" href="{{ route('dpal.perorangan.index') }}">
                         <i class="fas fa-user-alt"></i>
                         <span>jasa konsultasi Perorangan</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Components</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Custom Components:</h6>
+                            <a class="collapse-item" href="buttons.html">Bidang Usaha</a>
+                        </div>
+                    </div>
                 </li>
               @elseif($user->level == 'warek')
                 <li class="nav-item {{ request()->is('warek/pengadaanBarang/index') ? 'active' : ''}}">
@@ -111,7 +123,6 @@
               @endif
 
             <!-- Nav Item - Dashboard -->
-            </li>
             @endif
 
         </ul>

@@ -26,9 +26,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+// Route::prefix('home')->group(function(){
+    Route::get('/', [HomeController::class, 'index'])->name('home.index');
+    Route::get('/about', [HomeController::class, 'about'])->name('home.about');
+    Route::get('/tataCara', [HomeController::class, 'tataCara'])->name('home.tataCara');
+    Route::get('/faq', [HomeController::class, 'faq'])->name('home.faq');
+// });
 
 Route::prefix('auth')->group(function(){
     Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -123,12 +131,6 @@ Route::group(['middleware'=>['auth']], function(){
 
 });
 
-Route::prefix('home')->group(function(){
-    Route::get('/index', [HomeController::class, 'index'])->name('home.index');
-    Route::get('/about', [HomeController::class, 'about'])->name('home.about');
-    Route::get('/tataCara', [HomeController::class, 'tataCara'])->name('home.tataCara');
-    Route::get('/faq', [HomeController::class, 'faq'])->name('home.faq');
-});
 
 
 

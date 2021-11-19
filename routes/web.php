@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccContorller;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BadanUsahaController;
+use App\Http\Controllers\BidangUsahaController;
 use App\Http\Controllers\dpalBadanUsaha;
 use App\Http\Controllers\dpalBadanUsahaController;
 use App\Http\Controllers\dpalPeroranganController;
@@ -97,6 +98,15 @@ Route::group(['middleware'=>['auth']], function(){
         Route::prefix('dpal/perorangan')->group(function (){
             Route::get('/index', [dpalPeroranganController::class, 'index'])->name('dpal.perorangan.index');
             Route::get('/detailPerorangan', [dpalPeroranganController::class, 'detailPerorangan'])->name('dpal.perorangan.detailPerorangan');
+        });
+
+        Route::prefix('dpal/bidangUsaha')->group(function(){
+            Route::get('/index', [BidangUsahaController::class, 'index'])->name('bingus.index');
+            Route::get('/create', [BidangUsahaController::class, 'create'])->name('bingus.create');
+            Route::post('/store', [BidangUsahaController::class, 'store'])->name('bingus.store');
+            Route::get('/{id}/edit', [BidangUsahaController::class, 'edit'])->name('bingus.edit');
+            Route::patch('/{id}/update', [BidangUsahaController::class, 'update'])->name('bingus.update');
+            Route::delete('/{id}/destroy', [BidangUsahaController::class, 'destroy'])->name('bingus.delete');
         });
     });
     Route::group(['middleware' => ['cekLogin:warek']], function (){

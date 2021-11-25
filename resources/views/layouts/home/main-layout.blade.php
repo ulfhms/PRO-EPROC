@@ -64,15 +64,26 @@
                 <a class="nav-link text-decoration-none text-white" href="{{ route('home.faq') }}">FAQ's</a>
               </li>
               <li class="nav-item dropdown">
-                @auth
-                <a class="nav-link text-decoration-none text-white" href="{{ route('login') }}">
+               @if ($user = Auth::user())
+                @if ($user->hasRole('supplier'))
+                <a class="nav-link text-decoration-none text-white" href="{{ route('supplier.profile') }}">
                   Dashboard
                 </a>
+                @elseif($user->hasRole('dpal'))
+                <a class="nav-link text-decoration-none text-white" href="{{ route('dpal.pengadaanBarang.index') }}">
+                  Dashboard
+                </a>
+                @elseif($user->hasRole('warek'))
+                <a class="nav-link text-decoration-none text-white" href="{{ route('warek.pengadaanBarang.index') }}">
+                  Dashboard
+                </a>
+                @endif
                 @else
                 <a class="nav-link text-decoration-none text-white" href="{{ route('login') }}">
                   Login
                 </a>
-                @endauth
+                
+              @endif
               </li>
             </ul>
           </div>

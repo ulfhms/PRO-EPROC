@@ -12,4 +12,8 @@ class BidangUsaha extends Model
     protected $guarded=['id'];
     // protected $primaryKey=['id'];
     protected $table='bidang_usahas';
+
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }

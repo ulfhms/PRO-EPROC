@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BidangUsaha;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,7 +57,26 @@ class AuthController extends Controller
     }
 
     public function registrasi(){
-        return view('auth/register');
+        $bingus = BidangUsaha::get();
+        return view('auth/register', compact('bingus'));
+    }
+    
+    public function prosesRegistrasi(Request $request){
+        $data = $request->all();
+
+        if($request->file('image')){
+            $image=$request->file('image')->store('images/logo');
+        }else{
+            $image=null;
+        }
+        $data['bidangusaha_id'] = request('bidangUsaha');
+        $data['password'] = request(bcrypt('password'));
+        $data['image']= $image;
+
+        User::create($data);
+
+        return redirect()->route('supplier.profile');
+
     }
 
     public function forget(){

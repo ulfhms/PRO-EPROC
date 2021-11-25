@@ -20,6 +20,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
+        'bidangUsaha_id',
         'npwp',
         'alamat',
         'narahubung',
@@ -27,7 +29,6 @@ class User extends Authenticatable
         'telepon',
         'no_rek',
         'image',
-        'level',
         'email',
         'password',
     ];
@@ -50,4 +51,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function bidangUsahas(){
+        return $this->belongsToMany(BidangUsaha::class);
+    }
 }

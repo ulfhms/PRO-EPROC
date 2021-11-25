@@ -39,17 +39,17 @@ use Illuminate\Support\Facades\Route;
     Route::get('/faq', [HomeController::class, 'faq'])->name('home.faq');
 // });
 
-Route::prefix('auth')->group(function(){
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
-    Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('auth.proses_login');
-    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-    Route::get('/registrasi', [AuthController::class, 'registrasi'])->name('auth.registrasi');
-    Route::get('/forget', [AuthController::class, 'forget'])->name('auth.forget');
-});
+// Route::prefix('auth')->group(function(){
+//     Route::get('/login', [AuthController::class, 'login'])->name('login');
+//     Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('auth.proses_login');
+//     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+//     Route::get('/registrasi', [AuthController::class, 'registrasi'])->name('auth.registrasi');
+//     Route::post('/prosesRegistrasi', [AuthController::class, 'prosesRegistrasi'])->name('auth.prosesRegistrasi');
+//     Route::get('/forget', [AuthController::class, 'forget'])->name('auth.forget');
+// });
 
 // auth
-Route::group(['middleware'=>['auth']], function(){
-    Route::group(['middleware' => ['cekLogin:supplier']], function (){
+    Route::group(['middleware' => ['role:supplier']], function (){
         Route::prefix('supplier')->group(function (){
             Route::get('/profile', [SupplierController::class, 'index'])->name('supplier.profile');
             Route::get('/editProfile', [SupplierController::class, 'editProfile'])->name('supplier.editProfile');
@@ -72,7 +72,7 @@ Route::group(['middleware'=>['auth']], function(){
             Route::get('/detailSubmit', [SupplierStatusController::class, 'detailSubmit'])->name('supplier.status.detailSubmit');
         });
     });
-    Route::group(['middleware' => ['cekLogin:dpal']], function (){
+    Route::group(['middleware' => ['role:dpal']], function (){
         Route::prefix('dpal/pengadaanBarang')->group(function (){
             Route::get('/index', [PengadaanBarangController::class, 'index'])->name('dpal.pengadaanBarang.index');
             Route::get('/create', [PengadaanBarangController::class, 'create'])->name('dpal.pengadaanBarang.create');
@@ -109,7 +109,7 @@ Route::group(['middleware'=>['auth']], function(){
             Route::delete('/{id}/destroy', [BidangUsahaController::class, 'destroy'])->name('bingus.delete');
         });
     });
-    Route::group(['middleware' => ['cekLogin:warek']], function (){
+    Route::group(['middleware' => ['role:warek']], function (){
         Route::prefix('warek/pengadaanBarang')->group(function (){
             Route::get('/index', [warekPengadaanBarang::class, 'index'])->name('warek.pengadaanBarang.index');
             Route::get('/create', [warekPengadaanBarang::class, 'create'])->name('warek.pengadaanBarang.create');
@@ -139,7 +139,6 @@ Route::group(['middleware'=>['auth']], function(){
         });
     });
 
-});
 
 
 
@@ -151,3 +150,7 @@ Route::group(['middleware'=>['auth']], function(){
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

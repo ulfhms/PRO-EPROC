@@ -14,49 +14,47 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = [
-            [
+        $supplier = User::create([
+                'bidangusaha_id' => '1',
                 'username' => 'jayaabadi',
-                'nama' => 'PT Jaya Abadi',
+                'name' => 'PT Jaya Abadi',
                 'npwp' => '93.057.598.0-000.000',
                 'narahubung' => 'Budi Suryadi',
                 'telepon' => '0895326443576',
-                'pemilik_rekening' => 'PT Jaya Abadi',
                 'bank' => 'BCA',
                 'no_rek' => '3476587',
                 'alamat' => 'JL Raya Cibeber, Leuwiliang KM 19 Bogor 16640.',
-                'level' => 'supplier',
                 'email' => 'jayaabadi@gmail.com',
                 'password' => bcrypt('12345678'),
-            ],
-            [
+            ]);
+
+            $supplier->assignRole('supplier');
+        $dpal = User::create([
                 'username' => 'dpal',
-                'nama' => 'DPAL',
+                'name' => 'DPAL',
                 'narahubung' => 'dpal',
                 'telepon' => '0895326443576',
-                'level' => 'dpal',
                 'email' => 'dpal@gmail.com',
                 'password' => bcrypt('12345678'),
-            ],
-            [
+            ]);
+            $dpal->assignRole('dpal');
+        $warek = User::create([
                 'username' => 'warek',
-                'nama' => 'WAREK II',
+                'name' => 'WAREK II',
                 'email' => 'warek@gmail.com',
-                'level' => 'warek',
                 'password' => bcrypt('12345678'),
-            ],
-            [
+            ]);
+            $warek->assignRole('warek');
+        $rektor = User::create([
                 'username' => 'rektor',
-                'nama' => 'REKTOR',
+                'name' => 'REKTOR',
                 'narahubung' => 'rektor',
                 'email' => 'rektor@gmail.com',
-                'level' => 'rektor',
                 'password' => bcrypt('12345678'),
-            ]
-            ];
+            ]);
+            $rektor->assignRole('rektor');
+            
 
-            foreach($user as $key => $value){
-                User::create($value);
-            }
+            
     }
 }

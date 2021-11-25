@@ -44,7 +44,7 @@
             <hr class="sidebar-divider my-0">
 
             @if ($user = Auth::user())
-              @if ($user->level == 'supplier')
+              @if ($user->hasRole('supplier'))
                 <li class="nav-item {{ request()->is('supplier/profile') ? 'active' : ''}}">
                   <a class="nav-link" href="{{ route('supplier.profile') }}">
                       <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -63,7 +63,7 @@
                       <span>Status</span></a>
                 </li>
                 
-              @elseif($user->level == 'dpal')
+              @elseif($user->hasRole('dpal'))
                 <li class="nav-item {{ request()->is('dpal/pengadaanBarang/index') ? 'active' : ''}}">
                   <a class="nav-link" href="{{ route('dpal.pengadaanBarang.index') }}">
                       <i class="fas fa-box-open"></i>
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                 </li>
-              @elseif($user->level == 'warek')
+              @elseif($user->hasRole('warek'))
                 <li class="nav-item {{ request()->is('warek/pengadaanBarang/index') ? 'active' : ''}}">
                   <a class="nav-link" href="{{ route('warek.pengadaanBarang.index') }}">
                       <i class="fas fa-box-open"></i>
@@ -197,10 +197,14 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                    <a href="{{ route('auth.logout') }}" class="dropdown-item">
+                                    <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
                                     </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                             </div>
                         </li>
 

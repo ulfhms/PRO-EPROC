@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,58 +37,78 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" method="POST" action="{{ route('register') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" name="name" id="exampletName"
+                                            placeholder="Nama perusahaan">
+                                </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampletName"
-                                            placeholder="Nama">
+                                            placeholder="username" name="username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="exampletName"
+                                            placeholder="email" name="email">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleAddress"
-                                            placeholder="Alamat">
+                                            placeholder="Alamat" name="alamat">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputCategory">Bidang Usaha</label>
-                                    <select id="inputCategory" class="form-control">
-                                      <option selected>Pengadaan ATK</option>
-                                      <option>Kontruksi</option>
-                                      <option>Jasa</option>
-                                      <option>ABC</option>
-                                      <option>DEF</option>
+                                    <select id="inputCategory" name="bidangUsaha" class="form-control">
+                                      <option selected>Pilih</option>
+                                      <option value="1">bri</option>
+                                      <option value="2">bca</option>
+
+                                      @foreach ($bingus as $item)
+                                      <option value="{{ $item->id }}">{{ ucwords($item->nama) }}</option>
+                                      @endforeach
                                     </select>
                                   </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="an" class="form-control form-control-user"
-                                            id="exampleInputAn" placeholder="No HP atau No Telephone">
+                                            id="exampleInputAn" placeholder="No HP atau No Telephone" name="telepon">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user"
-                                            id="exampleRepeatRekening" placeholder="NPWP">
+                                            id="exampleRepeatRekening" placeholder="NPWP" name="npwp">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="an" class="form-control form-control-user"
-                                            id="exampleInputAn" placeholder="Narahubung">
+                                            id="exampleInputAn" placeholder="Narahubung" name="narahubung">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user"
-                                            id="exampleRepeatRekening" placeholder="Nomer Rekening"> <br>
+                                            id="exampleRepeatRekening" placeholder="Nomer Rekening" name="no_rek"> <br>
                                     </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="exampleRepeatRekening" placeholder="bank" name="bank"> <br>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleRepeatRekening" placeholder="Password" name="password"> <br>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    
+                                        </div>
                                    
-                                    <div class="form-group col-sm-6">
+                                   
+                                    {{-- <div class="form-group col-sm-6">
                                         <label for="exampleFormControlFile">Logo Perusahaan</label>
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile">
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile" name="image">
                                         <small id="emailHelp" class="form-text text-muted">Format JPG | PNG | JPEG.</small>
-                                      </div>
+                                      </div> --}}
                                 </div>
-                                <a href="{{ route('login') }}" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">Daftar</button>
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="{{ route('auth.forget') }}">Forgot Password?</a>
+                                <a class="small" href="">Forgot Password?</a>
                             </div>
                             <div class="text-center">
                                 <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
@@ -113,3 +134,7 @@
 </body>
 
 </html>
+
+
+
+

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccContorller;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BadanUsahaController;
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\BidangUsahaController;
 use App\Http\Controllers\dpalBadanUsaha;
 use App\Http\Controllers\dpalBadanUsahaController;
@@ -108,6 +109,15 @@ use Illuminate\Support\Facades\Route;
             Route::patch('/{id}/update', [BidangUsahaController::class, 'update'])->name('bingus.update');
             Route::delete('/{id}/destroy', [BidangUsahaController::class, 'destroy'])->name('bingus.delete');
         });
+
+        Route::resource('bank',BankController::class)->names([
+            'index' => 'bank.index',
+            'create' => 'bank.create',
+            'store' => 'bank.store',
+            'edit' => 'bank.edit',
+            'update' => 'bank.update',
+            'destroy' => 'bank.destroy',
+        ]);
     });
     Route::group(['middleware' => ['role:warek']], function (){
         Route::prefix('warek/pengadaanBarang')->group(function (){

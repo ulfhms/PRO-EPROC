@@ -93,6 +93,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Custom Components:</h6>
                             <a class="collapse-item" href="{{ route('bingus.index') }}">Bidang Usaha</a>
+                            <a class="collapse-item" href="{{ route('bank.index') }}">Bank</a>
                         </div>
                     </div>
                 </li>

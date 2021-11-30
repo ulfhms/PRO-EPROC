@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\BidangUsaha;
+use App\Models\Supplier;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -70,17 +71,20 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            ]);
+            // dd($user);
+        $user->assignRole('supplier');
+        Supplier::create([
             'bidangusaha_id' => $data['bidangUsaha'],
             'bank_id' => $data['bank'],
+            'user_id' => $user->id,
             'npwp' => $data['npwp'],
             'narahubung' => $data['narahubung'],
-            'name' =>$data['name'],
+            'nama_supplier' =>$data['name'],
             'telepon' => $data['telepon'],
             'no_rek' => $data['no_rek'],
             'alamat' => $data['alamat'],
-
         ]);
-        $user->assignRole('supplier');
         return $user;
     }
 }

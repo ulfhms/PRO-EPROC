@@ -38,10 +38,10 @@ class BankController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:banks'
+            'nama_bank' => 'required|unique:banks'
         ],[
-            'name.required' => 'Nama bank wajib diisi',
-            'name.unique' => 'Nama bank sudah ada',
+            'nama_bank.required' => 'Nama bank wajib diisi',
+            'nama_bank.unique' => 'Nama bank sudah ada',
         ]);
 
         $data = $request->all();
@@ -82,7 +82,7 @@ class BankController extends Controller
     public function update(Request $request, $id)
     {
         $data = [
-            'name' => $request->name
+            'nama_bank' => $request->nama_bank
             
             ];
 

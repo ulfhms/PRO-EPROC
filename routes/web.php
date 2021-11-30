@@ -53,7 +53,8 @@ use Illuminate\Support\Facades\Route;
     Route::group(['middleware' => ['role:supplier']], function (){
         Route::prefix('supplier')->group(function (){
             Route::get('/profile', [SupplierController::class, 'index'])->name('supplier.profile');
-            Route::get('/editProfile', [SupplierController::class, 'editProfile'])->name('supplier.editProfile');
+            Route::get('{id}/editProfile', [SupplierController::class, 'editProfile'])->name('supplier.editProfile');
+            Route::patch('{id}/updateProfile', [SupplierController::class, 'updateProfile'])->name('supplier.updateProfile');
         });
         
         Route::prefix('supplier/barang')->group(function (){

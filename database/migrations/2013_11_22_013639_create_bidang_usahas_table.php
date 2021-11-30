@@ -15,7 +15,7 @@ class CreateBidangUsahasTable extends Migration
     {
         Schema::create('bidang_usahas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama_bingus');
             $table->timestamps();
         });
     }

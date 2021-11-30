@@ -18,17 +18,9 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    protected $table = 'users';
     protected $fillable = [
         'name',
-        'username',
-        'bidangUsaha_id',
-        'npwp',
-        'alamat',
-        'narahubung',
-        'bank',
-        'telepon',
-        'no_rek',
-        'image',
         'email',
         'password',
     ];
@@ -52,7 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function bidangUsahas(){
-        return $this->belongsToMany(BidangUsaha::class);
+    public function supplier(){
+        return $this->belongsTo(Supplier::class);
     }
+    
+
 }

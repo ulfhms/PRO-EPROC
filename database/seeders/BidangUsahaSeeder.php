@@ -15,7 +15,7 @@ class BidangUsahaSeeder extends Seeder
     public function run()
     {
         $bingus = [
-            ['nama' => 'IT']
+            ['nama_bingus' => 'IT']
         ];
 
         foreach($bingus as $key => $value){

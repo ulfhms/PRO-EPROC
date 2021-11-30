@@ -44,10 +44,6 @@
                                             placeholder="Nama perusahaan">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampletName"
-                                            placeholder="username" name="username">
-                                </div>
-                                <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampletName"
                                             placeholder="email" name="email">
                                 </div>
@@ -59,11 +55,8 @@
                                     <label for="inputCategory">Bidang Usaha</label>
                                     <select id="inputCategory" name="bidangUsaha" class="form-control">
                                       <option selected>Pilih</option>
-                                      <option value="1">bri</option>
-                                      <option value="2">bca</option>
-
                                       @foreach ($bingus as $item)
-                                      <option value="{{ $item->id }}">{{ ucwords($item->nama) }}</option>
+                                      <option value="{{ $item->id }}">{{ ucwords($item->nama_bingus) }}</option>
                                       @endforeach
                                     </select>
                                   </div>
@@ -87,8 +80,13 @@
                                             id="exampleRepeatRekening" placeholder="Nomer Rekening" name="no_rek"> <br>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="exampleRepeatRekening" placeholder="bank" name="bank"> <br>
+                                        <label for="inputCategory">Bank</label>
+                                    <select id="inputCategory" name="bank" class="form-control">
+                                      <option selected>Pilih</option>
+                                      @foreach ($banks as $bank)
+                                      <option value="{{ $bank->id }}">{{ ucwords($bank->nama_bank) }}</option>
+                                      @endforeach
+                                    </select>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"

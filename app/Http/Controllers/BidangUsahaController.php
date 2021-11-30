@@ -41,10 +41,10 @@ class BidangUsahaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|unique:bidang_usahas'
+            'nama_bingus' => 'required|unique:bidang_usahas'
         ],[
-            'nama.required' => 'Nama bidang usaha wajib diisi',
-            'nama.unique' => 'Nama bidang usaha sudah ada',
+            'nama_bingus.required' => '_bingus bidang usaha wajib diisi',
+            'nama_bingus.unique' => 'Nama bidang usaha sudah ada',
         ]);
 
         $data = $request->all();
@@ -86,7 +86,7 @@ class BidangUsahaController extends Controller
     public function update(Request $request, $id)
     {
         $data = [
-            'nama' => $request->nama
+            'nama_bingus' => $request->nama_bingus
             
             ];
 

@@ -28,7 +28,7 @@
     @foreach ($banks as $bank)          
     <tr>
       <th scope="row">{{ $no++ }}</th>
-      <td>{{ ucwords($bank->name) }}</td>
+      <td>{{ ucwords($bank->nama_bank) }}</td>
       <td>
         <a href="{{ route('bank.edit',$bank->id) }}" class="btn btn-sm bg-warning"><i class="far fa-edit"></i></a>
         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $bank->id }}">
@@ -49,7 +49,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Yakin ingin menghapus bank : <div class="fw-bold">{{ ucwords($bank->name) }}</div>
+          Yakin ingin menghapus bank : <div class="fw-bold">{{ ucwords($bank->nama_bank) }}</div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

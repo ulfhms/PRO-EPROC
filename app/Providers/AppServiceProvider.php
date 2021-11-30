@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Bank;
 use App\Models\BidangUsaha;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         \View::share([
             'bingus' => BidangUsaha::get(),
+            'banks' => Bank::get(),
         ]);
     }
 }

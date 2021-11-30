@@ -8,28 +8,19 @@
   <div class="card-body">
     <div class="row">
       <div class="col-2">
-        <img src="{{ asset('logo/ikea.svg') }}" alt="">
+        <img src="{{ asset('storage/'.$profile->logo_supplier) }}" alt="" class="img-thumbnail">
       </div>
       <div class="col">
         <h3 class="">
-          {{ $profile->nama }}
-          <a href="{{ route('supplier.editProfile') }}" class="btn btn-sm bg-warning"><i class="far fa-edit"></i></a>
+          {{ $profile->nama_supplier }}
+          <a href="{{ route('supplier.editProfile', $profile->id) }}" class="btn btn-sm bg-warning"><i class="far fa-edit"></i></a>
         </h3>
-        <p class="card-text">{{ ucwords($profile->level) }}</p>
+        <p class="card-text">Supplier</p>
         </div>
     </div>
     <div class="row pt-4">
         <table class="table table-hover">
             <tbody>
-              {{-- <tr>
-                <th scope="row">1</th>
-                <td>Kode</td>
-                <td>Sup-1</td>
-              </tr> --}}
-              {{-- <tr>
-                <th>Nama Perusahaan</th>
-                <td>CV Merah Putih</td>
-              </tr> --}}
               <tr>
                 <th>NPWP</th>
                 <td>{{ $profile->npwp }}</td>
@@ -43,16 +34,12 @@
                 <td>{{ $profile->narahubung }}</td>
               </tr>
               <tr>
-                <th>Pemilik Rekening</th>
-                <td>{{ $profile->pemilik_rekening }}</td>
-              </tr>
-              <tr>
                 <th>No Rekening</th>
-                <td>{{ $profile->bank }} - {{ $profile->no_rek }}</td>
+                <td>{{ $profile->nama_bank }} - {{ $profile->no_rek }}</td>
               </tr>
               <tr>
                 <th>Bidang Usaha</th>
-                <td>Pengadaan Barang Alat IT</td>
+                <td>{{ $profile->nama_bingus }}</td>
               </tr>
               <tr>
                 <th>Alamat</th>

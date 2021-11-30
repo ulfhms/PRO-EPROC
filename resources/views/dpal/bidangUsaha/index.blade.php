@@ -28,7 +28,7 @@
     @foreach ($bingus as $item)          
     <tr>
       <th scope="row">{{ $no++ }}</th>
-      <td>{{ ucwords($item->nama) }}</td>
+      <td>{{ ucwords($item->nama_bingus) }}</td>
       <td>
         <a href="{{ route('bingus.edit',$item->id) }}" class="btn btn-sm bg-warning"><i class="far fa-edit"></i></a>
         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $item->id }}">
@@ -49,7 +49,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Yakin ingin menghapus item : <div class="fw-bold">{{ ucwords($item->nama) }}</div>
+          Yakin ingin menghapus item : <div class="fw-bold">{{ ucwords($item->nama_bingus) }}</div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

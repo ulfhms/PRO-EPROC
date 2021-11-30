@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
+use App\Models\BidangUsaha;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class SupplierController extends Controller
 {
@@ -15,14 +19,49 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $profile = User::where('id',auth()->id())->first();
+        $profile = DB::table('suppliers')
+        // ->select('users.id','bidang_usahas.nama_bingus','banks.nama_bank','users.npwp','users.narahubung','users.name','users.telepon','users.no_rek','users.alamat','users.image','users.email')
+        ->join('banks', 'suppliers.bank_id', '=', 'banks.id')
+        ->join('bidang_usahas', 'suppliers.bidangusaha_id', '=', 'bidang_usahas.id')
+        ->where('suppliers.user_id',auth()->id())->first();
         // dd($profile);
         return view('supplier/profile/index', compact('profile'));
     }
 
-    public function editProfile()
+    public function editProfile($id)
     {
-        return view('supplier/profile/editProfile');
+        $profile = DB::table('suppliers')
+        ->join('banks', 'suppliers.bank_id', '=', 'banks.id')
+        ->join('bidang_usahas', 'suppliers.bidangusaha_id', '=', 'bidang_usahas.id')
+        ->where('suppliers.user_id',$id)->first();
+        $bingus = BidangUsaha::get();
+        $banks = Bank::get();
+        return view('supplier/profile/editProfile', compact('profile', 'bingus', 'banks'));
+    }
+
+    public function updateProfile(Request $request, $id){
+        $profile = User::find($id);
+        // dd($profile->id);
+        $image = $profile->image;
+        if($request->hasFile('image')){
+            Storage::delete($image);
+            $image = $request->file('image')->store('images/logo');
+        }
+        $profile->update([
+            'bidangusaha_id' => $request->bidangusaha,
+            'bank_id' => $request->bank,
+            'npwp' => $request->npwp,
+            'narahubung' => $request->narahubung,
+            'name' => $request->name,
+            'telepon' => $request->telepon,
+            'no_rek' => $request->no_rek,
+            'alamat' => $request->alamat,
+            'email' => $request->email,
+            'image' => $image
+        ]);
+
+        return redirect()->route('supplier.profile');
+
     }
 
 

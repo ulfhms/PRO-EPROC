@@ -11,4 +11,8 @@ class Bank extends Model
 
     protected $guarded=['id'];
     protected $table='banks';
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }

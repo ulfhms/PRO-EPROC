@@ -12,9 +12,9 @@
 @enderror
 <div class="">
   <label for="exampleFormControlInput1" class="form-label fw-bold">Bank</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1" name="name" value="{{ old('name') ?? ucwords($bank->name) }}">
+  <input type="text" class="form-control" id="exampleFormControlInput1" name="nama_bank" value="{{ old('nama_bank') ?? ucwords($bank->nama_bank) }}">
 </div>
-@error('name')
+@error('nama_bank')
 <div class="name text-danger mt-1">
     {{ $message }}
 </div>

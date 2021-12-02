@@ -40,7 +40,7 @@
                             <form class="user" method="POST" action="{{ route('register') }}">
                                 @csrf
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input id="name" type="text" placeholder="nama perusahaan" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
     
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                        <input id="email" placeholder="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
         
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -60,13 +60,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleAddress"
-                                            placeholder="Alamat" name="alamat">
+                                    <input type="text" class="form-control form-control-user @error('alamat') is-invalid @enderror" id="exampleAddress"
+                                            placeholder="Alamat" name="alamat" value="{{ old('alamat') }}">
+                                            @error('alamat')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="inputCategory">Bidang Usaha</label>
                                     <select id="inputCategory" name="bidangUsaha" class="form-control">
-                                      <option selected>Pilih</option>
+                                      <option selected disabled>Pilih</option>
                                       @foreach ($bingus as $item)
                                       <option value="{{ $item->id }}">{{ ucwords($item->nama_bingus) }}</option>
                                       @endforeach
@@ -74,27 +79,47 @@
                                   </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="an" class="form-control form-control-user"
-                                            id="exampleInputAn" placeholder="No HP atau No Telephone" name="telepon">
-                                    </div>
+                                        <input type="an" class="form-control form-control-user @error('telepon') is-invalid @enderror"
+                                            id="exampleInputAn" placeholder="No HP atau No Telephone" name="telepon" value="{{ old('telepon') }}">
+                                            @error('telepon')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="exampleRepeatRekening" placeholder="NPWP" name="npwp">
+                                        <input type="text" class="form-control form-control-user @error('npwp') is-invalid @enderror"
+                                            id="exampleRepeatRekening" placeholder="NPWP" name="npwp" value="{{ old('npwp') }}">
+                                            @error('npwp')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="an" class="form-control form-control-user"
-                                            id="exampleInputAn" placeholder="Narahubung" name="narahubung">
+                                        <input type="an" class="form-control form-control-user @error('narahubung') is-invalid @enderror"
+                                            id="exampleInputAn" placeholder="Narahubung" name="narahubung" value="{{ old('narahubung') }}">
+                                            @error('narahubung')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="exampleRepeatRekening" placeholder="Nomer Rekening" name="no_rek"> <br>
+                                        <input type="text" class="form-control form-control-user @error('no_rek') is-invalid @enderror"
+                                            id="exampleRepeatRekening" placeholder="Nomer Rekening" name="no_rek" value="{{ old('no_rek') }}">
+                                            @error('no_rek')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="inputCategory">Bank</label>
                                     <select id="inputCategory" name="bank" class="form-control">
-                                      <option selected>Pilih</option>
+                                      <option selected disableds>Pilih</option>
                                       @foreach ($banks as $bank)
                                       <option value="{{ $bank->id }}">{{ ucwords($bank->nama_bank) }}</option>
                                       @endforeach
@@ -102,7 +127,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="col-md-6">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                            <input id="password" placeholder="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
             
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -112,7 +137,7 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                            <input id="password-confirm" placeholder="password" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">
                                         </div>
                                    
                                    

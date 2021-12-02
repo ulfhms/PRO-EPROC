@@ -55,6 +55,31 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'alamat' => ['required', 'string'],
+            'bidangUsaha' => ['required'],
+            'telepon' => ['required'],
+            'npwp' => ['required', 'unique:suppliers'],
+            'narahubung' => ['required'],
+            'no_rek' => ['required'],
+
+        ],[
+            'name.required' => 'Nama wajib diisi',
+            'name.max' => 'Nama supplier maksimal 255 karakter',
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Masukkan email dengan benar',
+            'email.max' => 'Email supplier maksimal 255 karakter',
+            'email.unique' => 'Email telah dipakai',
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Password minimal 8 karakter',
+            'password.confirmed' => 'Password tidak sama',
+            'alamat.required' => 'Alamat wajib diisi',
+            'bidangUsaha.required' => 'Pilih salah satu',
+            'telepon.required' => 'Telepon wajib diisi',
+            'npwp.required' => 'NPWP wajib diisi',
+            'npwp.unique' => 'NPWP sudah terdaftar',
+            'narahubung.required' => 'Narahubung wajib diisi',
+            'no_rek.required' => 'Nomor rekening wajib diisi',
+
         ]);
     }
 
@@ -66,7 +91,7 @@ class RegisterController extends Controller
      */
     protected function create( array $data)
     {
-
+        // dd($data);
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],

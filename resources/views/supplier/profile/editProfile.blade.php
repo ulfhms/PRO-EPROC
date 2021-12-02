@@ -8,7 +8,7 @@
     <div class="bg-warning p-1 fw-bold mb-3">Edit Profile Perusahaan</div>
     <div class="mb-3">
       <label for="" class="form-label fw-bold">Nama</label>
-      <input type="text" class="form-control" id="" placeholder="Masukkan nama perusahaan" name="name" value="{{ old('name') ?? $profile->name }}">
+      <input type="text" class="form-control" id="" placeholder="Masukkan nama perusahaan" name="name" value="{{ old('name') ?? $profile->nama_supplier }}">
     </div>
     <div class="mb-3">
       <label for="" class="form-label fw-bold">NPWP</label>

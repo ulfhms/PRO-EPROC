@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bank;
 use App\Models\BidangUsaha;
+use App\Models\Supplier;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,36 +31,41 @@ class SupplierController extends Controller
 
     public function editProfile($id)
     {
+        $supplier = Supplier::where('user_id',$id)->first();
+        // dd($supplier);
         $profile = DB::table('suppliers')
         ->join('banks', 'suppliers.bank_id', '=', 'banks.id')
         ->join('bidang_usahas', 'suppliers.bidangusaha_id', '=', 'bidang_usahas.id')
-        ->where('suppliers.user_id',$id)->first();
+        ->join('users', 'suppliers.user_id', '=', 'users.id')
+        ->where('suppliers.id',$supplier->id)->first();
+        // dd($supplier);
         $bingus = BidangUsaha::get();
         $banks = Bank::get();
         return view('supplier/profile/editProfile', compact('profile', 'bingus', 'banks'));
     }
 
     public function updateProfile(Request $request, $id){
-        $profile = User::find($id);
-        // dd($profile->id);
-        $image = $profile->image;
+        $user = User::find($id);
+        // dd($profile);
+        $supplier = Supplier::where('user_id',$user->id)->first();
+        $image = $supplier->image;
         if($request->hasFile('image')){
             Storage::delete($image);
             $image = $request->file('image')->store('images/logo');
         }
-        $profile->update([
+        $supplier->update([
             'bidangusaha_id' => $request->bidangusaha,
             'bank_id' => $request->bank,
             'npwp' => $request->npwp,
             'narahubung' => $request->narahubung,
-            'name' => $request->name,
+            'nama_supplier' => $request->name,
             'telepon' => $request->telepon,
             'no_rek' => $request->no_rek,
             'alamat' => $request->alamat,
             'email' => $request->email,
-            'image' => $image
-        ]);
-
+            'logo_supplier' => $image
+            ]);
+            
         return redirect()->route('supplier.profile');
 
     }

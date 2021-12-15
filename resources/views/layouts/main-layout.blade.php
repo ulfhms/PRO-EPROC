@@ -84,6 +84,11 @@
                         <i class="fas fa-user-alt"></i>
                         <span>jasa konsultasi Perorangan</span></a>
                 </li>
+                <li class="nav-item {{ request()->is('dpal/ebudjeting/index') ? 'active' : ''}}">
+                    <a class="nav-link" href="{{ route('dpal.ebudjeting.index') }}">
+                        <i class="fas fa-user-alt"></i>
+                        <span>E-Budjeting</span></a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-fw fa-cog"></i>

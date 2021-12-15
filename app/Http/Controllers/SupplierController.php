@@ -48,6 +48,25 @@ class SupplierController extends Controller
         $user = User::find($id);
         // dd($profile);
         $supplier = Supplier::where('user_id',$user->id)->first();
+
+        $request->validate([
+            'nama_supplier' => 'required',
+            'npwp' => 'required',
+            'narahubung' => 'required',
+            'telepon' => 'required',
+            'no_rek' => 'required',
+            'alamat' => 'required',
+            'logo_supplier' => 'mimes:jpg,png',
+        ],[
+            'nama_supplier.required' => 'Nama supplier wajib diisi',
+            'npwp.required' => 'NPWP wajib diisi',
+            'narahubung.required' => 'Narahubung wajib diisi',
+            'telepon.required' => 'Telepon wajib diisi',
+            'no_rek.required' => 'Nomor rekening wajib diisi',
+            'alamat.required' => 'Alamat wajib diisi',
+            'logo_supplier.mimes' => 'Format logo harus berformat jpg.png',
+        ]);
+
         $image = $supplier->image;
         if($request->hasFile('image')){
             Storage::delete($image);
@@ -58,7 +77,7 @@ class SupplierController extends Controller
             'bank_id' => $request->bank,
             'npwp' => $request->npwp,
             'narahubung' => $request->narahubung,
-            'nama_supplier' => $request->name,
+            'nama_supplier' => $request->nama_supplier,
             'telepon' => $request->telepon,
             'no_rek' => $request->no_rek,
             'alamat' => $request->alamat,

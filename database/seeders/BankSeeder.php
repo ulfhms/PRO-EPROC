@@ -18,6 +18,11 @@ class BankSeeder extends Seeder
             [
                 'nama_bank' => 'BCA',
                 'nama_bank' => 'BRI',
+                'nama_bank' => 'Danamon',
+                'nama_bank' => 'BTN',
+                'nama_bank' => 'BRI',
+                'nama_bank' => 'BRI',
+                'nama_bank' => 'BRI',
             ]
         ];
 

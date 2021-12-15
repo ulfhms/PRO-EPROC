@@ -8,6 +8,7 @@ use App\Http\Controllers\BidangUsahaController;
 use App\Http\Controllers\dpalBadanUsaha;
 use App\Http\Controllers\dpalBadanUsahaController;
 use App\Http\Controllers\dpalPeroranganController;
+use App\Http\Controllers\EbudjetingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PengadaanBarangController;
 use App\Http\Controllers\PeroranganController;
@@ -119,6 +120,10 @@ use Illuminate\Support\Facades\Route;
             'update' => 'bank.update',
             'destroy' => 'bank.destroy',
         ]);
+
+        Route::prefix('dpal/ebudjeting')->group(function(){
+            Route::get('/index', [EbudjetingController::class, 'index'])->name('dpal.ebudjeting.index');
+        });
     });
     Route::group(['middleware' => ['role:warek']], function (){
         Route::prefix('warek/pengadaanBarang')->group(function (){

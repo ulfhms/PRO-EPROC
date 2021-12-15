@@ -8,32 +8,62 @@
     <div class="bg-warning p-1 fw-bold mb-3">Edit Profile Perusahaan</div>
     <div class="mb-3">
       <label for="" class="form-label fw-bold">Nama</label>
-      <input type="text" class="form-control" id="" placeholder="Masukkan nama perusahaan" name="name" value="{{ old('name') ?? $profile->nama_supplier }}">
+      <input type="text" class="form-control @error('nama_supplier') is-invalid @enderror" id="" placeholder="Masukkan nama supplier" name="nama_supplier" value="{{ old('nama_supplier') ?? $profile->nama_supplier }}">
+      @error('nama_supplier')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
     </div>
     <div class="mb-3">
       <label for="" class="form-label fw-bold">NPWP</label>
-      <input type="text" class="form-control" id="" placeholder="Masukkan NPWP" name="npwp" value="{{ old('npwp') ?? $profile->npwp }}">
+      <input type="text" class="form-control @error('npwp') is-invalid @enderror" id="" placeholder="Masukkan NPWP" name="npwp" value="{{ old('npwp') ?? $profile->npwp }}">
+      @error('npwp')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
     </div>
     <div class="mb-3">
       <label for="" class="form-label fw-bold">Telepon</label>
-      <input type="text" class="form-control" id="" placeholder="Masukkan Telepon" name="telepon" value="{{ old('telepon') ?? $profile->telepon }}">
+      <input type="text" class="form-control @error('telepon') is-invalid @enderror" id="" placeholder="Masukkan Telepon" name="telepon" value="{{ old('telepon') ?? $profile->telepon }}">
+      @error('telepon')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
     </div>
-    <div class="mb-3">
+    {{-- <div class="mb-3">
       <label for="" class="form-label fw-bold">Email</label>
-      <input type="text" class="form-control" id="" placeholder="Masukkan email" name="email" value="{{ old('email') ?? $profile->email }}">
-    </div>
+      <input type="text" class="form-control @error('email') is-invalid @enderror" id="" placeholder="Masukkan email" name="email" value="{{ old('email') ?? $profile->email }}">
+      @error('email')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
+    </div> --}}
     <div class="mb-3">
       <label for="" class="form-label fw-bold">Nara Hubung</label>
-      <input type="text" class="form-control" id="" placeholder="Masukkan Nara Hubung" name="narahubung" value="{{ old('narahubung') ?? $profile->narahubung }}">
+      <input type="text" class="form-control @error('narahubung') is-invalid @enderror" id="" placeholder="Masukkan Nara Hubung" name="narahubung" value="{{ old('narahubung') ?? $profile->narahubung }}">
+      @error('narahubung')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
     </div>
     <div class="mb-3">
       <label for="" class="form-label fw-bold">No Rekening</label>
-      <input type="number" class="form-control" id="" placeholder="Masukkan No Rekening" name="no_rek" value="{{ old('no_rek') ?? $profile->no_rek }}">
+      <input type="number" class="form-control @error('no_rek') is-invalid @enderror" id="" placeholder="Masukkan No Rekening" name="no_rek" value="{{ old('no_rek') ?? $profile->no_rek }}">
+      @error('no_rek')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
     </div>
     <div class="mb-3">    
-      <label for="" class="form-label fw-bold">Bidang Usaha</label>
+      <label for="" class="form-label fw-bold">Bank</label>
       <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="bank">
-        <option selected>Pilih bank</option>
+        <option disabled selected>Pilih bank</option>
         @foreach ($banks as $bank)
         <option value="{{ $bank->id }}" 
           @if ($bank->id === $profile->bank_id)
@@ -48,8 +78,8 @@
     </div>
     <div class="mb-3">    
       <label for="" class="form-label fw-bold">Bidang Usaha</label>
-      <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="bidangusaha">
-        <option selected>Pilih Bidang Usaha</option>
+      <select class="form-select form-select-sm " aria-label=".form-select-sm example" name="bidangusaha">
+        <option disabled selected>Pilih Bidang Usaha</option>
         @foreach ($bingus as $item)
         <option value="{{ $item->id }}" 
           @if ($item->id === $profile->bidangusaha_id)
@@ -64,11 +94,21 @@
     </div>
     <div class="mb-3">
       <label for="" class="form-label fw-bold">Alamat</label>
-      <textarea class="form-control" id="" rows="3" name="alamat">{{ old('alamat') ?? $profile->alamat }}</textarea>
+      <textarea class="form-control @error('alamat') is-invalid @enderror" id="" rows="3" name="alamat">{{ old('alamat') ?? $profile->alamat }}</textarea>
+      @error('alamat')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
     </div>
     <div class="mb-3">
       <label for="formFileSm" class="form-label fw-bold">Foto</label>
-      <input class="form-control form-control-sm" id="formFileSm" type="file" name="image">
+      <input class="form-control form-control-sm @error('logo_supplier') is-invalid @enderror" id="formFileSm" type="file" name="logo_supplier">
+      @error('logo_supplier')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
     </div>
     <div class="d-flex justify-content-end">
       <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

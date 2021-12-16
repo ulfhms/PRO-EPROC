@@ -15,13 +15,14 @@ class CreateBudjetsTable extends Migration
     {
         Schema::create('budjets', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kegiatan');
-            $table->string('status');
-            $table->integer('anggaran');
-            $table->integer('rencana_belanja');
-            $table->integer('sisa_anggaran');
-            $table->date('waktu_mulai');
-            $table->date('waktu_selesai');
+            $table->string('nama_kegiatan')->unsigned()->nullable();
+            $table->string('status')->unsigned()->nullable();
+            $table->string('unit_kerja_pengusul')->unsigned()->nullable();
+            $table->integer('anggaran')->unsigned()->nullable();
+            $table->integer('rencana_belanja')->unsigned()->nullable();
+            $table->integer('sisa_anggaran')->unsigned()->nullable();
+            $table->date('waktu_mulai')->unsigned()->nullable();
+            $table->date('waktu_selesai')->unsigned()->nullable();
             $table->timestamps();
         });
     }

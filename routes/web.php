@@ -123,6 +123,8 @@ use Illuminate\Support\Facades\Route;
 
         Route::prefix('dpal/ebudjeting')->group(function(){
             Route::get('/index', [EbudjetingController::class, 'index'])->name('dpal.ebudjeting.index');
+            Route::get('/create', [EbudjetingController::class, 'create'])->name('dpal.ebudjeting.create');
+            Route::post('/store', [EbudjetingController::class, 'store'])->name('dpal.ebudjeting.store');
         });
     });
     Route::group(['middleware' => ['role:warek']], function (){

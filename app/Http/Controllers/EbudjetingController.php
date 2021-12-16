@@ -62,7 +62,7 @@ class EbudjetingController extends Controller
         $data = $request->all();
         Budjet::create($data);
 
-        return redirect('dpal.ebudjeting.index');
+        return redirect()->route('dpal.ebudjeting.index');
     }
 
     /**
@@ -73,7 +73,8 @@ class EbudjetingController extends Controller
      */
     public function show($id)
     {
-        //
+        $budjet = Budjet::where('id',$id)->first();
+        return view('dpal.ebudjeting.show', compact('budjet'));
     }
 
     /**
@@ -84,7 +85,9 @@ class EbudjetingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $budjet = Budjet::where('id',$id)->first();
+
+        return view('dpal.ebudjeting.edit', compact('budjet'));
     }
 
     /**
@@ -96,7 +99,43 @@ class EbudjetingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_kegiatan' => 'required',
+            'status' => 'required',
+            'unit_kerja_pengusul' => 'required',
+            'anggaran' => 'required',
+            'rencana_belanja' => 'required',
+            'sisa_anggaran' => 'required',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
+            'uraian' => 'required',
+        ],[
+            'nama_kegiatan.required' => 'Nama kegiatan wajib diisi',
+            'status.required' => 'Status wajib diisi',
+            'unit_kerja_pengusul.required' => 'Unit kerja pengusul wajib diisi',
+            'anggaran.required' => 'Anggaran wajib diisi',
+            'rencana_belanja.required' => 'Rencana belanja wajib diisi',
+            'sisa_anggaran.required' => 'Sisa anggaran wajib diisi',
+            'waktu_mulai.required' => 'Waktu mulai wajib diisi',
+            'waktu_selesai.required' => 'Waktu selesai wajib diisi',
+            'uraian.required' => 'Uraian wajib diisi',
+        ]);
+
+        $data = [
+            'nama_kegiatan' => $request->nama_kegiatan,
+            'status' => $request->status,
+            'unit_kerja_pengusul' => $request->unit_kerja_pengusul,
+            'anggaran' => $request->anggaran,
+            'rencana_belanja' => $request->rencana_belanja,
+            'sisa_anggaran' => $request->sisa_anggaran,
+            'waktu_mulai' => $request->waktu_mulai,
+            'waktu_selesai' => $request->waktu_selesai,
+            'uraian' => $request->uraian
+        ];
+
+        Budjet::where('id',$id)->update($data);
+
+        return redirect()->route('dpal.ebudjeting.index');
     }
 
     /**
@@ -107,6 +146,7 @@ class EbudjetingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Budjet::destroy($id);
+        return redirect()->route('dpal.ebudjeting.index');
     }
 }

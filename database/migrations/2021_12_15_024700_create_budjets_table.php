@@ -23,6 +23,7 @@ class CreateBudjetsTable extends Migration
             $table->integer('sisa_anggaran')->unsigned()->nullable();
             $table->date('waktu_mulai')->unsigned()->nullable();
             $table->date('waktu_selesai')->unsigned()->nullable();
+            $table->text('uraian')->unsigned()->nullable();
             $table->timestamps();
         });
     }

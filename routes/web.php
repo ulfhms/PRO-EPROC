@@ -125,6 +125,10 @@ use Illuminate\Support\Facades\Route;
             Route::get('/index', [EbudjetingController::class, 'index'])->name('dpal.ebudjeting.index');
             Route::get('/create', [EbudjetingController::class, 'create'])->name('dpal.ebudjeting.create');
             Route::post('/store', [EbudjetingController::class, 'store'])->name('dpal.ebudjeting.store');
+            Route::get('{id}/show', [EbudjetingController::class, 'show'])->name('dpal.ebudjeting.show');
+            Route::get('{id}/edit', [EbudjetingController::class, 'edit'])->name('dpal.ebudjeting.edit');
+            Route::patch('{id}/update', [EbudjetingController::class, 'update'])->name('dpal.ebudjeting.update');
+            Route::delete('{id}/destroy', [EbudjetingController::class, 'destroy'])->name('dpal.ebudjeting.destroy');
         });
     });
     Route::group(['middleware' => ['role:warek']], function (){

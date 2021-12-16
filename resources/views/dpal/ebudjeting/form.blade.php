@@ -84,7 +84,7 @@
 
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label fw-bold">Uraian</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="uraian">{{ old('uraian') ?? ucwords($budjet->uraian) }}</textarea>
+  <textarea class="form-control" id="editor1" rows="3" name="uraian">{{ old('uraian') ?? ucwords($budjet->uraian) }}</textarea>
   @error('uraian')
   <div class="name text-danger mt-1">
       {{ $message }}

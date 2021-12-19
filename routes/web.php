@@ -79,8 +79,10 @@ use Illuminate\Support\Facades\Route;
         Route::prefix('dpal/pengadaanBarang')->group(function (){
             Route::get('/index', [PengadaanBarangController::class, 'index'])->name('dpal.pengadaanBarang.index');
             Route::get('/create', [PengadaanBarangController::class, 'create'])->name('dpal.pengadaanBarang.create');
+            Route::post('/store', [PengadaanBarangController::class, 'store'])->name('dpal.pengadaanBarang.store');
             Route::get('/detail', [PengadaanBarangController::class, 'detail'])->name('dpal.pengadaanBarang.detail');
-            Route::get('/editTahap', [PengadaanBarangController::class, 'editTahap'])->name('dpal.pengadaanBarang.editTahap');
+            Route::get('{id}/edit', [PengadaanBarangController::class, 'edit'])->name('dpal.pengadaanBarang.edit');
+            Route::patch('{id}/update', [PengadaanBarangController::class, 'update'])->name('dpal.pengadaanBarang.update');
             Route::get('/detailTahap', [PengadaanBarangController::class, 'detailTahap'])->name('dpal.pengadaanBarang.detailTahap');
             Route::get('/pengumumanPengadaan', [PengadaanBarangController::class, 'pengumumanPengadaan'])->name('dpal.pengadaanBarang.pengumumanPengadaan');
             Route::get('/pesertaPengadaan', [PengadaanBarangController::class, 'pesertaPengadaan'])->name('dpal.pengadaanBarang.pesertaPengadaan');

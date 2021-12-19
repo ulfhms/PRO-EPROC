@@ -17,7 +17,8 @@ class CreatePengadaansTable extends Migration
             $table->id();
             $table->integer('budjet_id');
             $table->foreign('budjet_id')->references('id')->on('budjets')->onDelete('cascade');
-            $table->date('tgl_pengumuman_pemenang');
+            $table->integer('status_pengadaan')->unsigned()->nullable();
+            $table->date('tgl_pengumuman_pemenang')->unsigned()->nullable();
             $table->timestamps();
         });
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Budjet;
+use App\Models\PengadaanBarang;
 use Illuminate\Http\Request;
 
 class PengadaanBarangController extends Controller
@@ -13,13 +15,34 @@ class PengadaanBarangController extends Controller
      */
     public function index()
     {
-        return view('dpal/pengadaanBarang/index');
+        $pengadaans = PengadaanBarang::get();
+        // dd($pengadaans);
+        return view('dpal/pengadaanBarang/index', compact('pengadaans'));
     }
 
     public function create()
     {
-        return view('dpal/pengadaanBarang/pengadaanBarang/create');
+        // $test = DB::table('pengadaans')
+        // ->join('budjets', 'pengadaans.budjet_id', '=', 'budjets.id')
+        // ->whereNotIn('pengadaans.budjet_id','budjets.id')->get();
+        // dd($test);
+        $budjets = Budjet::where('status', 'dapat di ajukan')->get();
+        $pengadaans = PengadaanBarang::where('status_pengadaan',1)->get();
+        // dd($pengadaans);
         
+        // dd($budjets);
+        return view('dpal/pengadaanBarang/pengadaanBarang/create', compact('budjets'));   
+    }
+
+    public function store(Request $request)
+    {
+        PengadaanBarang::create([
+            'budjet_id' => $request->nama_kegiatan,
+            'status_pengadaan' => 1,
+            'tgl_pengumuman_pemenang' =>null,
+        ]);
+        
+        return redirect()->route('dpal.pengadaanBarang.index');
     }
 
     public function detail()
@@ -28,9 +51,26 @@ class PengadaanBarangController extends Controller
         
     }
     
-    public function editTahap()
+    public function edit($id)
     {
-        return view('dpal/pengadaanBarang/tahap/editTahap');
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
+        return view('dpal/pengadaanBarang/pengadaanBarang/edit', compact('pengadaan'));
+    }
+
+    public function update(Request $request, $id){
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
+        // dd($request);
+        if($request->has('status_pengadaan')){
+            $pengadaan->update([
+                'status_pengadaan' => 1
+            ]);
+        }else{
+            $pengadaan->update([
+                'status_pengadaan' => 0
+            ]);
+        }
+        
+        return redirect()->route('dpal.pengadaanBarang.index');
     }
 
     public function detailTahap()
@@ -90,10 +130,7 @@ class PengadaanBarangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    
 
     /**
      * Display the specified resource.
@@ -112,11 +149,6 @@ class PengadaanBarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -124,10 +156,6 @@ class PengadaanBarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

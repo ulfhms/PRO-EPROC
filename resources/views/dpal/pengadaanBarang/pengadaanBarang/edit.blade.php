@@ -1,7 +1,7 @@
 @extends('layouts/main-layout')
-@section('title', 'Pengadaan Komputer dan Serve untuk Laboratorium Komputer')
+@section('title', 'Edit Pengadaan Barang')
 @section('content')
-<h5 class="bg-warning p-2 rounded col-12">Edit Tahap : Pengadaan Komputer dan Serve untuk Laboratorium Komputer</h5>
+<h5 class="bg-warning p-2 rounded col-12">{{ $pengadaan->budjet->nama_kegiatan }}</h5>
 <table class="table mt-4 ">
   <tbody>
     <tr>
@@ -14,7 +14,7 @@
     </tr>
     <tr>
       <th scope="row">Nama Paket</th>
-      <td>Pengadaan Komputer dan Server untuk Laboratorium Komputer</td>
+      <td>{{ $pengadaan->budjet->nama_kegiatan }}</td>
     </tr>
     <tr>
       <th scope="row">Sumber Dana</th>
@@ -22,11 +22,11 @@
     </tr>
     <tr>
       <th scope="row">Tanggal Pengusulan</th>
-      <td>28 September 2020</td>
+      <td>{{ date('d-m-Y',strtotime($pengadaan->budjet->waktu_mulai)) }}</td>
     </tr>
     <tr>
       <th scope="row">Unit Kerja Pengusul</th>
-      <td>Fakultas Psikologi dan Ilmu Pendidikan</td>
+      <td>{{ $pengadaan->budjet->unit_kerja_pengusul }}</td>
     </tr>
     <tr>
       <th scope="row">Tahun Anggaran</th>
@@ -34,7 +34,7 @@
     </tr>
     <tr>
       <th scope="row">Nilai HPS</th>
-      <td>Rp. 100.000.000,-</td>
+      <td>Rp. {{ $pengadaan->budjet->anggaran }},-</td>
     </tr>
     <tr>
       <th scope="row">Jenis Kontrak</th>
@@ -58,27 +58,21 @@
       <td><a href="">5 Peserta</a></td>
     </tr>
     <tr>
-      <th scope="row">Tahap</th>
+      <th scope="row">Status</th>
       <td>
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Pilih</option>
-          <option value="1">Acc</option>
-          <option value="2">Revisi</option>
-          <option value="3">Tolak</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Beri Pesan</th>
-      <td>
-        <div class="mb-3">
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-      </td>
+        <form action="{{ route('dpal.pengadaanBarang.update', $pengadaan->id) }}" method="post">
+          @csrf
+          @method('patch')
+          <div class="form-check form-switch">
+            <input class="form-check-input" name="status_pengadaan" type="checkbox" id="flexSwitchCheckChecked" {{ $pengadaan->status_pengadaan === 1? 'checked' :'' }}>
+          </div>
+        </td>
     </tr>
     <tr>
       <th scope="row"></th>
-      <td><a href="{{ route('dpal.pengadaanBarang.index') }}" class="btn btn-sm btn-primary">Simpan</a></td>
+      <td>
+        <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+    </form>
     </tr>
   </tbody>
 </table>

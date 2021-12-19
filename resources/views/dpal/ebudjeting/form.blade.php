@@ -12,8 +12,8 @@
   <select class="form-select" aria-label="Default select example" name="status">
     <option value="" >Pilih proses pengajuan</option>
     <option value="proses pengajuan">Proses Pengajuan</option>
-    <option value="dapat diajukan">Dapat diajukan</option>
-    <option value="gagal diajukan">Gagal diajukan</option>
+    <option value="dapat di ajukan">Dapat diajukan</option>
+    <option value="gagal di ajukan">Gagal diajukan</option>
   </select>
   @error('status')
   <div class="name text-danger mt-1">

@@ -9,13 +9,13 @@
       <th scope="row">Sistem Pengadaan</th>
       <td>Lelang / Tender Sederhana</td>
     </tr>
-    <tr>
+    {{-- <tr>
       <th scope="row">Kode</th>
       <td>PBO-0001</td>
-    </tr>
+    </tr> --}}
     <tr>
       <th scope="row">Nama Paket</th>
-      <td>Pengadaan Komputer dan Server untuk Laboratorium Komputer</td>
+      <td>{{ ucwords($pengsup->pengadaan->budjet->nama_kegiatan) }}</td>
     </tr>
     <tr>
       <th scope="row">Sumber Dana</th>
@@ -23,15 +23,15 @@
     </tr>
     <tr>
       <th scope="row">Tanggal Pengusulan</th>
-      <td>28 September 2020</td>
+      <td>{{ date('d-M-Y',strtotime($pengsup->pengadaan->budjet->waktu_mulai)) }}</td>
     </tr>
     <tr>
       <th scope="row">Tanggal Penetapan Sistem Pengadaan</th>
-      <td>28 September 2020</td>
+      <td>{{ date('d-M-Y',strtotime($pengsup->pengadaan->budjet->waktu_mulai)) }}</td>
     </tr>
     <tr>
       <th scope="row">Tanggal Pengumuman Pengadaan</th>
-      <td>28 September 2020</td>
+      <td>{{ date('d-M-Y',strtotime($pengsup->pengadaan->budjet->waktu_mulai)) }}</td>
     </tr>
     <tr>
       <th scope="row">Tanggal Pengumuman Pemenang</th>
@@ -39,7 +39,7 @@
     </tr>
     <tr>
       <th scope="row">Unit Kerja Pengusul</th>
-      <td>Fakultas Psikologi dan Ilmu Pendidikan</td>
+      <td>{{ ucwords($pengsup->pengadaan->budjet->unit_kerja_pengusul) }}</td>
     </tr>
     <tr>
       <th scope="row">Tahun Anggaran</th>
@@ -47,7 +47,7 @@
     </tr>
     <tr>
       <th scope="row">Nilai HPS</th>
-      <td>Rp. 100.000.000,-</td>
+      <td>Rp. {{ number_format($pengsup->pengadaan->budjet->anggaran) }},-</td>
     </tr>
     <tr>
       <th scope="row">Jenis Kontrak</th>

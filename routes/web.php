@@ -86,7 +86,7 @@ use Illuminate\Support\Facades\Route;
             Route::get('{id}/edit', [PengadaanBarangController::class, 'edit'])->name('dpal.pengadaanBarang.edit');
             Route::patch('{id}/update', [PengadaanBarangController::class, 'update'])->name('dpal.pengadaanBarang.update');
             Route::get('/detailTahap', [PengadaanBarangController::class, 'detailTahap'])->name('dpal.pengadaanBarang.detailTahap');
-            Route::get('/pengumumanPengadaan', [PengadaanBarangController::class, 'pengumumanPengadaan'])->name('dpal.pengadaanBarang.pengumumanPengadaan');
+            Route::get('/pengumumanPengadaan/{id}', [PengadaanBarangController::class, 'pengumumanPengadaan'])->name('dpal.pengadaanBarang.pengumumanPengadaan');
             Route::get('/pesertaPengadaan', [PengadaanBarangController::class, 'pesertaPengadaan'])->name('dpal.pengadaanBarang.pesertaPengadaan');
             Route::get('/pesertaEvaluasi', [PengadaanBarangController::class, 'pesertaEvaluasi'])->name('dpal.pengadaanBarang.pesertaEvaluasi');
             Route::get('/detailPesertaPengadaan', [PengadaanBarangController::class, 'detailPesertaPengadaan'])->name('dpal.pengadaanBarang.detailPesertaPengadaan');

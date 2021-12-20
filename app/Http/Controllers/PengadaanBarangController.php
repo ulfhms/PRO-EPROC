@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Budjet;
 use App\Models\PengadaanBarang;
+use App\Models\PengadaanSupplier;
 use Illuminate\Http\Request;
 
 class PengadaanBarangController extends Controller
@@ -16,6 +17,7 @@ class PengadaanBarangController extends Controller
     public function index()
     {
         $pengadaans = PengadaanBarang::get();
+        // $pengadaans = PengadaanSupplier::get();
         // dd($pengadaans);
         return view('dpal/pengadaanBarang/index', compact('pengadaans'));
     }
@@ -78,8 +80,10 @@ class PengadaanBarangController extends Controller
         return view('dpal/pengadaanBarang/tahap/detailTahap');
     }
 
-    public function pengumumanPengadaan(){
-        return view('dpal/pengadaanBarang/pengumumanPengadaan');
+    public function pengumumanPengadaan($id){
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
+        $pengsup = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->first();
+        return view('dpal/pengadaanBarang/pengumumanPengadaan',compact('pengsup'));
 
     }
 

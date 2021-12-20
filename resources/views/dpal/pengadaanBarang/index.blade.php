@@ -40,11 +40,11 @@
         </div>
       </th>
       {{-- <th scope="row">PBA - 0001</th> --}}
-      <td><a href="{{ route('dpal.pengadaanBarang.pengumumanPengadaan') }}">{{ $pengadaan->budjet->nama_kegiatan }}</a></td>
+      <td><a href="{{ route('dpal.pengadaanBarang.pengumumanPengadaan', $pengadaan->id) }}">{{ $pengadaan->budjet->nama_kegiatan }}</a></td>
       <td>{{ ucwords($pengadaan->budjet->unit_kerja_pengusul) }}</td>
       <td> <a href="#" class="btn badge {{ $pengadaan->status_pengadaan === 1? 'btn-primary' : 'btn-danger' }}">{{ $pengadaan->status_pengadaan===1? 'ON':'OFF' }}</a></td>
       <td>Rp.{{ number_format($pengadaan->budjet->anggaran) }},-</td>
-      <td class="text-center"><a href="{{ route('dpal.pengadaanBarang.pengumumanPengadaan') }}">5</a></td>
+      <td class="text-center"><a href="{{ route('dpal.pengadaanBarang.pengumumanPengadaan', $pengadaan->id) }}">5</a></td>
       <td><a href="{{ route('dpal.pengadaanBarang.edit',$pengadaan->id )}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
       {{-- <td><a href="{{ route('dpal.pengadaanBarang.editTahap') }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td> --}}
     </tr>

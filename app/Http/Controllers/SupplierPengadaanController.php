@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PengadaanBarang;
+use App\Models\PengadaanSupplier;
 use Illuminate\Http\Request;
 
-class SupplierBarangController extends Controller
+class SupplierPengadaanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,13 +15,10 @@ class SupplierBarangController extends Controller
      */
     public function index()
     {
-        return view('supplier/barang/index');
+        $pengadaans = PengadaanSupplier::get();
+        return view('supplier/pengadaanBarang/index', compact('pengadaans'));
     }
 
-    public function detail()
-    {
-        return view('supplier/barang/detail');
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -27,14 +26,9 @@ class SupplierBarangController extends Controller
      */
     public function create()
     {
-        return view('supplier/barang/create');
+        $pengadaans = PengadaanBarang::where('status_pengadaan',1)->get();
+        return view('supplier/pengadaanBarang/create', compact('pengadaans'));
     }
-
-    public function edit()
-    {
-        return view('supplier/barang/edit');
-    }
-
 
     /**
      * Store a newly created resource in storage.
@@ -44,8 +38,25 @@ class SupplierBarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        if($request->file('proposal')){
+            $proposal=$request->file('proposal')->store('pengadaanBarang/proposal');
+        }else{
+            $proposal=null;
+        }
+        $data = [
+            'pengadaan_id' => $request->pengadaan_id,
+            'supplier_id' => auth()->id(),
+            'status_supplier' => 'submitted',
+            'proposal' => $proposal,
+            'harga_penawaran' => $request->harga_penawaran,
+        ];
+
+        PengadaanSupplier::create($data);
+
+        return redirect()->route('supplier.pengadaanBarang.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -64,7 +75,11 @@ class SupplierBarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+    public function edit($id)
+    {
+        return view('supplier/pengadaanBarang/detail');
+        
+    }
 
     /**
      * Update the specified resource in storage.

@@ -51,10 +51,10 @@
                       <span>Profile</span></a>
                 </li>
 
-                <li class="nav-item {{ request()->is('supplier/barang/index') ? 'active' : ''}}">
-                    <a class="nav-link" href="{{ route('supplier.barang.index') }}">
+                <li class="nav-item {{ request()->is('supplier/pengadaanBarang/index') ? 'active' : ''}}">
+                    <a class="nav-link" href="{{ route('supplier.pengadaanBarang.index') }}">
                         <i class="fas fa-box-open"></i>
-                        <span>Barang</span></a>
+                        <span>Pengadaan Barang</span></a>
                 </li>
 
                 <li class="nav-item {{ request()->is('supplier/status/index') ? 'active' : ''}}">

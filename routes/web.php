@@ -14,6 +14,7 @@ use App\Http\Controllers\PengadaanBarangController;
 use App\Http\Controllers\PeroranganController;
 use App\Http\Controllers\SupplierBarangController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SupplierPengadaanController;
 use App\Http\Controllers\SupplierStatusController;
 use App\Http\Controllers\warekPengadaanBarang;
 use Illuminate\Support\Facades\Route;
@@ -58,11 +59,12 @@ use Illuminate\Support\Facades\Route;
             Route::patch('{id}/updateProfile', [SupplierController::class, 'updateProfile'])->name('supplier.updateProfile');
         });
         
-        Route::prefix('supplier/barang')->group(function (){
-            Route::get('/index', [SupplierBarangController::class, 'index'])->name('supplier.barang.index');
-            Route::get('/detail', [SupplierBarangController::class, 'detail'])->name('supplier.barang.detail');
-            Route::get('/create', [SupplierBarangController::class, 'create'])->name('supplier.barang.create');
-            Route::get('/edit', [SupplierBarangController::class, 'edit'])->name('supplier.barang.edit');
+        Route::prefix('supplier/pengandaanBarang')->group(function (){
+            Route::get('/index', [SupplierPengadaanController::class, 'index'])->name('supplier.pengadaanBarang.index');
+            Route::get('/detail', [SupplierPengadaanController::class, 'detail'])->name('supplier.pengadaanBarang.detail');
+            Route::get('/create', [SupplierPengadaanController::class, 'create'])->name('supplier.pengadaanBarang.create');
+            Route::post('/store', [SupplierPengadaanController::class, 'store'])->name('supplier.pengadaanBarang.store');
+            Route::get('/edit', [SupplierPengadaanController::class, 'edit'])->name('supplier.pengadaanBarang.edit');
         });
         
         Route::prefix('supplier/status')->group(function (){

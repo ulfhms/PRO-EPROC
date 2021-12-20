@@ -14,17 +14,19 @@ class CreatePengadaanSuppliersTable extends Migration
     public function up()
     {
         Schema::create('pengadaan_suppliers', function (Blueprint $table) {
-            $table->foreignId('pengadaan_id')->constrained('pengadaans');
-            $table->foreignId('supplier_id')->constrained('suppliers');
-            $table->primary(['pengadaan_id','supplier_id']);
-            $table->string('status');
-            $table->string('proposal');
-            $table->integer('harga_penawaran');
-            $table->integer('harga_terkoreksi');
-            $table->integer('dpal_ke_supplier');
-            $table->integer('supplier_ke_dpal');
-            $table->integer('alasan_penolakan');
-            $table->integer('bukti_tf');
+            $table->id();
+            $table->integer('pengadaan_id');
+            $table->foreign('pengadaan_id')->references('id')->on('pengadaans')->onDelete('cascade');
+            $table->integer('supplier_id');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->string('status_supplier')->unsigned()->nullable();
+            $table->string('proposal')->unsigned()->nullable();
+            $table->integer('harga_penawaran')->unsigned()->nullable();
+            $table->integer('harga_terkoreksi')->unsigned()->nullable();
+            $table->integer('dpal_ke_supplier')->unsigned()->nullable();
+            $table->integer('supplier_ke_dpal')->unsigned()->nullable();
+            $table->integer('alasan_penolakan')->unsigned()->nullable();
+            $table->integer('bukti_tf')->unsigned()->nullable();
             $table->timestamps();
         });
     }

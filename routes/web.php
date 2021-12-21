@@ -16,6 +16,7 @@ use App\Http\Controllers\SupplierBarangController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SupplierPengadaanController;
 use App\Http\Controllers\SupplierStatusController;
+use App\Http\Controllers\ViewFileController;
 use App\Http\Controllers\warekPengadaanBarang;
 use Illuminate\Support\Facades\Route;
 
@@ -61,10 +62,11 @@ use Illuminate\Support\Facades\Route;
         
         Route::prefix('supplier/pengandaanBarang')->group(function (){
             Route::get('/index', [SupplierPengadaanController::class, 'index'])->name('supplier.pengadaanBarang.index');
-            Route::get('/detail', [SupplierPengadaanController::class, 'detail'])->name('supplier.pengadaanBarang.detail');
+            Route::get('{id}/detail', [SupplierPengadaanController::class, 'detail'])->name('supplier.pengadaanBarang.detail');
             Route::get('/create', [SupplierPengadaanController::class, 'create'])->name('supplier.pengadaanBarang.create');
             Route::post('/store', [SupplierPengadaanController::class, 'store'])->name('supplier.pengadaanBarang.store');
-            Route::get('/edit', [SupplierPengadaanController::class, 'edit'])->name('supplier.pengadaanBarang.edit');
+            Route::get('{id}/edit', [SupplierPengadaanController::class, 'edit'])->name('supplier.pengadaanBarang.edit');
+            Route::patch('{id}/updateSubmit', [SupplierPengadaanController::class, 'updateSubmit'])->name('supplier.pengadaanBarang.updateSubmit');
         });
         
         Route::prefix('supplier/status')->group(function (){
@@ -85,18 +87,19 @@ use Illuminate\Support\Facades\Route;
             Route::get('/detail', [PengadaanBarangController::class, 'detail'])->name('dpal.pengadaanBarang.detail');
             Route::get('{id}/edit', [PengadaanBarangController::class, 'edit'])->name('dpal.pengadaanBarang.edit');
             Route::patch('{id}/update', [PengadaanBarangController::class, 'update'])->name('dpal.pengadaanBarang.update');
-            Route::get('/detailTahap', [PengadaanBarangController::class, 'detailTahap'])->name('dpal.pengadaanBarang.detailTahap');
+            Route::get('/detailTahap/{id}', [PengadaanBarangController::class, 'detailTahap'])->name('dpal.pengadaanBarang.detailTahap');
             Route::get('/pengumumanPengadaan/{id}', [PengadaanBarangController::class, 'pengumumanPengadaan'])->name('dpal.pengadaanBarang.pengumumanPengadaan');
-            Route::get('/pesertaPengadaan', [PengadaanBarangController::class, 'pesertaPengadaan'])->name('dpal.pengadaanBarang.pesertaPengadaan');
-            Route::get('/pesertaEvaluasi', [PengadaanBarangController::class, 'pesertaEvaluasi'])->name('dpal.pengadaanBarang.pesertaEvaluasi');
-            Route::get('/detailPesertaPengadaan', [PengadaanBarangController::class, 'detailPesertaPengadaan'])->name('dpal.pengadaanBarang.detailPesertaPengadaan');
-            Route::get('/detailProdukPesertaPengadaan', [PengadaanBarangController::class, 'detailProdukPesertaPengadaan'])->name('dpal.pengadaanBarang.detailProdukPesertaPengadaan');
-            Route::get('/hasilEvaluasi', [PengadaanBarangController::class, 'hasilEvaluasi'])->name('dpal.pengadaanBarang.hasilEvaluasi');
-            Route::get('/editHasilEvaluasi', [PengadaanBarangController::class, 'editHasilEvaluasi'])->name('dpal.pengadaanBarang.editHasilEvaluasi');
-            Route::get('/pemenang', [PengadaanBarangController::class, 'pemenang'])->name('dpal.pengadaanBarang.pemenang');
+            Route::get('/pesertaPengadaan/{id}', [PengadaanBarangController::class, 'pesertaPengadaan'])->name('dpal.pengadaanBarang.pesertaPengadaan');
+            Route::get('/pesertaEvaluasi/{id}', [PengadaanBarangController::class, 'pesertaEvaluasi'])->name('dpal.pengadaanBarang.pesertaEvaluasi');
+            Route::get('/detailPesertaPengadaan/{id}', [PengadaanBarangController::class, 'detailPesertaPengadaan'])->name('dpal.pengadaanBarang.detailPesertaPengadaan');
+            Route::get('/detailProdukPesertaPengadaan/{id}', [PengadaanBarangController::class, 'detailProdukPesertaPengadaan'])->name('dpal.pengadaanBarang.detailProdukPesertaPengadaan');
+            Route::get('/hasilEvaluasi/{id}', [PengadaanBarangController::class, 'hasilEvaluasi'])->name('dpal.pengadaanBarang.hasilEvaluasi');
+            Route::get('/editHasilEvaluasi/{id}', [PengadaanBarangController::class, 'editHasilEvaluasi'])->name('dpal.pengadaanBarang.editHasilEvaluasi');
+            Route::get('/pemenang/{id}', [PengadaanBarangController::class, 'pemenang'])->name('dpal.pengadaanBarang.pemenang');
         });
-        
-        
+                    // Route::get('/download/{filename}', [ViewFileController::class,'download']);
+
+
         Route::prefix('dpal/badanUsaha')->group(function (){
             Route::get('/index', [dpalBadanUsahaController::class, 'index'])->name('dpal.badanUsaha.index');
             Route::get('/detailBadanUsaha', [dpalBadanUsahaController::class, 'detailBadanUsaha'])->name('dpal.badanUsaha.detailBadanUsaha');
@@ -165,6 +168,7 @@ use Illuminate\Support\Facades\Route;
         });
     });
 
+    Route::get('/download/pengadaanBarang/proposal/{filename}', [ViewFileController::class,'download']);
 
 
 

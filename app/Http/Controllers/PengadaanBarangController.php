@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Budjet;
 use App\Models\PengadaanBarang;
 use App\Models\PengadaanSupplier;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PengadaanBarangController extends Controller
 {
@@ -87,39 +89,57 @@ class PengadaanBarangController extends Controller
 
     }
 
-    public function pesertaPengadaan(){
-        return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaPengadaan');
+    public function pesertaPengadaan($id){
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
+        $pengsup = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->first();
+        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->get();
+        return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaPengadaan',compact('pengsup','pengsups'));
 
     }
 
-    public function pesertaEvaluasi(){
-        return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaEvaluasi');
+    public function pesertaEvaluasi($id){
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
+        return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaEvaluasi', compact('pengadaan'));
 
     }
 
-    public function detailPesertaPengadaan(){
-        return view('dpal/pengadaanBarang/pesertaPengadaan/detailPesertaPengadaan');
+    public function detailPesertaPengadaan($id){
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
+        $supplier = Supplier::where('id',$id)->first();
+        $roleId = DB::table('model_has_roles')->where('model_id',$supplier->id)->first();
+        $user = DB::table('roles')->where('id',$roleId->role_id)->first();
+        // dd($user);
+        $pengsup = PengadaanSupplier::where('supplier_id',$supplier->id)->first();
+        // dd($pengsup);
+        return view('dpal/pengadaanBarang/pesertaPengadaan/detailPesertaPengadaan',compact('pengadaan','pengsup', 'user','supplier'));
 
     }
     
-    public function detailProdukPesertaPengadaan(){
-        return view('dpal/pengadaanBarang/pesertaPengadaan/detailProdukPesertaPengadaan');
+    public function detailProdukPesertaPengadaan($id){
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
+
+        return view('dpal/pengadaanBarang/pesertaPengadaan/detailProdukPesertaPengadaan',compact('pengadaan'));
 
     }
 
-    public function hasilEvaluasi(){
-        return view('dpal/pengadaanBarang/evaluasi/hasilEvaluasi');
+    public function hasilEvaluasi($id){
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
+
+        return view('dpal/pengadaanBarang/evaluasi/hasilEvaluasi', compact('pengadaan'));
 
     }
 
-    public function editHasilEvaluasi(){
-        return view('dpal/pengadaanBarang/evaluasi/editHasilEvaluasi');
+    public function editHasilEvaluasi($id){
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
+
+        return view('dpal/pengadaanBarang/evaluasi/editHasilEvaluasi',compact('pengadaan'));
 
     }
 
-    public function pemenang(){
-        return view('dpal/pengadaanBarang/pemenang/pemenang');
+    public function pemenang($id){
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
 
+        return view('dpal/pengadaanBarang/pemenang/pemenang', compact('pengadaan'));
     }
     /**
      * Show the form for creating a new resource.

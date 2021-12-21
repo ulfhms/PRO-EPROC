@@ -12,6 +12,9 @@ class BidangUsaha extends Model
     protected $guarded=['id'];
     protected $table='bidang_usahas';
 
+    public function users(){
+        return $this->hasMany(User::class);
+    }
     public function suppliers(){
         return $this->hasMany(Supplier::class);
     }

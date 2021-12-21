@@ -1,25 +1,25 @@
 @extends('layouts/main-layout')
-@section('title', 'Edit Barang')
+@section('title', 'Edit Pengadaan')
 @section('content')
-<h5 class="bg-warning p-2 rounded text-center">Edit Partisipasi Pengadaan</h5>
+<h5 class="bg-warning p-2 rounded text-center">Edit {{ ucwords($pengadaan->pengadaan->budjet->nama_kegiatan) }}</h5>
 
 <div class="container">
+  <form action="{{ route('supplier.pengadaanBarang.updateSubmit', $pengadaan->id) }}" method="post" enctype="multipart/form-data">
+    @method('patch')
+    @csrf
   <div class="row row-cols-2">
     <div class="col">
       <label  class="mb-3">Kode dan Nama Pengadaan: </label>
       <div>
         <select class="form-select" aria-label="Default select example">
-          <option selected>PBA-0001 Pengadaan Komputer dan Sever untuk Laboratorium Komputer</option>
-          <option value="1">PABA-0002 Pengadaan Mesin CNC untuk Laboratorium Mesin</option>
-          <option value="2">---</option>
-          <option value="3">--</option>
+          <option selected disabled>{{ $pengadaan->pengadaan->budjet->nama_kegiatan }}</option>
         </select>
       </div>
     </div>
     <div class="col">
       <label  class="mb-3">Harga Penawaran: </label>
       <div>
-        <input type="Price" class="form-control" id="exampleInputPrice" aria-describedby="priceHelp"><br>
+        <input type="number" class="form-control" id="exampleInputPrice" name="harga_penawaran" aria-describedby="priceHelp" value="{{ $pengadaan->harga_penawaran }}"><br>
       </div>
     </div>
     <div class="col">
@@ -30,11 +30,17 @@
     </div>
     <div class="col">
       <label  class="mb-3">Harga Terkoreksi: </label>
+      @if ($pengadaan->status_supplier === 'submitted')
       <div>
-        <fieldset>
-        <input type="Price" class="form-control" id="exampleInputPrice" aria-describedby="priceHelp!">
+        <input type="number" readonly class="form-control" id="exampleInputPrice" aria-describedby="priceHelp!">
       </div>
+      @elseif($pengadaan->status_supplier === 'evaluasi')
+      <div>
+        <input type="number" class="form-control" id="exampleInputPrice" aria-describedby="priceHelp!">
+      </div>
+      @endif
     </div>
+
 </div>
 
 <div class="container">
@@ -44,4 +50,5 @@
     </div>
   </div>
 </div>
+</form>
 @endsection

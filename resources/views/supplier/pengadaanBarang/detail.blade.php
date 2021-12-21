@@ -1,5 +1,7 @@
 @extends('layouts/main-layout')
-@section('title', 'Komputer')
+@section('title')
+    {{ucwords($pengadaan->pengadaan->budjet->nama_kegiatan)}}
+@endsection
 @section('content')
 <table class="table table-borderless">
   <tbody>
@@ -17,15 +19,27 @@
     </tr>
     <tr>
       <th>Nama Pengadaan</th>
-      <td>Pengadaan Komputer bla bla</td>
+      <td>{{ucwords($pengadaan->pengadaan->budjet->nama_kegiatan)}}</td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td>
+        @if ($pengadaan->status_supplier === 'submitted')
+          <button class="btn btn-sm btn-secondary">{{ ucwords($pengadaan->status_supplier) }}</button>   
+        @elseif ($pengadaan->status_supplier === 'evaluasi')
+          <button class="btn btn-sm btn-warning">{{ ucwords($pengadaan->status_supplier) }}</button>
+        @elseif ($pengadaan->status_supplier === 'tolak')   
+          <button class="btn btn-sm btn-danger">{{ ucwords($pengadaan->status_supplier) }}</button>
+        @endif
+      </td>
     </tr>
     <tr>
       <th>Harga Penawaran</th>
-      <td>Rp. 5.000.000 /unit</td>
+      <td>Rp. {{ number_format($pengadaan->harga_penawaran) }},-</td>
     </tr>
     <tr>
       <th>File Proposal</th>
-      <td scope="row" colspan="3" class="text-primary"><a href="{{asset('product/beasiswa.pdf')}}">file name</a></td>
+      <td scope="row" colspan="3" class="text-primary"><a href="/download/{{ $pengadaan->proposal }}">Proposal</a></td>
     </tr>
   </tbody>
 </table>

@@ -18,7 +18,7 @@ class Supplier extends Model
         return $this->belongsTo(Bank::class);
     }
     
-    public function bidang_usaha(){
+    public function bidangusaha(){
         return $this->belongsTo(BidangUsaha::class);
     }
     

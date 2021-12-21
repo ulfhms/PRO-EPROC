@@ -20,10 +20,10 @@
           <tr>
             <td>{{ $no++ }}</td>
             {{-- <td>PBA - 0001</td> --}}
-            <td><a href="{{ route('supplier.pengadaanBarang.detail') }}" class="card-title text-decoration-none text-primary">{{ $pengadaan->pengadaan->budjet->nama_kegiatan }}</a></td>
+            <td><a href="{{ route('supplier.pengadaanBarang.detail',$pengadaan->id) }}" class="card-title text-decoration-none text-primary">{{ $pengadaan->pengadaan->budjet->nama_kegiatan }}</a></td>
             <td class="text-center"><a href="#" class="badge badge-secondary text-decoration-none">Submited</a></td>
-            <td class="text-center"><a href="{{ route('supplier.pengadaanBarang.edit') }}" class="btn btn-sm"><i class="far fa-edit"></i></a>
-              <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <td class="text-center"><a href="{{ route('supplier.pengadaanBarang.edit', $pengadaan->id) }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+              <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="far fa-trash-alt"></i>
               </button>
             </td>

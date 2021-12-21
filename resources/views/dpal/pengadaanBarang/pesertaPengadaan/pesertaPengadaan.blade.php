@@ -14,15 +14,27 @@
     </tr>
   </thead>
   <tbody>
+    @php ($no=1)
+    @foreach ($pengsups as $sups)        
     <tr>
-      <th scope="row">1</th>
-      <td><a href="{{ route('dpal.pengadaanBarang.detailPesertaPengadaan') }}">CV Merah Putih</a></td>
-      <td>01.234.567.8-123.000</td>
-      <td>Rp 70.000.000</td>
+      <th scope="row">{{ $no++ }}</th>
+      <td><a href="{{ route('dpal.pengadaanBarang.detailPesertaPengadaan',$sups->supplier->id) }}">{{ $sups->supplier->nama_supplier }}</a></td>
+      <td>{{ $sups->supplier->npwp }}</td>
+      <td>Rp {{ number_format($sups->harga_penawaran) }},-</td>
       <td>
+        @if ($sups->status_supplier === 'submitted')
+        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#submit">
+          Submit
+        </button>
+        @elseif($sups->status_supplier === 'tolak')   
         <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#tolak">
           Tolak
         </button>
+        @elseif($sups->status_supplier === 'evaluasi')   
+        <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#evaluasi">
+          Evaluasi
+        </button>
+        @endif
       </td>
       <td>
         <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -31,66 +43,7 @@
         <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>
       </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>CV Kartika Raya</td>
-      <td>01.234.567.8-123.001</td>
-      <td>Rp 75.000.000</td>
-      <td>
-        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#submit">
-          Submit
-        </button>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
-        <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td >CV Medali</td>
-      <td>01.234.567.8-123.002</td>
-      <td>Rp 65.000.000</td>
-      <td>
-        <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#evaluasi">
-          Evaluasi
-        </button>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
-        <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td >CV Permata</td>
-      <td>01.234.567.8-123.003</td>
-      <td>Rp 60.000.000</td>
-      <td>
-        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#tolak">
-          Tolak
-        </button>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
-        <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td >CV Murah Hati</td>
-      <td>01.234.567.8-123.004</td>
-      <td>Rp 50.000.000</td>
-      <td>
-        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#tolak">
-          Submit
-        </button>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
-        <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>
-      </td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
 

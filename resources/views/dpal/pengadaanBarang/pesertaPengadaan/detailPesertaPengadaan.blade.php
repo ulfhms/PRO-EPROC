@@ -1,5 +1,8 @@
 @extends('layouts/main-layout')
-@section('title', 'CV Murah Hati')
+@section('title')
+{{ ucwords($pengsup->supplier->nama_supplier) }}
+@endsection
+{{-- @section('title', 'CV Murah Hati') --}}
 @section('content')
 <div class="m-2">
   {{-- @include('dpal/pengadaanBarang/pesertaPengadaan/navbar') --}}
@@ -8,52 +11,62 @@
         <img src="{{ asset('logo/ikea.svg') }}" alt="">
     </div>
     <div class="col">
-        <h3 class="">CV Merah Putih</h3>
-        <p class="card-text">Supplier</p>
+        <h3 class="">{{ ucwords($pengsup->supplier->nama_supplier) }}</h3>
+        <p class="card-text">{{ ucwords($user->name)  }}</p>
     </div>
   </div>
   <div class="row pt-4">
     <table class="table table-hover">
         <tbody>
-          <tr>
+          {{-- <tr>
             <th scope="row">1</th>
             <td>Kode</td>
             <td>Sup-1</td>
-          </tr>
+          </tr> --}}
           <tr>
             <th scope="row">2</th>
             <td>Nama Perusahaan</td>
-            <td>CV Merah Putih</td>
+            <td>{{ ucwords($pengsup->supplier->nama_supplier) }}</td>
           </tr>
           <tr>
             <th scope="row">3</th>
             <td>NPWP</td>
-            <td>01.234.567.8-123.000</td>
+            <td>{{ ucwords($pengsup->supplier->npwp) }}</td>
           </tr>
           <tr>
             <th scope="row">4</th>
             <td>Alamat</td>
-            <td>Jl.Simpang Kanan Sidoarjo</td>
+            <td>{{ ucwords($pengsup->supplier->alamat) }}</td>
           </tr>
           <tr>
             <th scope="row">5</th>
             <td>Telepon</td>
-            <td>0895642343678</td>
+            <td>{{ ucwords($pengsup->supplier->telepon) }}</td>
           </tr>
           <tr>
             <th scope="row">6</th>
             <td>Nara Hubung</td>
-            <td>Budi Utomo</td>
+            <td>{{ ucwords($pengsup->supplier->narahubung) }}</td>
           </tr>
           <tr>
             <th scope="row">7</th>
             <td>Bidang Usaha</td>
-            <td>Komputer</td>
+            <td>{{ ucwords($supplier->bidangusaha['nama_bingus']) }}</td>
           </tr>
           <tr>
             <th scope="row">8</th>
             <td>No Rekening</td>
-            <td>(BCA) 9823947</td>
+            <td>({{ ucwords($pengsup->supplier->bank->nama_bank) }}) {{ ucwords($pengsup->supplier->no_rek) }}</td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>Pengadaan</td>
+            <td>{{ $pengsup->pengadaan->budjet->nama_kegiatan }}</td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>Proposal</td>
+            <td><a href="/download/{{ $pengsup->proposal }}">File</a></td>
           </tr>
         </tbody>
       </table>
@@ -62,9 +75,6 @@
     <div class="col text-center mb-5">
       <div class="fw-bold p-2text-dark fs-6 bg-warning text-decoration-underline">Produk</div>
     </div>
-  </div>
-  <div class="d-flex justify-content-center">
-    <a href="{{ route('dpal.pengadaanBarang.pesertaPengadaan') }}" class="btn btn-sm btn-warning">Kembali</a>
   </div>
 </div>
 @endsection

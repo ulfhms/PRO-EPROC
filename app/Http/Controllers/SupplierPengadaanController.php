@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PengadaanBarang;
 use App\Models\PengadaanSupplier;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class SupplierPengadaanController extends Controller
@@ -15,7 +16,8 @@ class SupplierPengadaanController extends Controller
      */
     public function index()
     {
-        $pengadaans = PengadaanSupplier::get();
+        $supplier = Supplier::where('user_id',auth()->id())->first();
+        $pengadaans = PengadaanSupplier::where('supplier_id',$supplier->id)->get();
         return view('supplier/pengadaanBarang/index', compact('pengadaans'));
     }
 
@@ -38,6 +40,8 @@ class SupplierPengadaanController extends Controller
      */
     public function store(Request $request)
     {
+     
+        $supplier = Supplier::where('user_id',auth()->id())->first();
         
         if($request->file('proposal')){
             $proposal=$request->file('proposal')->store('pengadaanBarang/proposal');
@@ -46,7 +50,7 @@ class SupplierPengadaanController extends Controller
         }
         $data = [
             'pengadaan_id' => $request->pengadaan_id,
-            'supplier_id' => auth()->id(),
+            'supplier_id' => $supplier->id,
             'status_supplier' => 'submitted',
             'proposal' => $proposal,
             'harga_penawaran' => $request->harga_penawaran,
@@ -64,9 +68,11 @@ class SupplierPengadaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function detail($id)
     {
-        //
+        $pengadaan = PengadaanSupplier::where('id',$id)->first();
+        return view('supplier/pengadaanBarang/detail', compact('pengadaan'));
+
     }
 
     /**
@@ -77,7 +83,8 @@ class SupplierPengadaanController extends Controller
      */
     public function edit($id)
     {
-        return view('supplier/pengadaanBarang/detail');
+        $pengadaan = PengadaanSupplier::where('id',$id)->first();
+        return view('supplier/pengadaanBarang/edit',compact('pengadaan'));
         
     }
 
@@ -88,9 +95,21 @@ class SupplierPengadaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateSubmit(Request $request, $id)
     {
-        //
+        $pengadaan = PengadaanSupplier::where('id',$id)->first();
+        $pdf = $pengadaan->proposal;
+        if($request->hasFile('proposal')){
+            Storage::delete($pdf);
+            $pdf = $request->file('pdf')->store('pengadaanBarang/proposal');
+        }
+
+        $pengadaan->update([
+            'proposal' => $pdf,
+            'harga_penawaran' => $request->harga_penawaran,
+        ]);
+
+        return redirect()->route('supplier.pengadaanBarang.index');
     }
 
     /**

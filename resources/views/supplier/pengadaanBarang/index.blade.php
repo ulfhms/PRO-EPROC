@@ -31,9 +31,6 @@
               @endif
             </td>
             <td class="text-center"><a href="{{ route('supplier.pengadaanBarang.edit', $sups->id) }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-              <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="far fa-trash-alt"></i>
-              </button>
             </td>
           </tr>
           @endforeach

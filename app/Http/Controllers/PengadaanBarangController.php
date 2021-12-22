@@ -121,8 +121,31 @@ class PengadaanBarangController extends Controller
 
     public function pesertaEvaluasi($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
-        return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaEvaluasi', compact('pengadaan'));
+        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','evaluasi')->get();
 
+        return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaEvaluasi', compact('pengadaan','pengsups'));
+
+    }
+
+    public function editHasilEvaluasi($id){
+        // $pengadaan = PengadaanBarang::where('id',$id)->first();
+        // dd($pengadaan);
+        $pengsups = PengadaanSupplier::where('id',$id)->first();
+        // dd($pengsups);
+
+        return view('dpal/pengadaanBarang/evaluasi/editHasilEvaluasi',compact('pengsups'));
+
+    }
+
+    public function formDpalKeSupplier(Request $request, $id){
+        $pengsups = PengadaanSupplier::where('id',$id)->first();
+        $data = [
+            'dpal_ke_supplier' => $request->dpal_ke_supplier
+        ];
+
+        $pengsups->update($data);
+
+        return redirect()->back();
     }
 
     public function detailPesertaPengadaan($id){
@@ -151,12 +174,7 @@ class PengadaanBarangController extends Controller
 
     }
 
-    public function editHasilEvaluasi($id){
-        $pengadaan = PengadaanBarang::where('id',$id)->first();
-
-        return view('dpal/pengadaanBarang/evaluasi/editHasilEvaluasi',compact('pengadaan'));
-
-    }
+    
 
     public function pemenang($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();

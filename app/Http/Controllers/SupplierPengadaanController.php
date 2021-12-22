@@ -106,10 +106,12 @@ class SupplierPengadaanController extends Controller
 
         $pengadaan->update([
             'proposal' => $pdf,
-            'harga_penawaran' => $request->harga_penawaran,
+            // 'harga_penawaran' => $request->harga_penawaran,
+            'harga_terkoreksi' => $request->harga_terkoreksi,
+            'supplier_ke_dpal' => $request->supplier_ke_dpal,
         ]);
 
-        return redirect()->route('supplier.pengadaanBarang.index');
+        return redirect()->back();
     }
 
     /**

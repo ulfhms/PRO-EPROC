@@ -37,6 +37,12 @@
       <th>Harga Penawaran</th>
       <td>Rp. {{ number_format($pengadaan->harga_penawaran) }},-</td>
     </tr>
+    @if ($pengadaan->status_supplier === 'evaluasi')
+    <tr>
+      <th>Harga Terkoreksi</th>
+      <td>Rp. {{ number_format($pengadaan->harga_terkoreksi) }},-</td>
+    </tr>
+    @endif
     <tr>
       <th>File Proposal</th>
       <td scope="row" colspan="3" class="text-primary"><a href="/download/{{ $pengadaan->proposal }}">Proposal</a></td>

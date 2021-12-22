@@ -22,6 +22,7 @@
       <td>{{ $sups->supplier->npwp }}</td>
       <td>Rp {{ number_format($sups->harga_penawaran) }},-</td>
       <td>
+        
         @if ($sups->status_supplier === 'submitted')
         <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#submit{{ $sups->id }}">
           Submitted
@@ -31,20 +32,26 @@
           Tolak
         </button>
         @elseif($sups->status_supplier === 'evaluasi')   
-        <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#evaluasi">
+        <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#evaluasi{{ $sups->id }}">
           Evaluasi
         </button>
         @endif
       </td>
       <td>
-        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#formTolak{{ $sups->id }}">
-          <i class="fas fa-times"></i>
-        </button>
-        <form action="{{ route('dpal.pengadaanBarang.formEvaluasi', $sups->id) }}" method="post">
-          @method('patch')
-          @csrf
-          <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
-        </form>
+        @if ($sups->status_supplier === 'tolak' || $sups->status_supplier === 'evaluasi')
+          <button type="button" class="btn btn-sm btn-primary">
+            Telah di proses
+          </button>
+        @else
+          <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#formTolak{{ $sups->id }}">
+            <i class="fas fa-times"></i>
+          </button>
+          <form action="{{ route('dpal.pengadaanBarang.formEvaluasi', $sups->id) }}" method="post">
+            @method('patch')
+            @csrf
+            <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
+          </form>      
+        @endif
       </td>
     </tr>
     @endforeach
@@ -128,7 +135,8 @@
 </div>
 @endforeach
 
-@foreach ($pengsups as $sups)    
+@foreach ($pengsups as $sups)
+    {{-- Modal Submit --}}
 <div class="modal fade" id="submit{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -167,7 +175,10 @@
 </div>
 @endforeach
 
-<div class="modal fade" id="evaluasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+@foreach ($pengsups as $sups)
+{{-- Modal evaluasi --}}
+<div class="modal fade" id="evaluasi{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header bg-warning text-white">
@@ -179,19 +190,19 @@
           <tbody>
             <tr>
               <th scope="row">Supplier</th>
-              <td>CV Medali</td>
+              <td>{{ $sups->supplier->nama_supplier }}</td>
             </tr>
             <tr>
               <th scope="row">NPWP</th>
-              <td>01.234.567.8-123.002</td>
+              <td>{{ $sups->supplier->npwp }}</td>
             </tr>
             <tr>
               <th scope="row">Harga Penawaran</th>
-              <td>Rp 65.000.000</td>
+              <td>Rp {{ $sups->harga_penawaran }}</td>
             </tr>
             <tr>
               <th scope="row">Status</th>
-              <td>Supplier telah masuk dalam kategori evaluasi</td>
+              <td>{{ ucwords($sups->status_supplier) }}</td>
             </tr>
           </tbody>
         </table>
@@ -202,4 +213,5 @@
     </div>
   </div>
 </div>
+@endforeach
 @endsection

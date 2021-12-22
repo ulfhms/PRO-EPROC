@@ -2,7 +2,7 @@
 @section('title', 'Pemenang')
 @section('content')
 @include('dpal/pengadaanBarang/navbarPengadaan')
-<div class="mt-4">
+<div class="m-4">
   <div class="row">
     <div class="col-2">
         <img src="{{ asset('logo/ikea.svg') }}" alt="">
@@ -47,10 +47,10 @@
             <td>No Rekening</td>
             <td>(BCA) 9823947</td>
           </tr>
-          <tr class="table-info">
+          {{-- <tr class="table-info">
             <td>Nilai Kontrak</td>
             <td>Rp. 50.000.000</td>
-          </tr>
+          </tr> --}}
           <tr>
             <td>File</td>
             <td><a href="">Cetak Berita Acara</a></td>
@@ -200,7 +200,7 @@
     </div>
   </div>
   <div class="d-flex justify-content-center mt-3">
-    <a href="{{ route('dpal.pengadaanBarang.pesertaPengadaan') }}" class="btn btn-sm btn-warning">Kembali</a>
+    {{-- <a href="{{ route('dpal.pengadaanBarang.pesertaPengadaan') }}" class="btn btn-sm btn-warning">Kembali</a> --}}
   </div>
 </div>
 @endsection

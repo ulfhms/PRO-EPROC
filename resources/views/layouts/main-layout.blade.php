@@ -21,6 +21,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('template/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{{ asset('select2/select2.min.css') }}" rel="stylesheet"/>
 
 </head>
 
@@ -258,6 +259,12 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('template/js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('select2/select2.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
 
     <script>
         // Replace the <textarea id="editor1"> with a CKEditor 4

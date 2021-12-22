@@ -169,16 +169,32 @@ class PengadaanBarangController extends Controller
 
     public function hasilEvaluasi($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
-
-        return view('dpal/pengadaanBarang/evaluasi/hasilEvaluasi', compact('pengadaan'));
+        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','evaluasi')->get();
+        // dd($pengsups);
+        return view('dpal/pengadaanBarang/evaluasi/hasilEvaluasi', compact('pengadaan','pengsups'));
 
     }
 
-    
+    public function formPemenang(Request $request, $id){
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
+        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','evaluasi')->get();
+        $pemenangs = $request->pemenang;
+        foreach ($pemenangs as $pemenang) {
+            $pemenang;
+            foreach ($pengsups as $sups) {
+                $sups->update(
+                    [
+                        'status_supplier' => 'acc',
+                        ]
+                );
+            }        
+        }
+        return redirect()->back();
+    }
 
     public function pemenang($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
-
+        // dd($pengadaan);
         return view('dpal/pengadaanBarang/pemenang/pemenang', compact('pengadaan'));
     }
     /**

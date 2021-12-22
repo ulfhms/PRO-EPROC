@@ -16,13 +16,21 @@
         </thead>
         <tbody>
           @php($no=1)
-          @foreach ($pengadaans as $pengadaan)    
+          @foreach ($pengsups as $sups)    
           <tr>
             <td>{{ $no++ }}</td>
             {{-- <td>PBA - 0001</td> --}}
-            <td><a href="{{ route('supplier.pengadaanBarang.detail',$pengadaan->id) }}" class="card-title text-decoration-none text-primary">{{ $pengadaan->pengadaan->budjet->nama_kegiatan }}</a></td>
-            <td class="text-center"><a href="#" class="badge badge-secondary text-decoration-none">Submited</a></td>
-            <td class="text-center"><a href="{{ route('supplier.pengadaanBarang.edit', $pengadaan->id) }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+            <td><a href="{{ route('supplier.pengadaanBarang.detail',$sups->id) }}" class="card-title text-decoration-none text-primary">{{ $sups->pengadaan->budjet->nama_kegiatan }}</a></td>
+            <td class="text-center">
+              @if ($sups->status_supplier === 'submitted')
+              <a href="#" class="badge badge-secondary text-decoration-none">Submited</a>              
+              @elseif ($sups->status_supplier === 'evaluasi')
+              <a href="#" class="badge badge-warning text-decoration-none">Evaluasi</a>    
+              @elseif ($sups->status_supplier === 'tolak')
+              <a href="#" class="badge badge-danger text-decoration-none">Tolak</a>    
+              @endif
+            </td>
+            <td class="text-center"><a href="{{ route('supplier.pengadaanBarang.edit', $sups->id) }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
               <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="far fa-trash-alt"></i>
               </button>

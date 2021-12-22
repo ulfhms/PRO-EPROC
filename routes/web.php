@@ -90,6 +90,8 @@ use Illuminate\Support\Facades\Route;
             Route::get('/detailTahap/{id}', [PengadaanBarangController::class, 'detailTahap'])->name('dpal.pengadaanBarang.detailTahap');
             Route::get('/pengumumanPengadaan/{id}', [PengadaanBarangController::class, 'pengumumanPengadaan'])->name('dpal.pengadaanBarang.pengumumanPengadaan');
             Route::get('/pesertaPengadaan/{id}', [PengadaanBarangController::class, 'pesertaPengadaan'])->name('dpal.pengadaanBarang.pesertaPengadaan');
+            Route::patch('/formTolak/{id}', [PengadaanBarangController::class, 'formTolak'])->name('dpal.pengadaanBarang.formTolak');
+            Route::patch('/formEvaluasi/{id}', [PengadaanBarangController::class, 'formEvaluasi'])->name('dpal.pengadaanBarang.formEvaluasi');
             Route::get('/pesertaEvaluasi/{id}', [PengadaanBarangController::class, 'pesertaEvaluasi'])->name('dpal.pengadaanBarang.pesertaEvaluasi');
             Route::get('/detailPesertaPengadaan/{id}', [PengadaanBarangController::class, 'detailPesertaPengadaan'])->name('dpal.pengadaanBarang.detailPesertaPengadaan');
             Route::get('/detailProdukPesertaPengadaan/{id}', [PengadaanBarangController::class, 'detailProdukPesertaPengadaan'])->name('dpal.pengadaanBarang.detailProdukPesertaPengadaan');

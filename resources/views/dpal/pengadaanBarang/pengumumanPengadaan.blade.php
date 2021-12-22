@@ -1,5 +1,7 @@
 @extends('layouts/main-layout')
-@section('title', 'Pengadaan Komputer dan Serve untuk Laboratorium Komputer')
+@section('title')
+  {{ ucwords($pengadaan->budjet->nama_kegiatan) }}
+@endsection
 @section('content')
 {{-- navbar --}}
 @include('dpal/pengadaanBarang/navbarPengadaan')
@@ -15,7 +17,7 @@
     </tr> --}}
     <tr>
       <th scope="row">Nama Paket</th>
-      <td>{{ ucwords($pengsup->pengadaan->budjet->nama_kegiatan) }}</td>
+      <td>{{ ucwords($pengadaan->budjet->nama_kegiatan) }}</td>
     </tr>
     <tr>
       <th scope="row">Sumber Dana</th>
@@ -23,15 +25,15 @@
     </tr>
     <tr>
       <th scope="row">Tanggal Pengusulan</th>
-      <td>{{ date('d-M-Y',strtotime($pengsup->pengadaan->budjet->waktu_mulai)) }}</td>
+      <td>{{ date('d-M-Y',strtotime($pengadaan->budjet->waktu_mulai)) }}</td>
     </tr>
     <tr>
       <th scope="row">Tanggal Penetapan Sistem Pengadaan</th>
-      <td>{{ date('d-M-Y',strtotime($pengsup->pengadaan->budjet->waktu_mulai)) }}</td>
+      <td>{{ date('d-M-Y',strtotime($pengadaan->budjet->waktu_mulai)) }}</td>
     </tr>
     <tr>
       <th scope="row">Tanggal Pengumuman Pengadaan</th>
-      <td>{{ date('d-M-Y',strtotime($pengsup->pengadaan->budjet->waktu_mulai)) }}</td>
+      <td>{{ date('d-M-Y',strtotime($pengadaan->budjet->waktu_mulai)) }}</td>
     </tr>
     <tr>
       <th scope="row">Tanggal Pengumuman Pemenang</th>
@@ -39,7 +41,7 @@
     </tr>
     <tr>
       <th scope="row">Unit Kerja Pengusul</th>
-      <td>{{ ucwords($pengsup->pengadaan->budjet->unit_kerja_pengusul) }}</td>
+      <td>{{ ucwords($pengadaan->budjet->unit_kerja_pengusul) }}</td>
     </tr>
     <tr>
       <th scope="row">Tahun Anggaran</th>
@@ -47,7 +49,7 @@
     </tr>
     <tr>
       <th scope="row">Nilai HPS</th>
-      <td>Rp. {{ number_format($pengsup->pengadaan->budjet->anggaran) }},-</td>
+      <td>Rp. {{ number_format($pengadaan->budjet->anggaran) }},-</td>
     </tr>
     <tr>
       <th scope="row">Jenis Kontrak</th>

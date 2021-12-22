@@ -23,11 +23,11 @@
       <td>Rp {{ number_format($sups->harga_penawaran) }},-</td>
       <td>
         @if ($sups->status_supplier === 'submitted')
-        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#submit">
-          Submit
+        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#submit{{ $sups->id }}">
+          Submitted
         </button>
         @elseif($sups->status_supplier === 'tolak')   
-        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#tolak">
+        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#tolak{{ $sups->id }}">
           Tolak
         </button>
         @elseif($sups->status_supplier === 'evaluasi')   
@@ -37,10 +37,14 @@
         @endif
       </td>
       <td>
-        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#formTolak{{ $sups->id }}">
           <i class="fas fa-times"></i>
         </button>
-        <a href="#" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>
+        <form action="{{ route('dpal.pengadaanBarang.formEvaluasi', $sups->id) }}" method="post">
+          @method('patch')
+          @csrf
+          <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
+        </form>
       </td>
     </tr>
     @endforeach
@@ -49,37 +53,44 @@
 
 <!-- Button trigger modal -->
 
-
+{{-- form penolakan --}}
+@foreach ($pengsups as $sups)    
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="formTolak{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header bg-danger">
         <h5 class="modal-title text-white" id="exampleModalLabel">Tolak Penawaran</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form action="{{ route('dpal.pengadaanBarang.formTolak', $sups->id) }}" method="post">
+        @csrf
+        @method('patch')
       <div class="modal-body">
         <div class="mb-3">
           <ul class="list-group">
-            <li class="list-group-item">Pengadaan :Pengadaan Server untuk Laboratorium Komputer</li>
-            <li class="list-group-item">Supplier : CV Merah Putih</li>
-            <li class="list-group-item">Harga Penwaran : 	Rp 70.000.000</li>
+            <li class="list-group-item">Pengadaan : {{ $sups->pengadaan->budjet->nama_kegiatan }}</li>
+            <li class="list-group-item">Supplier : {{ $sups->supplier->nama_supplier }}</li>
+            <li class="list-group-item">Harga Penawaran : 	Rp {{ number_format($sups->harga_penawaran) }},-</li>
           </ul>
           <label for="exampleFormControlTextarea1" class="form-label fw-bold mt-3">Alasan Penolakan</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+          <textarea class="form-control" id="editor1" rows="5" name="alasan_penolakan"></textarea>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
+@endforeach
 
 
-<!-- Modal -->
-<div class="modal fade" id="tolak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach ($pengsups as $sups)    
+<!-- Modal tolak-->
+<div class="modal fade" id="tolak{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header bg-danger text-white">
@@ -91,19 +102,19 @@
           <tbody>
             <tr>
               <th scope="row">Supplier</th>
-              <td>CV Merah Putih</td>
+              <td>{{ $sups->supplier->nama_supplier }}</td>
             </tr>
             <tr>
               <th scope="row">NPWP</th>
-              <td>01.234.567.8-123.000</td>
+              <td>{{ $sups->supplier->npwp }}</td>
             </tr>
             <tr>
               <th scope="row">Harga Penawaran</th>
-              <td>Rp 70.000.000</td>
+              <td>Rp {{ number_format($sups->harga_penawaran) }},-</td>
             </tr>
             <tr>
               <th scope="row">Alasan Penolakan</th>
-              <td>Kriteria tidak memenuhi syarat</td>
+              <td>{{ $sups->alasan_penolakan }}</td>
             </tr>
 
           </tbody>
@@ -115,8 +126,10 @@
     </div>
   </div>
 </div>
+@endforeach
 
-<div class="modal fade" id="submit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach ($pengsups as $sups)    
+<div class="modal fade" id="submit{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header bg-secondary text-white">
@@ -128,15 +141,15 @@
           <tbody>
             <tr>
               <th scope="row">Supplier</th>
-              <td>CV Kartika Raya</td>
+              <td>{{ $sups->supplier->nama_supplier }}</td>
             </tr>
             <tr>
               <th scope="row">NPWP</th>
-              <td>01.234.567.8-123.000</td>
+              <td>{{ $sups->supplier->npwp }}</td>
             </tr>
             <tr>
               <th scope="row">Harga Penawaran</th>
-              <td>Rp 70.000.000</td>
+              <td>Rp {{ number_format($sups->harga_penawaran) }},-</td>
             </tr>
             <tr>
               <th scope="row">Status</th>
@@ -152,6 +165,7 @@
     </div>
   </div>
 </div>
+@endforeach
 
 <div class="modal fade" id="evaluasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">

@@ -17,8 +17,8 @@ class SupplierPengadaanController extends Controller
     public function index()
     {
         $supplier = Supplier::where('user_id',auth()->id())->first();
-        $pengadaans = PengadaanSupplier::where('supplier_id',$supplier->id)->get();
-        return view('supplier/pengadaanBarang/index', compact('pengadaans'));
+        $pengsups = PengadaanSupplier::where('supplier_id',$supplier->id)->get();
+        return view('supplier/pengadaanBarang/index', compact('pengsups'));
     }
 
     /**

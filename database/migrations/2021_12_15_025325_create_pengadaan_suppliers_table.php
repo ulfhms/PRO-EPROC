@@ -23,10 +23,10 @@ class CreatePengadaanSuppliersTable extends Migration
             $table->string('proposal')->unsigned()->nullable();
             $table->integer('harga_penawaran')->unsigned()->nullable();
             $table->integer('harga_terkoreksi')->unsigned()->nullable();
-            $table->integer('dpal_ke_supplier')->unsigned()->nullable();
-            $table->integer('supplier_ke_dpal')->unsigned()->nullable();
-            $table->integer('alasan_penolakan')->unsigned()->nullable();
-            $table->integer('bukti_tf')->unsigned()->nullable();
+            $table->text('dpal_ke_supplier')->unsigned()->nullable();
+            $table->text('supplier_ke_dpal')->unsigned()->nullable();
+            $table->text('alasan_penolakan')->unsigned()->nullable();
+            $table->text('bukti_tf')->unsigned()->nullable();
             $table->timestamps();
         });
     }

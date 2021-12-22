@@ -84,17 +84,39 @@ class PengadaanBarangController extends Controller
 
     public function pengumumanPengadaan($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
-        $pengsup = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->first();
-        return view('dpal/pengadaanBarang/pengumumanPengadaan',compact('pengsup'));
-
+        // $pengsup = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->first();
+        return view('dpal/pengadaanBarang/pengumumanPengadaan',compact('pengadaan'));
     }
+    
+    
 
     public function pesertaPengadaan($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
-        $pengsup = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->first();
+        // $pengsup = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->first();
         $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->get();
-        return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaPengadaan',compact('pengsup','pengsups'));
+        return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaPengadaan',compact('pengadaan','pengsups'));
+    }
 
+    public function formTolak(Request $request, $id){
+        // $pengadaan = PengadaanBarang::where('id',$id)->first();
+        $pengsup = PengadaanSupplier::where('id',$id)->first();
+        // dd($pengsups);
+        // dd($pengsups);
+        $pengsup->update([
+            'status_supplier' => 'tolak',
+            'alasan_penolakan' => $request->alasan_penolakan,
+        ]);
+
+        return redirect()->route('dpal.pengadaanBarang.pesertaPengadaan', $pengsup->pengadaan_id);
+    }
+
+    public function formEvaluasi(Request $request, $id){
+        $pengsup = PengadaanSupplier::where('id',$id)->first();
+        $data = [
+            'status_supplier' => 'evaluasi',
+        ];
+        $pengsup->update($data);
+        return redirect()->route('dpal.pengadaanBarang.pesertaPengadaan', $pengsup->pengadaan_id);
     }
 
     public function pesertaEvaluasi($id){

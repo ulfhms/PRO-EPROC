@@ -8,6 +8,7 @@ use App\Models\PengadaanSupplier;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PengadaanBarangController extends Controller
 {
@@ -43,6 +44,7 @@ class PengadaanBarangController extends Controller
         PengadaanBarang::create([
             'budjet_id' => $request->nama_kegiatan,
             'status_pengadaan' => 1,
+            'status_proses' => 'proses',
             'tgl_pengumuman_pemenang' =>null,
         ]);
         
@@ -66,11 +68,13 @@ class PengadaanBarangController extends Controller
         // dd($request);
         if($request->has('status_pengadaan')){
             $pengadaan->update([
-                'status_pengadaan' => 1
+                'status_pengadaan' => 1,
+                'status_proses' => 'proses'
             ]);
         }else{
             $pengadaan->update([
-                'status_pengadaan' => 0
+                'status_pengadaan' => 0,
+                'status_proses' => 'proses'
             ]);
         }
         
@@ -169,7 +173,7 @@ class PengadaanBarangController extends Controller
 
     public function hasilEvaluasi($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
-        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','evaluasi')->get();
+        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','evaluasi')->orWhere('status_supplier','acc')->get();
         // dd($pengsups);
         return view('dpal/pengadaanBarang/evaluasi/hasilEvaluasi', compact('pengadaan','pengsups'));
 
@@ -189,13 +193,36 @@ class PengadaanBarangController extends Controller
                 );
             }        
         }
+
+        $data=[
+            'status_proses' => 'validasi'
+        ];
+        $pengadaan->update($data);
         return redirect()->back();
     }
 
     public function pemenang($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
+        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','acc')->orWhere('status_supplier','validasi')->get();
         // dd($pengadaan);
-        return view('dpal/pengadaanBarang/pemenang/pemenang', compact('pengadaan'));
+        return view('dpal/pengadaanBarang/pemenang/pemenang', compact('pengadaan','pengsups'));
+    }
+
+    public function formBuktiTf(Request $request, $id){
+        $pengsup = PengadaanSupplier::where('id',$id)->first();
+        // dd($pengsup);
+        $bukti_tf = $pengsup->bukti_tf;
+        if($request->hasFile('bukti_tf')){
+            Storage::delete($bukti_tf);
+            $bukti_tf = $request->file('bukti_tf')->store('pengadaanBarang/bukti_tf');
+        }
+        
+        $pengsup->update([
+            'bukti_tf' => $bukti_tf,
+            'status_supplier' => 'validasi'
+        ]);
+
+        return redirect()->back();
     }
     /**
      * Show the form for creating a new resource.

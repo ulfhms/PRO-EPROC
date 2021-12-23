@@ -30,11 +30,11 @@
     </tr>
     <tr>
       <th scope="row">Harga Penawaran</th>
-      <td>Rp {{ $pengsups->harga_penawaran }},-</td>
+      <td>Rp {{ number_format($pengsups->harga_penawaran) }},-</td>
     </tr>
     <tr>
       <th scope="row">Harga Terkoreksi</th>
-      <td>Rp {{ $pengsups->harga_terkoreksi }},-</td>
+      <td>Rp {{ number_format($pengsups->harga_terkoreksi) }},-</td>
     </tr>
     <tr>
       <th scope="row">Hasil Penawaran DPAL ke Supplier</th>

@@ -100,6 +100,7 @@ use Illuminate\Support\Facades\Route;
             Route::get('/hasilEvaluasi/{id}', [PengadaanBarangController::class, 'hasilEvaluasi'])->name('dpal.pengadaanBarang.hasilEvaluasi');
             Route::patch('/formPemenang/{id}', [PengadaanBarangController::class, 'formPemenang'])->name('dpal.pengadaanBarang.formPemenang');
             Route::get('/pemenang/{id}', [PengadaanBarangController::class, 'pemenang'])->name('dpal.pengadaanBarang.pemenang');
+            Route::patch('/formBuktiTf/{id}', [PengadaanBarangController::class, 'formBuktiTf'])->name('dpal.pengadaanBarang.formBuktiTf');
         });
                     // Route::get('/download/{filename}', [ViewFileController::class,'download']);
 

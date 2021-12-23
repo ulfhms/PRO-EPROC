@@ -19,8 +19,8 @@
     </div>
   </form>
 </div>
+@foreach ($pengsups as $sups)      
 <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
-  @foreach ($pengsups as $sups)      
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
       <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -84,9 +84,6 @@
       </div>
     </div>
   </div>
-  @endforeach
 </div>
-
-
-
+@endforeach
 @endsection

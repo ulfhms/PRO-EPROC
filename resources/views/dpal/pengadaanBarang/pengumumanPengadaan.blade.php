@@ -68,10 +68,32 @@
         </table>
       </td>
     </tr>
-    {{-- <tr>
+    <tr>
       <th scope="row">Peserta</th>
       <td><a href="">5 Peserta</a></td>
-    </tr> --}}
+    </tr>
+    <tr>
+      <th scope="row">Status</th>
+      <td>
+        @if ($pengadaan->status_pengadaan === 1)
+          <button class="btn btn-sm btn-primary">ON</button>
+        @elseif ($pengadaan->status_pengadaan === 0)
+          <button class="btn btn-sm btn-danger">OFF</button>
+        @endif
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Status Proses</th>
+      <td>
+        @if ($pengadaan->status_proses === 'proses')
+          <button class="btn btn-sm btn-primary">Proses</button>
+        @elseif ($pengadaan->status_proses === 'validasi')
+          <button class="btn btn-sm btn-primary">Validasi</button>
+        @elseif ($pengadaan->status_proses === 'selesai')
+          <button class="btn btn-sm btn-primary">Selesai</button>
+        @endif
+      </td>
+    </tr>
   </tbody>
 </table>
 @endsection

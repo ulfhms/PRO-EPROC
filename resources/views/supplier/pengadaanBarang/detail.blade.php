@@ -33,6 +33,12 @@
         @endif
       </td>
     </tr>
+    @if ($pengadaan->status_supplier === 'tolak')
+      <tr>
+        <th>Alasan Penolakan</th>
+        <td>{!! $pengadaan->alasan_penolakan !!}</td>
+      </tr>
+    @endif
     <tr>
       <th>Harga Penawaran</th>
       <td>Rp. {{ number_format($pengadaan->harga_penawaran) }},-</td>

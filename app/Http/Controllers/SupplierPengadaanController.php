@@ -111,7 +111,7 @@ class SupplierPengadaanController extends Controller
             'supplier_ke_dpal' => $request->supplier_ke_dpal,
         ]);
 
-        return redirect()->back();
+        return redirect()->route('supplier.pengadaanBarang.index');
     }
 
     /**

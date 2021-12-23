@@ -70,8 +70,8 @@ class SupplierPengadaanController extends Controller
      */
     public function detail($id)
     {
-        $pengadaan = PengadaanSupplier::where('id',$id)->first();
-        return view('supplier/pengadaanBarang/detail', compact('pengadaan'));
+        $pengsup = PengadaanSupplier::where('id',$id)->first();
+        return view('supplier/pengadaanBarang/detail', compact('pengsup'));
 
     }
 
@@ -111,7 +111,7 @@ class SupplierPengadaanController extends Controller
             'supplier_ke_dpal' => $request->supplier_ke_dpal,
         ]);
 
-        return redirect()->route('supplier.pengadaanBarang.index');
+        return redirect()->back();
     }
 
     /**

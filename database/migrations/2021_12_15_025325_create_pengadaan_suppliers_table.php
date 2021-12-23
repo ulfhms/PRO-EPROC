@@ -26,6 +26,7 @@ class CreatePengadaanSuppliersTable extends Migration
             $table->text('dpal_ke_supplier')->unsigned()->nullable();
             $table->text('supplier_ke_dpal')->unsigned()->nullable();
             $table->text('alasan_penolakan')->unsigned()->nullable();
+            $table->integer('nominal_tf')->unsigned()->nullable();
             $table->text('bukti_tf')->unsigned()->nullable();
             $table->timestamps();
         });

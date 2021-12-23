@@ -73,11 +73,11 @@
             </tr>
             <tr>
               <th scope="row">Riwayat Hasil Penawaran Supplier</th>
-              <td>{{ $sups->dpal_ke_supplier ?? 'Tidak ada penawaran' }}</td>
+              <td>{!! $sups->dpal_ke_supplier ?? 'Tidak ada penawaran' !!}</td>
             </tr>
             <tr>
               <th scope="row">Riwayat Evaluasi ke Supplier</th>
-              <td>{{ $sups->dpal_ke_supplier ?? 'Tidak ada penawaran'}}</td>
+              <td>{!! $sups->dpal_ke_supplier ?? 'Tidak ada penawaran'!!}</td>
             </tr>
           </tbody>
         </table>

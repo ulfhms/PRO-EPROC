@@ -37,7 +37,7 @@
     </tr>
     <tr>
       <th scope="row">Tanggal Pengumuman Pemenang</th>
-      <td>28 September 2020</td>
+      <td>{{ date('d-M-Y',strtotime($pengadaan->tgl_pengumuman_pemenang)) ?? 'Pemenang belum ditentukan'}}</td>
     </tr>
     <tr>
       <th scope="row">Unit Kerja Pengusul</th>
@@ -70,7 +70,7 @@
     </tr>
     <tr>
       <th scope="row">Peserta</th>
-      <td><a href="">5 Peserta</a></td>
+      <td>{{ count($pengsups) }} Peserta</td>
     </tr>
     <tr>
       <th scope="row">Status</th>
@@ -82,7 +82,7 @@
         @endif
       </td>
     </tr>
-    <tr>
+    {{-- <tr>
       <th scope="row">Status Proses</th>
       <td>
         @if ($pengadaan->status_proses === 'proses')
@@ -93,7 +93,7 @@
           <button class="btn btn-sm btn-primary">Selesai</button>
         @endif
       </td>
-    </tr>
+    </tr> --}}
   </tbody>
 </table>
 @endsection

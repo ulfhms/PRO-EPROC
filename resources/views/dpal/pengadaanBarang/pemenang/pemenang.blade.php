@@ -97,27 +97,49 @@
                 <td><span class="badge-primary">Acc</span></td>
                 @endif
               </tr>
+              @if ($sups->bukti_tf === null)
               <tr>
                 <th scope="row">Bukti Transfer</th>
                 <td>
-                  @if ($sups->bukti_tf === null)
                   <form action="{{ route('dpal.pengadaanBarang.formBuktiTf', $sups->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
-                    <input type="file" name="bukti_tf" id="">
-                    <button type="submit">Kirim</button>
-                  </form>
-                  @else 
-                  <img src="{{ asset( 'storage/'.$sups->bukti_tf ) }}" alt="" width="200">
-                  <form action="{{ route('dpal.pengadaanBarang.formBuktiTf', $sups->id) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    @method('patch')
-                    <input type="file" name="bukti_tf" id="">
-                    <button type="submit">Kirim</button>
-                  </form>
-                  @endif
+                    <input type="file" name="bukti_tf" id="" width="700">
+                  </td>
+                </tr>
+              <tr>
+                <th>Nominal Transfer</th>
+                <td>
+                  <input type="number" name="nominal_tf" class="form-control">
                 </td>
               </tr>
+              <tr>
+                <th></th>
+                <td>
+                  <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
+                </td>
+              </tr>
+            </form>
+                  @else 
+                  <tr>
+                <th scope="row">Bukti Transfer</th>
+                <td>
+                  <img src="{{ asset( 'storage/'.$sups->bukti_tf ) }}" alt="" width="700" class="mb-2">
+                  <form action="{{ route('dpal.pengadaanBarang.formBuktiTf', $sups->id) }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('patch')
+                    <input type="file" name="bukti_tf" id="">
+                    <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
+                  </form>
+                </td>
+              </tr>
+              <tr>
+                <th>Nominal Transfer</th>
+                <td>
+                  <p>Rp {{ number_format($sups->nominal_tf) }} ,-</p>
+                </td>
+              </tr>
+                  @endif
             </tbody>
           </table>
         </div>

@@ -32,6 +32,7 @@
     </tr>
   </thead>
   <tbody>
+
     @foreach ($pengadaans as $pengadaan)    
     <tr>
       <th scope="row">

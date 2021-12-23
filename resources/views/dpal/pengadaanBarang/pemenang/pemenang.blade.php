@@ -79,11 +79,23 @@
               </tr>
               <tr>
                 <th scope="row">Riwayat Hasil Penawaran Supplier</th>
-                <td>{!! $sups->supplier_ke_dpal !!}</td>
+                <td>{!! $sups->supplier_ke_dpal ?? 'Tidak ada penawaran' !!}</td>
               </tr>
               <tr>
                 <th scope="row">Riwayat Evaluasi ke Supplier</th>
-                <td>{!! $sups->dpal_ke_supplier !!}</td>
+                <td>{!! $sups->dpal_ke_supplier ?? 'Tidak ada penawaran' !!}</td>
+              </tr>
+              <tr>
+                <th>Status</th>
+                @if ($sups->status_supplier === 'selesai')
+                <td><span class="badge-primary">Lunas</span></td>
+                @elseif ($sups->status_supplier === 'belum_lunas')
+                <td><span class="badge-danger">Belum Lunas</span></td>
+                @elseif ($sups->status_supplier === 'validasi')
+                <td><span class="badge-primary">Validasi</span></td>
+                @elseif ($sups->status_supplier === 'acc')
+                <td><span class="badge-primary">Acc</span></td>
+                @endif
               </tr>
               <tr>
                 <th scope="row">Bukti Transfer</th>

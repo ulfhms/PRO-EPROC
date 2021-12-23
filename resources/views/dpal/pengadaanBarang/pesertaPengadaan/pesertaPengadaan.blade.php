@@ -31,6 +31,22 @@
         <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#tolak{{ $sups->id }}">
           Tolak
         </button>
+        @elseif($sups->status_supplier === 'acc')   
+        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#tolak{{ $sups->id }}">
+          Acc
+        </button>
+        @elseif($sups->status_supplier === 'validasi')   
+        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#tolak{{ $sups->id }}">
+          Validasi
+        </button>
+        @elseif($sups->status_supplier === 'selesai')   
+        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#tolak{{ $sups->id }}">
+          Selesai
+        </button>
+        @elseif($sups->status_supplier === 'belum_lunas')   
+        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#tolak{{ $sups->id }}">
+          Belum Lunas
+        </button>
         @elseif($sups->status_supplier === 'evaluasi')   
         <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#evaluasi{{ $sups->id }}">
           Evaluasi
@@ -38,7 +54,9 @@
         @endif
       </td>
       <td>
-        @if ($sups->status_supplier === 'tolak' || $sups->status_supplier === 'evaluasi')
+        @php (
+            $kondisi = $sups->status_supplier==='tolak'||$sups->status_supplier === 'evaluasi'||$sups->status_supplier === 'acc'||$sups->status_supplier === 'validasi'||$sups->status_supplier === 'selesai'||$sups->status_supplier === 'belum_lunas')
+        @if ($kondisi)
           <button type="button" class="btn btn-sm btn-primary">
             Telah di proses
           </button>

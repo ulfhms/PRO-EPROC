@@ -26,6 +26,12 @@
               <a href="#" class="badge badge-secondary text-decoration-none">Submited</a>              
               @elseif ($sups->status_supplier === 'evaluasi')
               <a href="#" class="badge badge-warning text-decoration-none">Evaluasi</a>    
+              @elseif ($sups->status_supplier === 'acc')
+              <a href="#" class="badge badge-primary text-decoration-none">Acc</a>    
+              @elseif ($sups->status_supplier === 'validasi')
+              <a href="#" class="badge badge-primary text-decoration-none">Validasi</a>    
+              @elseif ($sups->status_supplier === 'selesai')
+              <a href="#" class="badge badge-primary text-decoration-none">Selesai</a>    
               @elseif ($sups->status_supplier === 'tolak')
               <a href="#" class="badge badge-danger text-decoration-none">Tolak</a>    
               @endif

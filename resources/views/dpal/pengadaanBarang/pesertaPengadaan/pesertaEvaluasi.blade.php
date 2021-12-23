@@ -14,6 +14,7 @@
   </thead>
   <tbody  class="text-center">
     @php ($no=1)
+    
     @foreach ($pengsups as $sups)        
     <tr>
       <th scope="row">{{ $no++ }}</th>

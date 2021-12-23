@@ -67,6 +67,7 @@ use Illuminate\Support\Facades\Route;
             Route::post('/store', [SupplierPengadaanController::class, 'store'])->name('supplier.pengadaanBarang.store');
             Route::get('{id}/edit', [SupplierPengadaanController::class, 'edit'])->name('supplier.pengadaanBarang.edit');
             Route::patch('{id}/updateSubmit', [SupplierPengadaanController::class, 'updateSubmit'])->name('supplier.pengadaanBarang.updateSubmit');
+            Route::patch('/checkBuktiTf/{id}', [PengadaanBarangController::class, 'checkBuktiTf'])->name('dpal.pengadaanBarang.checkBuktiTf');
         });
         
         Route::prefix('supplier/status')->group(function (){

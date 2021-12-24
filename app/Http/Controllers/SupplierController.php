@@ -20,25 +20,13 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $profile = DB::table('suppliers')
-        // ->select('users.id','bidang_usahas.nama_bingus','banks.nama_bank','users.npwp','users.narahubung','users.name','users.telepon','users.no_rek','users.alamat','users.image','users.email')
-        ->join('banks', 'suppliers.bank_id', '=', 'banks.id')
-        ->join('bidang_usahas', 'suppliers.bidangusaha_id', '=', 'bidang_usahas.id')
-        ->where('suppliers.user_id',auth()->id())->first();
-        // dd($profile);
+        $profile = Supplier::where('user_id',auth()->id())->first();
         return view('supplier/profile/index', compact('profile'));
     }
 
     public function editProfile($id)
     {
-        $supplier = Supplier::where('user_id',$id)->first();
-        // dd($supplier);
-        $profile = DB::table('suppliers')
-        ->join('banks', 'suppliers.bank_id', '=', 'banks.id')
-        ->join('bidang_usahas', 'suppliers.bidangusaha_id', '=', 'bidang_usahas.id')
-        ->join('users', 'suppliers.user_id', '=', 'users.id')
-        ->where('suppliers.id',$supplier->id)->first();
-        // dd($supplier);
+        $profile = Supplier::where('user_id',$id)->first();
         $bingus = BidangUsaha::get();
         $banks = Bank::get();
         return view('supplier/profile/editProfile', compact('profile', 'bingus', 'banks'));
@@ -67,10 +55,10 @@ class SupplierController extends Controller
             'logo_supplier.mimes' => 'Format logo harus berformat jpg.png',
         ]);
 
-        $image = $supplier->image;
-        if($request->hasFile('image')){
+        $image = $supplier->logo_supplier;
+        if($request->hasFile('logo_supplier')){
             Storage::delete($image);
-            $image = $request->file('image')->store('images/logo');
+            $image = $request->file('logo_supplier')->store('images/logo_supplier');
         }
         $supplier->update([
             'bidangusaha_id' => $request->bidangusaha,

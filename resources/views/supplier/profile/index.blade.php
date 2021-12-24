@@ -35,11 +35,11 @@
               </tr>
               <tr>
                 <th>No Rekening</th>
-                <td>{{ $profile->nama_bank }} - {{ $profile->no_rek }}</td>
+                <td>{{ $profile->bank->nama_bank }} - {{ $profile->no_rek }}</td>
               </tr>
               <tr>
                 <th>Bidang Usaha</th>
-                <td>{{ $profile->nama_bingus }}</td>
+                <td>{{ $profile->bidangusaha['nama_bingus'] }}</td>
               </tr>
               <tr>
                 <th>Alamat</th>

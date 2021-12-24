@@ -1,5 +1,5 @@
 @extends('layouts/main-layout')
-@section('title', 'Tambah Barang')
+@section('title', 'Tambah Pengadaan')
 @section('content')
 
 <h5 class="bg-warning p-2 rounded text-center">Tambah Paket Pengadaan</h5>

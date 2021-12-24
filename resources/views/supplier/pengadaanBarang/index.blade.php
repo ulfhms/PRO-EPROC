@@ -1,6 +1,7 @@
 @extends('layouts/main-layout')
-@section('title', 'Daftar Barang')
+@section('title', 'Pengadaan Barang')
 @section('content')
+@include('layouts.alert')
 <h5 class="bg-warning p-2 rounded text-center">Pengadaan yang Diikuti</h5>
     <div class="d-flex justify-content-end mb-2">
         <a href="{{ route('supplier.pengadaanBarang.create') }}" class="btn btn-sm btn-primary">Tambah</a><br>
@@ -12,7 +13,7 @@
           {{-- <th>Kode Pengadaan</th> --}}
           <th>Nama Pengadaan</th>
           <th class="text-center">Status</th>
-          <th class="text-center">Action</th>
+          {{-- <th class="text-center">Action</th> --}}
         </thead>
         <tbody>
           @php($no=1)
@@ -36,8 +37,8 @@
               <a href="#" class="badge badge-danger text-decoration-none">Tolak</a>    
               @endif
             </td>
-            <td class="text-center"><a href="{{ route('supplier.pengadaanBarang.edit', $sups->id) }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-            </td>
+            {{-- <td class="text-center"><a href="{{ route('supplier.pengadaanBarang.edit', $sups->id) }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+            </td> --}}
           </tr>
           @endforeach
       </table>

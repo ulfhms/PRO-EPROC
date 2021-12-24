@@ -1,7 +1,7 @@
 @extends('layouts/main-layout')
 @section('title', 'Edit Pengadaan Barang')
 @section('content')
-<h5 class="bg-warning p-2 rounded col-12">{{ $pengadaan->budjet->nama_kegiatan }}</h5>
+<h5 class="bg-warning p-2 rounded col-12">Edit {{ $pengadaan->budjet->nama_kegiatan }}</h5>
 <table class="table mt-4 ">
   <tbody>
     <tr>
@@ -55,7 +55,7 @@
     </tr>
     <tr>
       <th scope="row">Peserta</th>
-      <td><a href="">5 Peserta</a></td>
+      <td>{{ count($pengsups) }} Peserta</td>
     </tr>
     <tr>
       <th scope="row">Status</th>

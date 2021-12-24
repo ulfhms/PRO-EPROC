@@ -2,6 +2,7 @@
 @section('title', 'Hasil Evaluasi')
 @section('content')
 @include('dpal/pengadaanBarang/navbarPengadaan')
+@if ($pengadaan->tgl_pengumuman_pemenang === null)    
 <div class="card">
   <h5 class="card-header bg-success text-white mt-3">Pilih Supplier yang di ACC</h5>
   <form action="{{ route('dpal.pengadaanBarang.formPemenang',$pengadaan->id) }}" method="post">
@@ -19,6 +20,7 @@
     </div>
   </form>
 </div>
+@endif
 @foreach ($pengsups as $sups)      
 <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
   <div class="accordion-item">
@@ -38,6 +40,40 @@
             <tr>
               <th scope="row">NPWP</th>
               <td>{{ $sups->supplier->npwp }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Status</th>
+              <td>
+                @if ($sups->status_supplier === 'submitted')
+                <span class="badge badge-secondary">
+                  Submitted
+                </span>
+                @elseif($sups->status_supplier === 'tolak')   
+                <span class="badge badge-danger">
+                  Tolak
+                </span>
+                @elseif($sups->status_supplier === 'acc')   
+                <span class="badge badge-primary">
+                  Acc
+                </span>
+                @elseif($sups->status_supplier === 'validasi')   
+                <span class="badge badge-primary">
+                  Validasi
+                </span>
+                @elseif($sups->status_supplier === 'selesai')   
+                <span class="badge badge-primary">
+                  Lunas
+                </span>
+                @elseif($sups->status_supplier === 'belum_lunas')   
+                <span class="badge badge-danger">
+                  Belum Lunas
+                </span>
+                @elseif($sups->status_supplier === 'evaluasi')   
+                <span class="badge badge-warning">
+                  Evaluasi
+                </span>
+                @endif
+              </td>
             </tr>
             <tr>
               <th scope="row">Alamat</th>

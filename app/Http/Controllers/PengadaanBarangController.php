@@ -60,7 +60,9 @@ class PengadaanBarangController extends Controller
     public function edit($id)
     {
         $pengadaan = PengadaanBarang::where('id',$id)->first();
-        return view('dpal/pengadaanBarang/pengadaanBarang/edit', compact('pengadaan'));
+        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->get();
+
+        return view('dpal/pengadaanBarang/pengadaanBarang/edit', compact('pengadaan','pengsups'));
     }
 
     public function update(Request $request, $id){
@@ -126,7 +128,7 @@ class PengadaanBarangController extends Controller
 
     public function pesertaEvaluasi($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
-        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','evaluasi')->orWhere('status_supplier','acc')->orWhere('status_supplier','validasi')->orWhere('status_supplier','selesai')->orWhere('status_supplier','belum_lunas')->get();
+        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','evaluasi')->orWhere('status_supplier','acc')->orWhere('status_supplier','validasi')->orWhere('status_supplier','selesai')->orWhere('status_supplier','belum_lunas')->orWhere('status_supplier','tolak')->get();
         // dd($pengsups);
         return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaEvaluasi', compact('pengadaan','pengsups'));
 
@@ -182,7 +184,8 @@ class PengadaanBarangController extends Controller
 
     public function formPemenang(Request $request, $id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
-        $pemenangs = $request->pemenang;
+        $pemenangs = $request->pemenang; //get id pememnang
+
         // dd($pemenangs);
         foreach ($pemenangs as $pemenang) {
             $pemenang;
@@ -194,10 +197,21 @@ class PengadaanBarangController extends Controller
                     );
                    
         }
+
+        $pengsupTolak = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','evaluasi')->get();
+            foreach ($pengsupTolak as $pengLak) {
+                $pengLak->update([
+                    'status_supplier' => 'tolak'
+                ]);
+            }
+
         $thisTime = Carbon::now();
         $pengadaan->update([
             'tgl_pengumuman_pemenang' => $thisTime,
         ]);
+
+        
+
         return redirect()->route('dpal.pengadaanBarang.pemenang',$pengadaan->id);
     }
 

@@ -60,6 +60,7 @@ class SupplierController extends Controller
             Storage::delete($image);
             $image = $request->file('logo_supplier')->store('images/logo_supplier');
         }
+
         $supplier->update([
             'bidangusaha_id' => $request->bidangusaha,
             'bank_id' => $request->bank,
@@ -73,7 +74,7 @@ class SupplierController extends Controller
             'logo_supplier' => $image
             ]);
             
-        return redirect()->route('supplier.profile');
+        return redirect()->route('supplier.profile')->with(['success' => 'Data supplier berhasil di ubah']);
 
     }
 

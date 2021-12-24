@@ -1,8 +1,7 @@
 @extends('layouts/main-layout')
 @section('title', 'Profile')
 @section('content')
-<div class="d-flex justify-content-end">
-</div>
+@include('layouts.alert')
 <div class="card ">
   <p class="card-header fw-bold">Profil Supplier</p>
   <div class="card-body">
@@ -24,6 +23,10 @@
               <tr>
                 <th>NPWP</th>
                 <td>{{ $profile->npwp }}</td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td>{{ $profile->user->email }}</td>
               </tr>
               <tr>
                 <th>Telepon</th>

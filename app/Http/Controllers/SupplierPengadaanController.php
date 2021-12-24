@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Budjet;
 use App\Models\PengadaanBarang;
 use App\Models\PengadaanSupplier;
 use App\Models\Supplier;
@@ -28,6 +29,9 @@ class SupplierPengadaanController extends Controller
      */
     public function create()
     {
+        $supplier = Supplier::where('user_id',auth()->id())->first();
+        // $checkPengadaan = PengadaanSupplier::where('status_pengadaan',1)->get();
+        // dd($checkPengadaan);
         $pengadaans = PengadaanBarang::where('status_pengadaan',1)->get();
         return view('supplier/pengadaanBarang/create', compact('pengadaans'));
     }
@@ -45,20 +49,28 @@ class SupplierPengadaanController extends Controller
         
         if($request->file('proposal')){
             $proposal=$request->file('proposal')->store('pengadaanBarang/proposal');
-        }else{
-            $proposal=null;
         }
-        $data = [
+
+        $request->validate([
+            'pengadaan_id' => 'required',
+            'harga_penawaran' => 'required',
+            'proposal' => 'required|mimetypes:application/pdf'
+        ],[
+            'pengadaan_id.required' => 'Pengadaan belum dipilih',
+            'harga_penawaran.required' => 'Harga penawaran wajib diisi',
+            'proposal.required' => 'Proposal wajib diisi',
+            'proposal.mimetypes' => 'Proposal wajib berformat pdf',
+        ]);
+
+        PengadaanSupplier::create([
             'pengadaan_id' => $request->pengadaan_id,
             'supplier_id' => $supplier->id,
             'status_supplier' => 'submitted',
             'proposal' => $proposal,
             'harga_penawaran' => $request->harga_penawaran,
-        ];
+        ]);
 
-        PengadaanSupplier::create($data);
-
-        return redirect()->route('supplier.pengadaanBarang.index');
+        return redirect()->route('supplier.pengadaanBarang.index')->with(['success' => 'Pengadaan dapat diikuti']);
     }
 
 

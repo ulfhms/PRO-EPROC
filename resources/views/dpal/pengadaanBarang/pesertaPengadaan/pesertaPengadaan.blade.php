@@ -32,19 +32,19 @@
           Tolak
         </button>
         @elseif($sups->status_supplier === 'acc')   
-        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#tolak{{ $sups->id }}">
+        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#acc{{ $sups->id }}">
           Acc
         </button>
         @elseif($sups->status_supplier === 'validasi')   
-        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#tolak{{ $sups->id }}">
+        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#validasi{{ $sups->id }}">
           Validasi
         </button>
         @elseif($sups->status_supplier === 'selesai')   
-        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#tolak{{ $sups->id }}">
-          Selesai
+        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#lunas{{ $sups->id }}">
+          Lunas
         </button>
         @elseif($sups->status_supplier === 'belum_lunas')   
-        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#tolak{{ $sups->id }}">
+        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#belum_lunas{{ $sups->id }}">
           Belum Lunas
         </button>
         @elseif($sups->status_supplier === 'evaluasi')   
@@ -113,8 +113,8 @@
 @endforeach
 
 
-@foreach ($pengsups as $sups)    
 <!-- Modal tolak-->
+@foreach ($pengsups as $sups)    
 <div class="modal fade" id="tolak{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -153,8 +153,8 @@
 </div>
 @endforeach
 
+{{-- Modal Submit --}}
 @foreach ($pengsups as $sups)
-    {{-- Modal Submit --}}
 <div class="modal fade" id="submit{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -193,9 +193,8 @@
 </div>
 @endforeach
 
-
-@foreach ($pengsups as $sups)
 {{-- Modal evaluasi --}}
+@foreach ($pengsups as $sups)
 <div class="modal fade" id="evaluasi{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -216,6 +215,49 @@
             </tr>
             <tr>
               <th scope="row">Harga Penawaran</th>
+              <td>Rp {{ number_format($sups->harga_penawaran) }} ,-</td>
+            </tr>
+            <tr>
+              <th scope="row">Status</th>
+              <td>{{ ucwords($sups->status_supplier) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
+
+{{-- Modal acc --}}
+@foreach ($pengsups as $sups)
+<div class="modal fade" id="acc{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Acc</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Supplier</th>
+              <td>{{ $sups->supplier->nama_supplier }}</td>
+            </tr>
+            <tr>
+              <th scope="row">NPWP</th>
+              <td>{{ $sups->supplier->npwp }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Penawaran</th>
+              <td>Rp {{ $sups->harga_penawaran }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Terkoreksi</th>
               <td>Rp {{ $sups->harga_penawaran }}</td>
             </tr>
             <tr>
@@ -232,4 +274,142 @@
   </div>
 </div>
 @endforeach
+
+{{-- Modal validasi --}}
+@foreach ($pengsups as $sups)
+<div class="modal fade" id="validasi{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Validasi</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Supplier</th>
+              <td>{{ $sups->supplier->nama_supplier }}</td>
+            </tr>
+            <tr>
+              <th scope="row">NPWP</th>
+              <td>{{ $sups->supplier->npwp }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Penawaran</th>
+              <td>Rp {{ $sups->harga_penawaran }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Terkoreksi</th>
+              <td>Rp {{ $sups->harga_penawaran }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Status</th>
+              <td>{{ ucwords($sups->status_supplier) }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Bukti Tf</th>
+              <td> <img src="{{ asset('storage/'.$sups->bukti_tf) }}" alt="" width="400"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
+
+{{-- Modal belum_lunas --}}
+@foreach ($pengsups as $sups)
+<div class="modal fade" id="belum_lunas{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Validasi</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Supplier</th>
+              <td>{{ $sups->supplier->nama_supplier }}</td>
+            </tr>
+            <tr>
+              <th scope="row">NPWP</th>
+              <td>{{ $sups->supplier->npwp }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Penawaran</th>
+              <td>Rp {{ $sups->harga_penawaran }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Terkoreksi</th>
+              <td>Rp {{ $sups->harga_penawaran }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Status</th>
+              <td>{{ ucwords($sups->status_supplier) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
+
+{{-- Modal lunas --}}
+@foreach ($pengsups as $sups)
+<div class="modal fade" id="lunas{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Lunas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Supplier</th>
+              <td>{{ $sups->supplier->nama_supplier }}</td>
+            </tr>
+            <tr>
+              <th scope="row">NPWP</th>
+              <td>{{ $sups->supplier->npwp }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Penawaran</th>
+              <td>Rp {{ $sups->harga_penawaran }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Terkoreksi</th>
+              <td>Rp {{ $sups->harga_penawaran }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Status</th>
+              <td>{{ ucwords($sups->status_supplier) }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Bukti Tf</th>
+              <td> <img src="{{ asset('storage/'.$sups->bukti_tf) }}" alt="" width="400"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
+
 @endsection

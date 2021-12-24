@@ -2,13 +2,11 @@
 @section('title')
 {{ ucwords($pengsup->supplier->nama_supplier) }}
 @endsection
-{{-- @section('title', 'CV Murah Hati') --}}
 @section('content')
 <div class="m-2">
-  {{-- @include('dpal/pengadaanBarang/pesertaPengadaan/navbar') --}}
   <div class="row">
     <div class="col-2">
-        <img src="{{ asset('logo/ikea.svg') }}" alt="">
+        <img src="{{ asset('storage/'.$pengsup->supplier->logo_supplier) }}" alt="" width="180">
     </div>
     <div class="col">
         <h3 class="">{{ ucwords($pengsup->supplier->nama_supplier) }}</h3>
@@ -23,11 +21,6 @@
             <td>Kode</td>
             <td>Sup-1</td>
           </tr> --}}
-          <tr>
-            <th scope="row">2</th>
-            <td>Nama Perusahaan</td>
-            <td>{{ ucwords($pengsup->supplier->nama_supplier) }}</td>
-          </tr>
           <tr>
             <th scope="row">3</th>
             <td>NPWP</td>
@@ -66,15 +59,10 @@
           <tr>
             <th scope="row">8</th>
             <td>Proposal</td>
-            <td><a href="/download/{{ $pengsup->proposal }}">File</a></td>
+            <td><a href="/download/{{ $pengsup->proposal }}">File Proposal</a></td>
           </tr>
         </tbody>
       </table>
-  </div>
-  <div class="row">
-    <div class="col text-center mb-5">
-      <div class="fw-bold p-2text-dark fs-6 bg-warning text-decoration-underline">Produk</div>
-    </div>
   </div>
 </div>
 @endsection

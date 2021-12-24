@@ -63,14 +63,14 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
     </tr>
     @endif
     @if ($pengsup->status_supplier === 'evaluasi')        
-      <tr class="">
+      {{-- <tr class="">
         <th> Hasil Evaluasi</th>
         <td>{!! $pengsup->dpal_ke_supplier ?? 'Belum ada Penawaran' !!}</td>
       </tr>
       <tr class="">
         <th>Hasil Respon</th>
         <td>{!! $pengsup->supplier_ke_dpal ?? 'Belum ada Penawaran' !!}</td>
-      </tr>
+      </tr> --}}
       <form action="{{ route('supplier.pengadaanBarang.updateSubmit', $pengsup->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('patch')
@@ -94,10 +94,10 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
             </div>
           </th>
         </tr>
-        <tr>
+        {{-- <tr>
           <th>Proposal</th>
           <td><input class="form-control form-control-sm" id="formFileSm" type="file" name="proposal"></td>
-        </tr>
+        </tr> --}}
         <tr>
           <th scope="row"></th>
           <td>
@@ -145,10 +145,6 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
       </tr>
       @endif
     @endif
-    <tr>
-      <th>File Proposal</th>
-      <td scope="row" colspan="3" class="text-primary"><a href="/download/{{ $pengsup->proposal }}">Proposal</a></td>
-    </tr>
   </tbody>
 </table>
 {{-- <table class="table table-borderless">

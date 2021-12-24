@@ -1,5 +1,5 @@
 @extends('layouts/main-layout')
-@section('title','Peserta')
+@section('title','Peserta Evaluasi')
 @section('content')
 @include('dpal/pengadaanBarang/navbarPengadaan')
 <table class="table mt-4">

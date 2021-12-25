@@ -105,16 +105,25 @@ class PengadaanBarangController extends Controller
     }
 
     public function formTolak(Request $request, $id){
-        // $pengadaan = PengadaanBarang::where('id',$id)->first();
         $pengsup = PengadaanSupplier::where('id',$id)->first();
-        // dd($pengsups);
-        // dd($pengsups);
+
+        $request->validate([
+            'alasan_penolakan' => 'required',
+        ],[
+            'alasan_penolakan.required' => 'Alasan penolakan wajib diisi'
+        ]);
+
+        // if($validasi){
+            
+        // }
+        
+
         $pengsup->update([
             'status_supplier' => 'tolak',
             'alasan_penolakan' => $request->alasan_penolakan,
         ]);
 
-        return redirect()->route('dpal.pengadaanBarang.pesertaPengadaan', $pengsup->pengadaan_id);
+        return redirect()->route('dpal.pengadaanBarang.pesertaPengadaan', $pengsup->pengadaan_id)->with(['success'=>'Alasan Penolakan berhasil ditambah']);
     }
 
     public function formEvaluasi(Request $request, $id){
@@ -135,10 +144,7 @@ class PengadaanBarangController extends Controller
     }
 
     public function editHasilEvaluasi($id){
-        // $pengadaan = PengadaanBarang::where('id',$id)->first();
-        // dd($pengadaan);
         $pengsup = PengadaanSupplier::where('id',$id)->first();
-        // dd($pengsups);
 
         return view('dpal/pengadaanBarang/evaluasi/editHasilEvaluasi',compact('pengsup'));
 
@@ -186,7 +192,12 @@ class PengadaanBarangController extends Controller
         $pengadaan = PengadaanBarang::where('id',$id)->first();
         $pemenangs = $request->pemenang; //get id pememnang
 
-        // dd($pemenangs);
+        $request->validate([
+            'pemenang' => 'required'
+        ],[
+            'pemenang.required' => 'Pemenang wajib dipilih'
+        ]);
+        
         foreach ($pemenangs as $pemenang) {
             $pemenang;
             $pengsup = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','evaluasi')->where('supplier_id',$pemenang)->first();
@@ -215,17 +226,48 @@ class PengadaanBarangController extends Controller
         return redirect()->route('dpal.pengadaanBarang.pemenang',$pengadaan->id);
     }
 
+    public function TolakEvaluasi($id){
+        $pengadaan = PengadaanBarang::where('id',$id)->first();
+        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','tolak')->get();
+        return view('dpal/pengadaanBarang/tolakEvaluasi/tolakEvaluasi', compact('pengadaan','pengsups'));
+    }
+
+    public function formTolakEvaluasi(Request $request, $id){
+        $pengsup = PengadaanSupplier::where('id',$id)->first();
+
+        $request->validate([
+            'alasan_penolakan' => 'required',
+        ],[
+            'alasan_penolakan.required' => 'Alasan penolakan wajib diisi'
+        ]);
+
+
+        $pengsup->update([
+            'status_supplier' => 'tolak',
+            'alasan_penolakan' => $request->alasan_penolakan,
+        ]);
+
+        return redirect()->back()->with(['success'=>'Alasan Penolakan berhasil ditambah']);
+    }
     public function pemenang($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
         $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','acc')->orWhere('status_supplier','validasi')->orWhere('status_supplier','selesai')->orWhere('status_supplier','belum_lunas')->get();
-        // $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','acc')->orWhere('status_supplier','validasi')->get();
-        // dd($pengadaan);
         return view('dpal/pengadaanBarang/pemenang/pemenang', compact('pengadaan','pengsups'));
     }
 
     public function formBuktiTf(Request $request, $id){
         $pengsup = PengadaanSupplier::where('id',$id)->first();
         // dd($pengsup);
+
+        $request->validate([
+            'nominal_tf' => 'required',
+            'bukti_tf' => 'required:mimes:jpg,png',
+        ],[
+            'nominal_tf.required' => 'Nominal wajib diisi sesuai dengan bukti transfer',
+            'bukti_tf.required' => 'Bukti transfer wajib diisi',
+            'bukti_tf.mimes' => 'Bukti transfer wajib format jpg,png'
+        ]);
+
         $bukti_tf = $pengsup->bukti_tf;
         if($request->hasFile('bukti_tf')){
             Storage::delete($bukti_tf);
@@ -240,19 +282,36 @@ class PengadaanBarangController extends Controller
 
         return redirect()->back();
     }
+    
+    // public function formUlangBuktiTf(Request $request, $id){
+    //     $pengsup = PengadaanSupplier::where('id',$id)->first();
+    //     // dd($pengsup);
 
-    public function checkBuktiTf(Request $request, $id){
-        $pengsup = PengadaanSupplier::where('id',$id)->first();
-        $checkSupplier = PengadaanSupplier::where('pengadaan_id',$pengsup->pengadaan_id)->where('status_supplier','validasi')->get();
-        $pengadaan = PengadaanBarang::where('id',$pengsup->pengadaan_id)->first();
+    //     $request->validate([
+    //         'nominal_tf' => 'required',
+    //         'bukti_tf' => 'required:mimes:jpg,png',
+    //     ],[
+    //         'nominal_tf.required' => 'Nominal wajib diisi sesuai dengan bukti transfer',
+    //         'bukti_tf.required' => 'Bukti transfer wajib diisi',
+    //         'bukti_tf.mimes' => 'Bukti transfer wajib format jpg,png'
+    //     ]);
 
-        $pengsup->update([
-            'status_supplier' => $request->status_supplier,
-        ]);
+    //     $bukti_tf = $pengsup->bukti_tf;
+    //     if($request->hasFile('bukti_tf')){
+    //         Storage::delete($bukti_tf);
+    //         $bukti_tf = $request->file('bukti_tf')->store('pengadaanBarang/bukti_tf');
+    //     }
+        
+    //     $pengsup->update([
+    //         'nominal_tf' => $request->nominal_tf,
+    //         'bukti_tf' => $bukti_tf,
+    //         'status_supplier' => 'validasi'
+    //     ]);
 
-        return redirect()->back();
-  
-    }
+    //     return redirect()->back();
+    // }
+
+    
     /**
      * Show the form for creating a new resource.
      *

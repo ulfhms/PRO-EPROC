@@ -17,8 +17,38 @@
       <td>{{ $pengsup->pengadaan->budjet->nama_kegiatan }}</td>
     </tr>
     <tr>
-      <th scope="row">Tahap</th>
-      <td><button class="btn btn-sm btn-warning">{{ ucwords($pengsup->status_supplier) }}</button></td>
+      <th scope="row">Status</th>
+      <td>
+        @if ($pengsup->status_supplier === 'submitted')
+        <button type="button" class="btn btn-sm btn-secondary">
+          Submitted
+        </button>
+        @elseif($pengsup->status_supplier === 'tolak')   
+        <button type="button" class="btn btn-sm btn-danger" >
+          Tolak
+        </button>
+        @elseif($pengsup->status_supplier === 'acc')   
+        <button type="button" class="btn btn-sm btn-primary" >
+          Acc
+        </button>
+        @elseif($pengsup->status_supplier === 'validasi')   
+        <button type="button" class="btn btn-sm btn-primary" >
+          Validasi
+        </button>
+        @elseif($pengsup->status_supplier === 'selesai')   
+        <button type="button" class="btn btn-sm btn-primary" >
+          Selesai
+        </button>
+        @elseif($pengsup->status_supplier === 'belum_lunas')   
+        <button type="button" class="btn btn-sm btn-danger" >
+          Belum Lunas
+        </button>
+        @elseif($pengsup->status_supplier === 'evaluasi')   
+        <button type="button" class="btn btn-sm btn-warning" >
+          Evaluasi
+        </button>
+        @endif  
+      </td>
     </tr>
     <tr>
       <th scope="row">Nama Supplier</th>
@@ -44,6 +74,7 @@
       <th scope="row">Hasil Penawaran Supplier ke DPAL</th>
       <td>{!! $pengsup->supplier_ke_dpal ?? 'Penawaran belum dlakukan' !!}</td>
     </tr>
+    @if ($pengsup->status_supplier === 'evaluasi')    
     <form action="{{ route('dpal.pengadaanBarang.formDpalKeSupplier', $pengsup->id) }}" method="post">
       @csrf
       @method('patch')
@@ -59,4 +90,5 @@
     <button class="btn btn-sm btn-primary">Simpan</button>
   </div>
     </form>
+    @endif
 @endsection

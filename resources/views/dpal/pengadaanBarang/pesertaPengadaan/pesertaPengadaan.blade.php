@@ -40,8 +40,8 @@
           Validasi
         </button>
         @elseif($sups->status_supplier === 'selesai')   
-        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#lunas{{ $sups->id }}">
-          Lunas
+        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#selesai{{ $sups->id }}">
+          Selesai
         </button>
         @elseif($sups->status_supplier === 'belum_lunas')   
         <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#belum_lunas{{ $sups->id }}">
@@ -365,13 +365,13 @@
 </div>
 @endforeach
 
-{{-- Modal lunas --}}
+{{-- Modal Selesai --}}
 @foreach ($pengsups as $sups)
-<div class="modal fade" id="lunas{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="selesai{{ $sups->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="exampleModalLabel">Lunas</h5>
+        <h5 class="modal-title" id="exampleModalLabel">selesai</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

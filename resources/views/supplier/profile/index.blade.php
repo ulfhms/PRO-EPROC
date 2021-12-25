@@ -7,7 +7,11 @@
   <div class="card-body">
     <div class="row">
       <div class="col-2">
-        <img src="{{ asset('storage/'.$profile->logo_supplier) }}" alt="" class="img-thumbnail">
+        @if ($profile->logo_supplier === null)
+          <img src="{{ asset('logo/supplier.png') }}" alt="" class="img-fluid">
+        @else
+          <img src="{{ asset('storage/'.$profile->logo_supplier) }}" alt="" class="img-fluid">
+        @endif
       </div>
       <div class="col">
         <h3 class="">

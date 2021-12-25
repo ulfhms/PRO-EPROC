@@ -67,7 +67,7 @@ use Illuminate\Support\Facades\Route;
             Route::post('/store', [SupplierPengadaanController::class, 'store'])->name('supplier.pengadaanBarang.store');
             Route::get('{id}/edit', [SupplierPengadaanController::class, 'edit'])->name('supplier.pengadaanBarang.edit');
             Route::patch('{id}/updateSubmit', [SupplierPengadaanController::class, 'updateSubmit'])->name('supplier.pengadaanBarang.updateSubmit');
-            Route::patch('/checkBuktiTf/{id}', [PengadaanBarangController::class, 'checkBuktiTf'])->name('dpal.pengadaanBarang.checkBuktiTf');
+            Route::patch('/checkBuktiTf/{id}', [SupplierController::class, 'checkBuktiTf'])->name('supplier.pengadaanBarang.checkBuktiTf');
         });
         
         Route::prefix('supplier/status')->group(function (){
@@ -100,8 +100,11 @@ use Illuminate\Support\Facades\Route;
             Route::get('/detailProdukPesertaPengadaan/{id}', [PengadaanBarangController::class, 'detailProdukPesertaPengadaan'])->name('dpal.pengadaanBarang.detailProdukPesertaPengadaan');
             Route::get('/hasilEvaluasi/{id}', [PengadaanBarangController::class, 'hasilEvaluasi'])->name('dpal.pengadaanBarang.hasilEvaluasi');
             Route::patch('/formPemenang/{id}', [PengadaanBarangController::class, 'formPemenang'])->name('dpal.pengadaanBarang.formPemenang');
+            Route::get('/tolakEvaluasi/{id}', [PengadaanBarangController::class, 'tolakEvaluasi'])->name('dpal.pengadaanBarang.tolakEvaluasi');
+            Route::patch('/formTolakEvaluasi/{id}', [PengadaanBarangController::class, 'formTolakEvaluasi'])->name('dpal.pengadaanBarang.formTolakEvaluasi');
             Route::get('/pemenang/{id}', [PengadaanBarangController::class, 'pemenang'])->name('dpal.pengadaanBarang.pemenang');
             Route::patch('/formBuktiTf/{id}', [PengadaanBarangController::class, 'formBuktiTf'])->name('dpal.pengadaanBarang.formBuktiTf');
+            
         });
                     // Route::get('/download/{filename}', [ViewFileController::class,'download']);
 

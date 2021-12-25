@@ -6,6 +6,7 @@
       <a href="{{ route('dpal.pengadaanBarang.pesertaPengadaan', $pengadaan->id) }}" class="badge text-dark fs-6 ms-2 me-2 bg-warning {{ request()->is('dpal/pengadaanBarang/pesertaPengadaan') ? 'text-decoration-underline' : 'text-decoration-none'}}">Peserta</a>
       <a href="{{ route('dpal.pengadaanBarang.pesertaEvaluasi', $pengadaan->id) }}" class="badge text-dark fs-6 ms-2 me-2 bg-warning {{ request()->is('dpal/pengadaanBarang/pesertaEvaluasi') ? 'text-decoration-underline' : 'text-decoration-none'}}">Peserta Evaluasi</a>
       <a href="{{ route('dpal.pengadaanBarang.hasilEvaluasi', $pengadaan->id) }}" class="badge text-dark fs-6 ms-2 me-2 bg-warning {{ request()->is('dpal/pengadaanBarang/hasilEvaluasi') ? 'text-decoration-underline' : 'text-decoration-none'}}">Hasil Evaluasi</a>
+      <a href="{{ route('dpal.pengadaanBarang.tolakEvaluasi', $pengadaan->id) }}" class="badge text-dark fs-6 ms-2 me-2 bg-warning {{ request()->is('dpal/pengadaanBarang/tolakEvaluasi') ? 'text-decoration-underline' : 'text-decoration-none'}}">Tolak Evaluasi</a>
       <a href="{{ route('dpal.pengadaanBarang.pemenang',$pengadaan->id) }}" class="badge text-dark fs-6 ms-2 me-2 bg-warning {{ request()->is('dpal/pengadaanBarang/pemenang') ? 'text-decoration-underline' : 'text-decoration-none'}}">Pemenang</a>
     </div>
   </div>

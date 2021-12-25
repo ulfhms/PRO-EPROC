@@ -9,11 +9,16 @@
     @method('patch')
     @csrf
     <div class="card-body">
-      <select class="js-example-basic-multiple form-control" aria-label="multiple select example" name="pemenang[]" multiple="multiple">
+      <select class="js-example-basic-multiple form-control @error('pemenang') is-invalid @enderror" aria-label="multiple select example" name="pemenang[]" multiple="multiple">
         @foreach ($pengsups as $sups)
         <option value="{{ $sups->supplier_id }}">{{ $sups->supplier->nama_supplier }}</option>
         @endforeach
       </select>
+      @error('pemenang')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+      @enderror
       <div class="d-flex justify-content-end mt-2">
         <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
       </div>

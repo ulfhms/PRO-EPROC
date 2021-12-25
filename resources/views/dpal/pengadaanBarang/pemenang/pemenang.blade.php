@@ -6,7 +6,11 @@
   @foreach ($pengsups as $sups)      
   <div class="row">
     <div class="col-2">
-        <img src="{{ asset('logo/ikea.svg') }}" alt="">
+      @if ($sups->supplier->logo_supplier === null)
+      <img src="{{ asset('logo/supplier.png') }}" alt="" class="img-fluid">
+      @else
+      <img src="{{ asset('storage/'.$sups->supplier->logo_supplier) }}" alt="" class="img-fluid">
+      @endif
     </div>
     <div class="col">
         <h3 class="">{{ $sups->supplier->nama_supplier }}</h3>
@@ -88,7 +92,7 @@
               <tr>
                 <th>Status</th>
                 @if ($sups->status_supplier === 'selesai')
-                <td><span class="badge-primary">Lunas</span></td>
+                <td><span class="badge-primary">Selesai</span></td>
                 @elseif ($sups->status_supplier === 'belum_lunas')
                 <td><span class="badge-danger">Belum Lunas</span></td>
                 @elseif ($sups->status_supplier === 'validasi')
@@ -98,47 +102,91 @@
                 @endif
               </tr>
               @if ($sups->bukti_tf === null)
-              <tr>
-                <th scope="row">Bukti Transfer</th>
-                <td>
-                  <form action="{{ route('dpal.pengadaanBarang.formBuktiTf', $sups->id) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    @method('patch')
-                    <input type="file" name="bukti_tf" id="" width="700">
-                  </td>
-                </tr>
-              <tr>
-                <th>Nominal Transfer</th>
-                <td>
-                  <input type="number" name="nominal_tf" class="form-control">
-                </td>
-              </tr>
-              <tr>
-                <th></th>
-                <td>
-                  <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
-                </td>
-              </tr>
-            </form>
+                <tr>
+                  <th scope="row">Bukti Transfer</th>
+                  <td>
+                    <form action="{{ route('dpal.pengadaanBarang.formBuktiTf', $sups->id) }}" method="post" enctype="multipart/form-data">
+                      @csrf
+                      @method('patch')
+                      <input type="file" name="bukti_tf" id="" width="700" class="form-control form-control-sm @error('bukti_tf') is-invalid @enderror">
+                      @error('bukti_tf')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Nominal Transfer</th>
+                    <td>
+                      <input type="number" name="nominal_tf" class="form-control @error('nominal_tf') is-invalid @enderror" value="{{ old('nominal_tf') }}">
+                      @error('nominal_tf')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td>
+                      <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
+                    </td>
+                  </tr>
+                  </form>
                   @else 
+                  <tr>
+                    <th>Nominal Transfer</th>
+                    <td>
+                      <p>Rp {{ number_format($sups->nominal_tf) }} ,-</p>
+                    </td>
+                  </tr>
+                    @if ($sups->status_supplier === 'belum_lunas')
+                        <tr>
+                          <th>Alasan belum lunas</th>
+                          <td>{!! $sups->alasan_gagal !!}</td>
+                        </tr>
+                    @endif
                   <tr>
                 <th scope="row">Bukti Transfer</th>
                 <td>
-                  <img src="{{ asset( 'storage/'.$sups->bukti_tf ) }}" alt="" width="700" class="mb-2">
-                  <form action="{{ route('dpal.pengadaanBarang.formBuktiTf', $sups->id) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    @method('patch')
-                    <input type="file" name="bukti_tf" id="">
-                    <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
-                  </form>
+                  <img src="{{ asset( 'storage/'.$sups->bukti_tf ) }}" alt="" width="500" class="mb-2">
                 </td>
               </tr>
-              <tr>
-                <th>Nominal Transfer</th>
-                <td>
-                  <p>Rp {{ number_format($sups->nominal_tf) }} ,-</p>
-                </td>
-              </tr>
+                    @if ($sups->status_supplier === 'belum_lunas')
+                      <tr>
+                        <th>Kirim ulang bukti transfer</th>
+                        <td>
+                          <form action="{{ route('dpal.pengadaanBarang.formBuktiTf', $sups->id) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('patch')
+                            <input type="file" name="bukti_tf" id="" width="700" class="form-control form-control-sm @error('bukti_tf') is-invalid @enderror">
+                            @error('bukti_tf')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Nominal Transfer</th>
+                          <td>
+                            <input type="number" name="nominal_tf" class="form-control @error('nominal_tf') is-invalid @enderror" value="{{ old('nominal_tf') }}">
+                            @error('nominal_tf')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                          </td>
+                        </tr>
+                        <tr>
+                          <th></th>
+                          <td>
+                            <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
+                          </td>
+                        </tr>
+                        </form>
+                    @endif
                   @endif
             </tbody>
           </table>

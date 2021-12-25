@@ -28,6 +28,7 @@ class CreatePengadaanSuppliersTable extends Migration
             $table->text('alasan_penolakan')->unsigned()->nullable();
             $table->integer('nominal_tf')->unsigned()->nullable();
             $table->text('bukti_tf')->unsigned()->nullable();
+            $table->text('alasan_gagal')->unsigned()->nullable();
             $table->timestamps();
         });
     }

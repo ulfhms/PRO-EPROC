@@ -109,9 +109,15 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
       <th>Nominal Transfer</th>
       <td>Rp {{ number_format($pengsup->nominal_tf) }} ,-</td>
     </tr>
+      @if ($pengsup->status_supplier === 'belum_lunas')
+      <tr>
+        <th>Alasan Gagal</th>
+        <td>{!! $pengsup->alasan_gagal !!}</td>
+      </tr>
+      @endif
     <tr>
       <th>Bukti Transfer</th>
-      <td><img src="{{ asset('storage/'.$pengsup->bukti_tf) }}" alt="" width="700px"></td>
+      <td><a href="/buktiTf/{{ $pengsup->bukti_tf }}">Bukti Transfer</a></td>
     </tr>
       @if ($pengsup->status_supplier === 'validasi')        
       <tr>
@@ -122,25 +128,27 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
             @method('patch')
             <div class="form-check d-flex">
               <div class="me-5">
-                <input class="form-check-input @error('status_supplier') is-invalid @enderror" type="radio" name="status_supplier" id="BelumLunas" value="belum_lunas">
+                <input class="form-check-input @error('status_supplier') is-invalid @enderror" type="radio" onclick="muncul()" name="status_supplier" id="BelumLunas" value="belum_lunas">
                 <label class="form-check-label" for="BelumLunas">
                   Belum Lunas
                 </label>
               </div>
               <div>
-                <input class="form-check-input @error('status_supplier') is-invalid @enderror" type="radio" name="status_supplier" id="lunas" value="selesai">
+                <input class="form-check-input @error('status_supplier') is-invalid @enderror" onclick="sembunyi()" type="radio" name="status_supplier" id="lunas" value="selesai">
                 <label class="form-check-label" for="lunas">
                   Lunas
                 </label>
               </div>
             </div>
-            <label for="exampleFormControlTextarea1" class="form-label fw-bold mt-3">Alasan belum lunas</label> <small>Hanya diisi ketika belum lunas</small>
-            <textarea class="form-control @error('alasan_gagal') is-invalid @enderror" id="editor1" rows="5" name="alasan_gagal"></textarea>
-            @error('alasan_gagal')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror    
+            <div id="kotak" class="contoh">
+              <b>Alasan Penolakan wajib diisi</b>
+              <textarea class="form-control @error('alasan_gagal') is-invalid @enderror" id="editor1" rows="5" name="alasan_gagal"></textarea>
+              @error('alasan_gagal')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror    
+            </div>
         </td>
       </tr>
       <tr>
@@ -152,106 +160,24 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
       </tr>
       @endif
     @endif
-  </tbody>
-</table>
-{{-- <table class="table table-borderless">
-  <tbody>
-    <tr>
-      <th class="text-center">
-        <img src="{{ asset('') }}" class="img-fluid" alt="">
-      </th>
-      <td>
-              <h4 class="fw-bold text-primary">Detail Paket Pengadaan</h4>
-              <h4> </h4>
-        </td>
-    </tr>
-    <tr>
-      <th scope="row" colspan="3" class="text-primary"><h5></h5></th>
-    </tr>
-    <tr>
-      <th>Nama Pengadaan</th>
-      <td>{{ucwords($pengadaan->pengadaan->budjet->nama_kegiatan)}}</td>
-    </tr>
-    <tr>
-      <th>Status</th>
-      <td>
-        @if ($pengadaan->status_supplier === 'submitted')
-          <button class="btn btn-sm btn-secondary">{{ ucwords($pengadaan->status_supplier) }}</button>   
-        @elseif ($pengadaan->status_supplier === 'evaluasi')
-          <button class="btn btn-sm btn-warning">{{ ucwords($pengadaan->status_supplier) }}</button>
-        @elseif ($pengadaan->status_supplier === 'acc')
-          <button class="btn btn-sm btn-primary">{{ ucwords($pengadaan->status_supplier) }}</button>
-        @elseif ($pengadaan->status_supplier === 'validasi')
-          <button class="btn btn-sm btn-primary">{{ ucwords($pengadaan->status_supplier) }}</button>
-        @elseif ($pengadaan->status_supplier === 'selesai')
-          <button class="btn btn-sm btn-primary">{{ ucwords($pengadaan->status_supplier) }}</button>
-        @elseif ($pengadaan->status_supplier === 'tolak')   
-          <button class="btn btn-sm btn-danger">{{ ucwords($pengadaan->status_supplier) }}</button>
-        @endif
-      </td>
-    </tr>
-    @if ($pengadaan->status_supplier === 'tolak')
-      <tr>
-        <th>Alasan Penolakan</th>
-        <td>{!! $pengadaan->alasan_penolakan !!}</td>
-      </tr>
-    @endif
-    <tr>
-      <th>Harga Penawaran</th>
-      <td>Rp. {{ number_format($pengadaan->harga_penawaran) }},-</td>
-    </tr>
-    @if ($pengadaan->harga_terkoreksi === null)
-    <tr>
-      <th>Harga Terkoreksi</th>
-      <td>Belum dimasukkan</td>
-    </tr>
-    @else        
-    <tr>
-      <th>Harga Terkoreksi</th>
-      <td>Rp. {{ number_format($pengadaan->harga_terkoreksi  ) }},-</td>
-    </tr>
-    @endif
-    @if ($pengadaan->status_supplier === 'evaluasi')
-    <tr>
-      <th>Harga Terkoreksi</th>
-      <td>Rp. {{ number_format($pengadaan->harga_terkoreksi) }},-</td>
-    </tr>
-    @endif
-    @if ($pengadaan->bukti_tf !== null)
-    <tr>
-      <th>Bukti Transfer</th>
-      <td><img src="{{ asset('storage/'.$pengadaan->bukti_tf) }}" alt="" width="700px"></td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>
-        <form action="{{ route('dpal.pengadaanBarang.checkBuktiTf',$pengadaan->id) }}" method="post">
-          @csrf
-          @method('patch')
-          <p>Apakah sudah lunas?</p>
-          <div class="form-check d-flex">
-            <div class="me-5">
-              <input class="form-check-input" type="radio" name="status_supplier" id="BelumLunas" value="belum_lunas">
-              <label class="form-check-label" for="BelumLunas">
-                Belum Lunas
-              </label>
-            </div>
-            <div>
-              <input class="form-check-input" type="radio" name="status_supplier" id="lunas" value="selesai">
-              <label class="form-check-label" for="lunas">
-                Lunas
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
-        </form>
-      </td>
-    </tr>
-    @endif
+    @if ($pengsup->status_supplier === 'submitted')
     <tr>
       <th>File Proposal</th>
-      <td scope="row" colspan="3" class="text-primary"><a href="/download/{{ $pengadaan->proposal }}">Proposal</a></td>
+      <td scope="row" colspan="3" class="text-primary"><a href="/download/{{ $pengsup->proposal }}">Proposal</a></td>
     </tr>
+    @endif
   </tbody>
-</table> --}}
+</table>
+
+<script>
+  var form = document.getElementById("kotak");
+
+   function sembunyi(){
+    form.style.display = "none";
+  }   
+
+  function muncul(){
+    form.style.display = "block";
+  }
+</script>
 @endsection

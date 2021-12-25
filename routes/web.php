@@ -16,6 +16,7 @@ use App\Http\Controllers\SupplierBarangController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SupplierPengadaanController;
 use App\Http\Controllers\SupplierStatusController;
+use App\Http\Controllers\viewBuktiTfController;
 use App\Http\Controllers\ViewFileController;
 use App\Http\Controllers\warekPengadaanBarang;
 use Illuminate\Support\Facades\Route;
@@ -67,7 +68,7 @@ use Illuminate\Support\Facades\Route;
             Route::post('/store', [SupplierPengadaanController::class, 'store'])->name('supplier.pengadaanBarang.store');
             Route::get('{id}/edit', [SupplierPengadaanController::class, 'edit'])->name('supplier.pengadaanBarang.edit');
             Route::patch('{id}/updateSubmit', [SupplierPengadaanController::class, 'updateSubmit'])->name('supplier.pengadaanBarang.updateSubmit');
-            Route::patch('/checkBuktiTf/{id}', [SupplierController::class, 'checkBuktiTf'])->name('supplier.pengadaanBarang.checkBuktiTf');
+            Route::patch('/checkBuktiTf/{id}', [SupplierPengadaanController::class, 'checkBuktiTf'])->name('supplier.pengadaanBarang.checkBuktiTf');
         });
         
         Route::prefix('supplier/status')->group(function (){
@@ -177,6 +178,7 @@ use Illuminate\Support\Facades\Route;
         });
     });
 
+    Route::get('/buktiTf/pengadaanBarang/bukti_tf/{filename}', [viewBuktiTfController::class,'buktiTf']);
     Route::get('/download/pengadaanBarang/proposal/{filename}', [ViewFileController::class,'download']);
 
 

@@ -78,39 +78,6 @@ class SupplierController extends Controller
         return redirect()->route('supplier.profile')->with(['success' => 'Data supplier berhasil di ubah']);
 
     }
-
-    public function checkBuktiTf(Request $request, $id){
-        $pengsup = PengadaanSupplier::where('id',$id)->first();
-        
-        $checkBelumLunas = $request->status_supplier === 'belum_lunas';
-        if($checkBelumLunas){
-            $request->validate([
-                'status_supplier' => 'required',
-                'alasan_gagal' => 'required'
-            ],[
-                'status_supplier.required' => 'Wajib pilih salah satu',
-                'alasan_gagal.required' => 'Alasan belum lunas wajib diisi'
-            ]);
-
-            $pengsup->update([
-                'status_supplier' => $request->status_supplier,
-                'alasan_gagal' => $request->alasan_gagal,
-            ]);
-        }else{
-            $request->validate([
-                        'status_supplier' => 'required'
-                    ],[
-                        'status_supplier.required' => 'Wajib pilih salah satu'
-                    ]); 
-                    
-                    $pengsup->update([
-                        'status_supplier' => $request->status_supplier,
-                    ]);
-        }
-
-        return redirect()->back();
-  
-    }
     /**
      * Show the form for creating a new resource.
      *

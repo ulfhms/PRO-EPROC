@@ -16,4 +16,14 @@ class ViewFileController extends Controller
 
         return abort(404);
     }
+    
+    public function buktiTf(Request $request, $filename){
+        // dd($filename);
+        $path = 'pengadaanBarang/buktiTf/'.$filename;
+        if(Storage::exists($path)){
+            return Storage::response($path);
+        }
+
+        return abort(404);
+    }
 }

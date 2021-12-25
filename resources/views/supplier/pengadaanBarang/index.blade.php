@@ -35,6 +35,8 @@
               <a href="#" class="badge badge-primary text-decoration-none">Selesai</a>    
               @elseif ($sups->status_supplier === 'tolak')
               <a href="#" class="badge badge-danger text-decoration-none">Tolak</a>    
+              @elseif ($sups->status_supplier === 'belum_lunas')
+              <a href="#" class="badge badge-danger text-decoration-none">Belum Lunas</a>    
               @endif
             </td>
             {{-- <td class="text-center"><a href="{{ route('supplier.pengadaanBarang.edit', $sups->id) }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>

@@ -43,7 +43,7 @@ class BidangUsahaController extends Controller
         $request->validate([
             'nama_bingus' => 'required|unique:bidang_usahas'
         ],[
-            'nama_bingus.required' => '_bingus bidang usaha wajib diisi',
+            'nama_bingus.required' => 'Bidang usaha wajib diisi',
             'nama_bingus.unique' => 'Nama bidang usaha sudah ada',
         ]);
 

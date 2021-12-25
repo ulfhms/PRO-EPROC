@@ -17,7 +17,8 @@ class SupplierPengadaanController extends Controller
      */
     public function index()
     {
-        $supplier = Supplier::where('user_id',auth()->id())->first();
+        $supplier = Supplier::where('user_id',auth()->id())->doesntHave('pengadaans')->first();
+        dd($supplier);
         $pengsups = PengadaanSupplier::where('supplier_id',$supplier->id)->get();
         return view('supplier/pengadaanBarang/index', compact('pengsups'));
     }
@@ -124,6 +125,39 @@ class SupplierPengadaanController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    public function checkBuktiTf(Request $request, $id){
+        $pengsup = PengadaanSupplier::where('id',$id)->first();
+        
+        // $checkBelumLunas = $request->status_supplier === 'belum_lunas';
+        if($request->status_supplier === 'belum_lunas'){
+            $request->validate([
+                'status_supplier' => 'required',
+                'alasan_gagal' => 'required'
+            ],[
+                'status_supplier.required' => 'Wajib pilih salah satu',
+                'alasan_gagal.required' => 'Alasan belum lunas wajib diisi'
+            ]);
+
+            $pengsup->update([
+                'status_supplier' => $request->status_supplier,
+                'alasan_gagal' => $request->alasan_gagal,
+            ]);
+        }elseif ($request->status_supplier === 'selesai') {
+            $request->validate([
+                        'status_supplier' => 'required'
+                    ],[
+                        'status_supplier.required' => 'Wajib pilih salah satu'
+                    ]); 
+                    
+                    $pengsup->update([
+                        'status_supplier' => $request->status_supplier,
+                    ]);
+        }
+
+        return redirect()->back();
+  
     }
 
     /**

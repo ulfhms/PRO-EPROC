@@ -132,6 +132,8 @@
                     <td>
                       <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
                     </td>
+                    <td scope="row" colspan="3" class="text-primary"><a href="/download/{{ $sups->proposal }}">Proposal</a></td>
+
                   </tr>
                   </form>
                   @else 
@@ -150,7 +152,9 @@
                   <tr>
                 <th scope="row">Bukti Transfer</th>
                 <td>
-                  <img src="{{ asset( 'storage/'.$sups->bukti_tf ) }}" alt="" width="500" class="mb-2">
+                  <a href="/buktiTf/{{ $sups->bukti_tf }}">Bukti Transfer</a>
+                  {{-- <a href="/buktiTf/{{ $sups->bukti_tf }}">Bukti Transfer</a> --}}
+                  {{-- <img src="{{ asset( 'storage/'.$sups->bukti_tf ) }}" alt="" width="500" class="mb-2"> --}}
                 </td>
               </tr>
                     @if ($sups->status_supplier === 'belum_lunas')

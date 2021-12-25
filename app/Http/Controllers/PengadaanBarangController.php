@@ -261,17 +261,16 @@ class PengadaanBarangController extends Controller
 
         $request->validate([
             'nominal_tf' => 'required',
-            'bukti_tf' => 'required:mimes:jpg,png',
+            'bukti_tf' => 'required|mimetypes:application/pdf',
         ],[
             'nominal_tf.required' => 'Nominal wajib diisi sesuai dengan bukti transfer',
             'bukti_tf.required' => 'Bukti transfer wajib diisi',
-            'bukti_tf.mimes' => 'Bukti transfer wajib format jpg,png'
+            'bukti_tf.mimetypes' => 'Bukti transfer wajib format pdf'
         ]);
 
-        $bukti_tf = $pengsup->bukti_tf;
-        if($request->hasFile('bukti_tf')){
-            Storage::delete($bukti_tf);
-            $bukti_tf = $request->file('bukti_tf')->store('pengadaanBarang/bukti_tf');
+        // $bukti_tf = $pengsup->bukti_tf;
+        if($request->file('bukti_tf')){
+            $bukti_tf=$request->file('bukti_tf')->store('pengadaanBarang/bukti_tf');
         }
         
         $pengsup->update([
@@ -283,34 +282,6 @@ class PengadaanBarangController extends Controller
         return redirect()->back();
     }
     
-    // public function formUlangBuktiTf(Request $request, $id){
-    //     $pengsup = PengadaanSupplier::where('id',$id)->first();
-    //     // dd($pengsup);
-
-    //     $request->validate([
-    //         'nominal_tf' => 'required',
-    //         'bukti_tf' => 'required:mimes:jpg,png',
-    //     ],[
-    //         'nominal_tf.required' => 'Nominal wajib diisi sesuai dengan bukti transfer',
-    //         'bukti_tf.required' => 'Bukti transfer wajib diisi',
-    //         'bukti_tf.mimes' => 'Bukti transfer wajib format jpg,png'
-    //     ]);
-
-    //     $bukti_tf = $pengsup->bukti_tf;
-    //     if($request->hasFile('bukti_tf')){
-    //         Storage::delete($bukti_tf);
-    //         $bukti_tf = $request->file('bukti_tf')->store('pengadaanBarang/bukti_tf');
-    //     }
-        
-    //     $pengsup->update([
-    //         'nominal_tf' => $request->nominal_tf,
-    //         'bukti_tf' => $bukti_tf,
-    //         'status_supplier' => 'validasi'
-    //     ]);
-
-    //     return redirect()->back();
-    // }
-
     
     /**
      * Show the form for creating a new resource.

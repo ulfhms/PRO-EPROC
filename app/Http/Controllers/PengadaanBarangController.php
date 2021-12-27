@@ -20,7 +20,7 @@ class PengadaanBarangController extends Controller
      */
     public function index()
     {
-        $pengadaans = PengadaanBarang::get();
+        $pengadaans = PengadaanBarang::paginate(20);
         $pengsups = PengadaanSupplier::get();
         return view('dpal/pengadaanBarang/index', compact('pengadaans','pengsups'));
     }

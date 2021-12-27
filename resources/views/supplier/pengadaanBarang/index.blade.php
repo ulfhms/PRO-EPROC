@@ -45,7 +45,9 @@
           @endforeach
       </table>
 
-       
+      <div class="d-flex justify-content-center">
+        {{ $pengsups->links() }}
+      </div>
 
 
 {{-- modal --}}

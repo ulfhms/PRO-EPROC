@@ -166,7 +166,7 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
         <a href="/download/{{ $pengsup->proposal }}">Proposal</a>
       </td>
     </tr>
-    @if ($pengsup->status_supplier === 'submitted')
+    {{-- @if ($pengsup->status_supplier === 'submitted')
     <tr>
       <th></th>
       <td>
@@ -175,13 +175,13 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
         </button>
       </td>
     </tr>
-    @endif
+    @endif --}}
   </tbody>
 </table>
 
 <!-- Modal edit-->
 {{-- @foreach ($pengsup as $sups)     --}}
-<div class="modal fade" id="edit{{ $pengsup->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="edit{{ $pengsup->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header bg-warning text-white">
@@ -240,7 +240,7 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
 <script>
   var form = document.getElementById("kotak");

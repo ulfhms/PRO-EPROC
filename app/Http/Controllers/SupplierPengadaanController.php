@@ -20,7 +20,7 @@ class SupplierPengadaanController extends Controller
     public function index()
     {
         $supplier = Supplier::where('user_id',auth()->id())->first();
-        $pengsups = PengadaanSupplier::where('supplier_id',$supplier->id)->get();
+        $pengsups = PengadaanSupplier::where('supplier_id',$supplier->id)->paginate(20);
         
         return view('supplier/pengadaanBarang/index', compact('pengsups'));
     }

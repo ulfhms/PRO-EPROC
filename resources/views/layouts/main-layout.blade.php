@@ -103,30 +103,28 @@
                         </div>
                     </div>
                 </li>
-              @elseif($user->hasRole('warek'))
-                <li class="nav-item {{ request()->is('warek/pengadaanBarang/index') ? 'active' : ''}}">
-                  <a class="nav-link" href="{{ route('warek.pengadaanBarang.index') }}">
-                      <i class="fas fa-box-open"></i>
-                      <span>Pengadaan Barang / Alat</span></a>
-                </li>
 
-                <li class="nav-item {{ request()->is('warek/pengadaanBarang/index') ? 'active' : ''}}">
-                    <a class="nav-link" href="{{ route('warek.pengadaanBarang.index') }}">
-                        <i class="fas fa-wrench"></i>
-                        <span>Pekerjaan Konstruksi</span></a>
-                </li>
-
-                <li class="nav-item {{ request()->is('warek/badanUsaha/index') ? 'active' : ''}}">
-                    <a class="nav-link" href="{{ route('warek.badanUsaha.index') }}">
-                        <i class="fas fa-users"></i>
-                        <span>Jasa Konsultasi Badan Usaha</span></a>
-                </li>
-
-                <li class="nav-item {{ request()->is('warek/perorangan/index') ? 'active' : ''}}">
-                    <a class="nav-link" href="{{ route('warek.perorangan.index') }}">
-                        <i class="fas fa-user-alt"></i>
-                        <span>jasa konsultasi Perorangan</span></a>
-                </li>
+              @elseif($user->hasRole('warek|rektor'))
+              <li class="nav-item {{ request()->is('dpal/pengadaanBarang/index') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('dpal.pengadaanBarang.index') }}">
+                    <i class="fas fa-box-open"></i>
+                    <span>Pengadaan Barang / Alat</span></a>
+              </li>
+              <li class="nav-item {{ request()->is('dpal/pengadaanBarang/index') ? 'active' : ''}}">
+                  <a class="nav-link" href="{{ route('dpal.pengadaanBarang.index') }}">
+                      <i class="fas fa-wrench"></i>
+                      <span>Pekerjaan Konstruksi</span></a>
+              </li>
+              <li class="nav-item {{ request()->is('dpal/badanUsaha/index') ? 'active' : ''}}">
+                  <a class="nav-link" href="{{ route('dpal.badanUsaha.index') }}">
+                      <i class="fas fa-users"></i>
+                      <span>Jasa Konsultasi Badan Usaha</span></a>
+              </li>
+              <li class="nav-item {{ request()->is('dpal/perorangan/index') ? 'active' : ''}}">
+                  <a class="nav-link" href="{{ route('dpal.perorangan.index') }}">
+                      <i class="fas fa-user-alt"></i>
+                      <span>jasa konsultasi Perorangan</span></a>
+              </li>
               @endif
 
             <!-- Nav Item - Dashboard -->
@@ -197,7 +195,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    {{ Auth::user()->name }}
+                                </span>
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('template/img/undraw_profile.svg') }}">
                             </a>

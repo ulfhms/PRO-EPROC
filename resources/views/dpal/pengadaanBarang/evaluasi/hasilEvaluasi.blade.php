@@ -2,30 +2,37 @@
 @section('title', 'Hasil Evaluasi')
 @section('content')
 @include('dpal/pengadaanBarang/navbarPengadaan')
-@if ($pengadaan->tgl_pengumuman_pemenang === null)    
-<div class="card">
-  <h5 class="card-header bg-success text-white mt-3">Pilih Supplier yang di ACC</h5>
-  <form action="{{ route('dpal.pengadaanBarang.formPemenang',$pengadaan->id) }}" method="post">
-    @method('patch')
-    @csrf
-    <div class="card-body">
-      <select class="js-example-basic-multiple form-control @error('pemenang') is-invalid @enderror" aria-label="multiple select example" name="pemenang[]" multiple="multiple">
-        @foreach ($pengsups as $sups)
-        <option value="{{ $sups->supplier_id }}">{{ $sups->supplier->nama_supplier }}</option>
-        @endforeach
-      </select>
-      @error('pemenang')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-      @enderror
-      <div class="d-flex justify-content-end mt-2">
-        <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
-      </div>
+@if ($user = Auth::user())
+  @if ($user->hasRole('dpal'))
+    @if ($pengadaan->tgl_pengumuman_pemenang === null)    
+    <div class="card">
+      <h5 class="card-header bg-success text-white mt-3">Pilih Supplier yang di ACC</h5>
+      <form action="{{ route('dpal.pengadaanBarang.formPemenang',$pengadaan->id) }}" method="post">
+        @method('patch')
+        @csrf
+        <div class="card-body">
+          <select class="js-example-basic-multiple form-control @error('pemenang') is-invalid @enderror" aria-label="multiple select example" name="pemenang[]" multiple="multiple">
+            @foreach ($pengsups as $sups)
+            <option value="{{ $sups->supplier_id }}">{{ $sups->supplier->nama_supplier }}</option>
+            @endforeach
+          </select>
+          @error('pemenang')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+          @enderror
+          <div class="d-flex justify-content-end mt-2">
+            <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
-</div>
+    @endif
+  @endif
 @endif
+  
+
+
 @foreach ($pengsups as $sups)      
 <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
   <div class="accordion-item">

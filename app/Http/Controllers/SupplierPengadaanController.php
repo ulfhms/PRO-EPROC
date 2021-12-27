@@ -7,6 +7,8 @@ use App\Models\PengadaanBarang;
 use App\Models\PengadaanSupplier;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class SupplierPengadaanController extends Controller
 {
@@ -17,9 +19,9 @@ class SupplierPengadaanController extends Controller
      */
     public function index()
     {
-        $supplier = Supplier::where('user_id',auth()->id())->doesntHave('pengadaans')->first();
-        dd($supplier);
+        $supplier = Supplier::where('user_id',auth()->id())->first();
         $pengsups = PengadaanSupplier::where('supplier_id',$supplier->id)->get();
+        
         return view('supplier/pengadaanBarang/index', compact('pengsups'));
     }
 
@@ -31,9 +33,56 @@ class SupplierPengadaanController extends Controller
     public function create()
     {
         $supplier = Supplier::where('user_id',auth()->id())->first();
+        // $pengsups = PengadaanSupplier::select('supplier_id')->where('supplier_id',$supplier->id)->get()->toArray();
+        $pengadaans = PengadaanBarang::where('status_pengadaan',1)->get();
+        // dd($pengsups);
+        // for($i=0; $i<count($pengadaans); $i++){
+        //     if(in_array($pengadaans[$i], $pengsups)){
+        //         continue;
+        //     }else{
+        //         $pengadaans[$i];
+        //     }
+        // }
+
+        // $pengadaans=PengadaanSupplier::get();
+        // foreach ($pengadaans as $pengadaan) {
+        //     $data[]= $pengadaan->id;
+        // }
+        // // dd($data);
+        // $pengsup = PengadaanSupplier::where('supplier_id',$supplier->id)->whereNotIn('pengadaan_id',$data)->get();
+        // dd($pengsup);
+
         // $checkPengadaan = PengadaanSupplier::where('status_pengadaan',1)->get();
         // dd($checkPengadaan);
-        $pengadaans = PengadaanBarang::where('status_pengadaan',1)->get();
+        // $pengsups = DB::table('pengadaan_suppliers')
+        // ->leftJoin('suppliers', 'pengadaan_suppliers.supplier_id', '!=', 'suppliers.id')
+        // ->get();
+        // $pengsups = DB::table('suppliers')->leftJoin('pengadaan_suppliers', 'suppliers.id', '!=', 'pengadaan_suppliers.supplier_id')->get();
+        // $pengsups = DB::table('suppliers')->rightJoin('pengadaan_suppliers', 'suppliers.id', '!=', 'pengadaan_suppliers.supplier_id')->get();
+        // $pengsups = DB::table('pengadaan_suppliers')->rightJoin('suppliers', 'pengadaan_suppliers.supplier_id', '!=', 'suppliers.id')->get();
+        // $pengadaans = PengadaanBarang::where('status_pengadaan',1)->get();
+        // $pengsups =PengadaanSupplier::where('supplier_id',$supplier->id)->first();
+
+        // $pengsups = DB::table('pengadaan_suppliers')
+        // ->select('budjets.nama_kegiatan','pengadaans.id')
+        // ->leftJoin('suppliers', 'pengadaan_suppliers.supplier_id', '=', 'suppliers.id')
+        // ->leftJoin('pengadaans', 'pengadaan_suppliers.pengadaan_id', '!=', 'pengadaans.id')
+        // ->join('budjets','pengadaans.budjet_id', '=', 'budjets.id')
+        // ->groupBy('budjets.nama_kegiatan','pengadaans.id')
+        // // ->whereNotIn('pengadaan_id',[1,2])
+        // ->get();
+
+        // $pengsups = PengadaanSupplier::whereNotExists(function($query){
+        //     $query->select(DB::raw(1))
+        //         ->from('suppliers')
+        //         ->whereRaw('pengadaan_supplier.supplier_id = supplier.id');
+        // })->get();
+        // dd($pengsups);
+
+        // $pengsups = PengadaanBarang::whereNotIn('id',$pengsups->pengadaan_id)->get();
+        // $suppliers =Supplier::whereNotIn('pengadaan_suppliers',)
+
+        
         return view('supplier/pengadaanBarang/create', compact('pengadaans'));
     }
 
@@ -58,6 +107,7 @@ class SupplierPengadaanController extends Controller
             'proposal' => 'required|mimetypes:application/pdf'
         ],[
             'pengadaan_id.required' => 'Pengadaan belum dipilih',
+            // 'pengadaan_id.unique' => 'Pengadaan sudah dipilih',
             'harga_penawaran.required' => 'Harga penawaran wajib diisi',
             'proposal.required' => 'Proposal wajib diisi',
             'proposal.mimetypes' => 'Proposal wajib berformat pdf',
@@ -101,6 +151,8 @@ class SupplierPengadaanController extends Controller
         
     }
 
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -122,6 +174,33 @@ class SupplierPengadaanController extends Controller
             // 'harga_penawaran' => $request->harga_penawaran,
             'harga_terkoreksi' => $request->harga_terkoreksi,
             'supplier_ke_dpal' => $request->supplier_ke_dpal,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function updateSubmit2(Request $request, $id)
+    {
+        $pengadaan = PengadaanSupplier::where('id',$id)->first();
+        $pdf = $pengadaan->proposal;
+        // dd($pdf);
+        if($request->hasFile('proposal')){
+            Storage::delete($pdf);
+            $pdf = $request->file('proposal')->store('pengadaanBarang/proposal');
+        }
+
+        $request->validate([
+            'harga_penawaran' => 'required',
+            'proposal' => 'required|mimetypes:application/pdf'
+        ],[
+            'harga_penawaran.required' => 'Harga penawaran wajib diisi',
+            'proposal.required' => 'Proposal wajib diisi',
+            'proposal.mimetypes' => 'Proposal wajib berformat pdf',
+        ]);
+        $pengadaan->update([
+            'proposal' => $pdf,
+            'harga_penawaran' => $request->harga_penawaran,
+            // 'harga_terkoreksi' => $request->harga_terkoreksi,
         ]);
 
         return redirect()->back();

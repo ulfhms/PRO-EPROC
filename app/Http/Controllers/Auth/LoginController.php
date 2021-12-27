@@ -45,7 +45,9 @@ class LoginController extends Controller
         }elseif($user->hasRole('dpal')){
             return redirect()->route('dpal.pengadaanBarang.index');
         }elseif($user->hasRole('warek')){
-            return redirect()->route('warek.pengadaanBarang.index');
+            return redirect()->route('dpal.pengadaanBarang.index');
+        }elseif($user->hasRole('rektor')){
+            return redirect()->route('dpal.pengadaanBarang.index');
         }else{
             return redirect('home');
         }

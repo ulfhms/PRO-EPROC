@@ -68,6 +68,7 @@ use Illuminate\Support\Facades\Route;
             Route::post('/store', [SupplierPengadaanController::class, 'store'])->name('supplier.pengadaanBarang.store');
             Route::get('{id}/edit', [SupplierPengadaanController::class, 'edit'])->name('supplier.pengadaanBarang.edit');
             Route::patch('{id}/updateSubmit', [SupplierPengadaanController::class, 'updateSubmit'])->name('supplier.pengadaanBarang.updateSubmit');
+            Route::patch('{id}/updateSubmit2', [SupplierPengadaanController::class, 'updateSubmit2'])->name('supplier.pengadaanBarang.updateSubmit2');
             Route::patch('/checkBuktiTf/{id}', [SupplierPengadaanController::class, 'checkBuktiTf'])->name('supplier.pengadaanBarang.checkBuktiTf');
         });
         
@@ -81,7 +82,7 @@ use Illuminate\Support\Facades\Route;
             Route::get('/detailSubmit', [SupplierStatusController::class, 'detailSubmit'])->name('supplier.status.detailSubmit');
         });
     });
-    Route::group(['middleware' => ['role:dpal']], function (){
+    Route::group(['middleware' => ['role:dpal|warek|rektor']],function (){
         Route::prefix('dpal/pengadaanBarang')->group(function (){
             Route::get('/index', [PengadaanBarangController::class, 'index'])->name('dpal.pengadaanBarang.index');
             Route::get('/create', [PengadaanBarangController::class, 'create'])->name('dpal.pengadaanBarang.create');

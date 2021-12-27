@@ -141,7 +141,7 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
               </div>
             </div>
             <div id="kotak" class="contoh">
-              <b>Alasan Penolakan wajib diisi</b>
+              <b>Alasan belum lunas wajib diisi</b>
               <textarea class="form-control @error('alasan_gagal') is-invalid @enderror" id="editor1" rows="5" name="alasan_gagal"></textarea>
               @error('alasan_gagal')
                   <span class="invalid-feedback" role="alert">
@@ -160,14 +160,87 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
       </tr>
       @endif
     @endif
+    <tr>
+      <th>Proposal</th>
+      <td>
+        <a href="/download/{{ $pengsup->proposal }}">Proposal</a>
+      </td>
+    </tr>
     @if ($pengsup->status_supplier === 'submitted')
     <tr>
-      <th>File Proposal</th>
-      <td scope="row" colspan="3" class="text-primary"><a href="/download/{{ $pengsup->proposal }}">Proposal</a></td>
+      <th></th>
+      <td>
+        <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#edit{{ $pengsup->id }}">
+          Edit
+        </button>
+      </td>
     </tr>
     @endif
   </tbody>
 </table>
+
+<!-- Modal edit-->
+{{-- @foreach ($pengsup as $sups)     --}}
+<div class="modal fade" id="edit{{ $pengsup->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Penawaran</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Pengadaan</th>
+              <td>{{ $pengsup->pengadaan->budjet->nama_kegiatan }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Harga Penawaran sebelumnya</th>
+              <td>Rp {{ number_format($pengsup->harga_penawaran) }},-</td>
+            </tr>
+                <form action="{{ route('supplier.pengadaanBarang.updateSubmit2', $pengsup->id) }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('patch')
+                    <tr>
+                      <th scope="row">Harga Penawaran</th>
+                      <td>
+                        <input type="number" class="form-control @error('harga_penawaran') is-invalid @enderror" id="exampleFormControlInput1">
+                        @error('harga_penawaran')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Proposal</th>
+                      <td>
+                        <input class="form-control form-control-sm @error('proposal') is-invalid @enderror"  id="formFileSm" type="file" name="proposal">
+                        @error('proposal')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                      </td>
+                    </tr>
+                      <tr>
+                        <th></th>
+                        <td>
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Simpan</button>
+                        </td>
+                      </tr>
+                </form>
+                </td>
+              </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   var form = document.getElementById("kotak");

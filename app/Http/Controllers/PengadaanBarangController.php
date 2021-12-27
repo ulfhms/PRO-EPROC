@@ -21,8 +21,8 @@ class PengadaanBarangController extends Controller
     public function index()
     {
         $pengadaans = PengadaanBarang::get();
-
-        return view('dpal/pengadaanBarang/index', compact('pengadaans'));
+        $pengsups = PengadaanSupplier::get();
+        return view('dpal/pengadaanBarang/index', compact('pengadaans','pengsups'));
     }
 
     public function create()
@@ -101,6 +101,7 @@ class PengadaanBarangController extends Controller
         $pengadaan = PengadaanBarang::where('id',$id)->first();
         // $pengsup = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->first();
         $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->get();
+        // dd($pengsups);
         return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaPengadaan',compact('pengadaan','pengsups'));
     }
 
@@ -137,7 +138,7 @@ class PengadaanBarangController extends Controller
 
     public function pesertaEvaluasi($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
-        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','evaluasi')->orWhere('status_supplier','acc')->orWhere('status_supplier','validasi')->orWhere('status_supplier','selesai')->orWhere('status_supplier','belum_lunas')->orWhere('status_supplier','tolak')->get();
+        $pengsups = PengadaanSupplier::where('pengadaan_id',$pengadaan->id)->where('status_supplier','evaluasi')->orWhere('status_supplier','acc')->orWhere('status_supplier','validasi')->orWhere('status_supplier','selesai')->orWhere('status_supplier','belum_lunas')->get();
         // dd($pengsups);
         return view('dpal/pengadaanBarang/pesertaPengadaan/pesertaEvaluasi', compact('pengadaan','pengsups'));
 

@@ -16,9 +16,9 @@ class AuthController extends Controller
             }elseif ($user->level == 'dpal'){
                 return redirect()->route('dpal.pengadaanBarang.index');
             }elseif($user->level == 'warek'){
-                return redirect()->route('warek.pengadaanBarang.index');
+                return redirect()->route('dpal.pengadaanBarang.index');
             }elseif($user->level == 'rektor'){
-                return redirect()->route('warek.pengadaanBarang.index');
+                return redirect()->route('dpal.pengadaanBarang.index');
             }
         }
         return view('auth/masuk');
@@ -39,9 +39,9 @@ class AuthController extends Controller
             }elseif ($user->level == 'dpal'){
                 return redirect()->route('dpal.pengadaanBarang.index');
             }elseif($user->level == 'warek'){
-                return redirect()->route('warek.pengadaanBarang.index');
+                return redirect()->route('dpal.pengadaanBarang.index');
             }elseif($user->level == 'rektor'){
-                return redirect()->route('warek.pengadaanBarang.index');
+                return redirect()->route('dpal.pengadaanBarang.index');
             }
             return redirect()->intended('/');
         }

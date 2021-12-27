@@ -74,7 +74,7 @@
                   Dashboard
                 </a>
                 @elseif($user->hasRole('warek'))
-                <a class="nav-link text-decoration-none text-white" href="{{ route('warek.pengadaanBarang.index') }}">
+                <a class="nav-link text-decoration-none text-white" href="{{ route('dpal.pengadaanBarang.index') }}">
                   Dashboard
                 </a>
                 @endif

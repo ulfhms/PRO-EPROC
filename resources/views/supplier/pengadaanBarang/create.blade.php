@@ -13,8 +13,9 @@
       <div>
         <select class="form-select @error('pengadaan_id') is-invalid @enderror" name="pengadaan_id" aria-label="Default select example">
           <option selected disabled >Pilih Pengadaan</option>
-          @foreach ($pengadaans as $pengadaan)
+          @foreach ($data['pengadaans'] as $pengadaan)
                 <option value="{{ $pengadaan->id }}">{{ ucwords($pengadaan->budjet->nama_kegiatan) }}</option>
+            
           @endforeach
         </select>
         @error('pengadaan_id')

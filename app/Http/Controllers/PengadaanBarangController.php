@@ -283,6 +283,33 @@ class PengadaanBarangController extends Controller
         return redirect()->back();
     }
     
+    public function checkDetail(Request $request){
+        // $data = [];
+        // foreach ($request->pilih as $key => $id) {
+        //     $pengsups = DB::table('pengadaans')
+        //     ->join('pengadaan_suppliers','pengadaans.id','=','pengadaan_suppliers.pengadaan_id')
+        //     ->join('suppliers','suppliers.id', '=', 'pengadaan_suppliers.supplier_id')
+        //     ->join('budjets','budjets.id', '=', 'pengadaans.budjet_id')
+        //     ->where('pengadaans.id', $id)
+        //     ->distinct()
+        //     ->get();
+
+        //     foreach ($pengsups as $value) {
+        //         if($value->nama_supplier == $pengsups[$key]->nama_supplier) {
+        //             $data[$key]['supplier'] = ["nama_supplier" => $pengsups[$key]->nama_supplier];
+        //             $data[$key]['kegiatan'] = $pengsups;
+        //         }
+        //     }
+            // $data[$key]['supplier'] = ["nama_supplier" => $pengsups[$key]->nama_supplier];
+            // $data[$key]['kegiatan'] = $pengsups;
+            
+            
+        }
+        
+        // ddd($data);
+        return view('dpal/pengadaanBarang/pengadaanBarang/detail', );
+
+    }
     
     /**
      * Show the form for creating a new resource.

@@ -32,58 +32,25 @@ class SupplierPengadaanController extends Controller
      */
     public function create()
     {
+        $data = [];
         $supplier = Supplier::where('user_id',auth()->id())->first();
-        // $pengsups = PengadaanSupplier::select('supplier_id')->where('supplier_id',$supplier->id)->get()->toArray();
         $pengadaans = PengadaanBarang::where('status_pengadaan',1)->get();
-        // dd($pengsups);
-        // for($i=0; $i<count($pengadaans); $i++){
-        //     if(in_array($pengadaans[$i], $pengsups)){
-        //         continue;
-        //     }else{
-        //         $pengadaans[$i];
-        //     }
-        // }
-
-        // $pengadaans=PengadaanSupplier::get();
-        // foreach ($pengadaans as $pengadaan) {
-        //     $data[]= $pengadaan->id;
-        // }
-        // // dd($data);
-        // $pengsup = PengadaanSupplier::where('supplier_id',$supplier->id)->whereNotIn('pengadaan_id',$data)->get();
-        // dd($pengsup);
-
-        // $checkPengadaan = PengadaanSupplier::where('status_pengadaan',1)->get();
-        // dd($checkPengadaan);
-        // $pengsups = DB::table('pengadaan_suppliers')
-        // ->leftJoin('suppliers', 'pengadaan_suppliers.supplier_id', '!=', 'suppliers.id')
-        // ->get();
-        // $pengsups = DB::table('suppliers')->leftJoin('pengadaan_suppliers', 'suppliers.id', '!=', 'pengadaan_suppliers.supplier_id')->get();
-        // $pengsups = DB::table('suppliers')->rightJoin('pengadaan_suppliers', 'suppliers.id', '!=', 'pengadaan_suppliers.supplier_id')->get();
-        // $pengsups = DB::table('pengadaan_suppliers')->rightJoin('suppliers', 'pengadaan_suppliers.supplier_id', '!=', 'suppliers.id')->get();
-        // $pengadaans = PengadaanBarang::where('status_pengadaan',1)->get();
-        // $pengsups =PengadaanSupplier::where('supplier_id',$supplier->id)->first();
-
-        // $pengsups = DB::table('pengadaan_suppliers')
-        // ->select('budjets.nama_kegiatan','pengadaans.id')
-        // ->leftJoin('suppliers', 'pengadaan_suppliers.supplier_id', '=', 'suppliers.id')
-        // ->leftJoin('pengadaans', 'pengadaan_suppliers.pengadaan_id', '!=', 'pengadaans.id')
-        // ->join('budjets','pengadaans.budjet_id', '=', 'budjets.id')
-        // ->groupBy('budjets.nama_kegiatan','pengadaans.id')
-        // // ->whereNotIn('pengadaan_id',[1,2])
-        // ->get();
-
-        // $pengsups = PengadaanSupplier::whereNotExists(function($query){
-        //     $query->select(DB::raw(1))
-        //         ->from('suppliers')
-        //         ->whereRaw('pengadaan_supplier.supplier_id = supplier.id');
-        // })->get();
-        // dd($pengsups);
-
-        // $pengsups = PengadaanBarang::whereNotIn('id',$pengsups->pengadaan_id)->get();
-        // $suppliers =Supplier::whereNotIn('pengadaan_suppliers',)
-
+        $pengsups = PengadaanSupplier::where('supplier_id',$supplier->id)->get();
+        if($pengsups->count()>0){
+            foreach ($pengsups as $pengsup ) {
+                $data['pengadaan_id'][] = $pengsup->pengadaan_id;
+            }
+    
+            foreach ($pengadaans as $pengadaan ) {
+                if(!in_array($pengadaan->id, $data['pengadaan_id'])){
+                    $data['pengadaans'][]=$pengadaan;
+                }
+            }
+        }else{
+            $data['pengadaans'] = $pengadaans;
+        }
         
-        return view('supplier/pengadaanBarang/create', compact('pengadaans'));
+        return view('supplier/pengadaanBarang/create', compact('data'));
     }
 
     /**

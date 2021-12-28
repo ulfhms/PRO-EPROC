@@ -82,6 +82,7 @@ use Illuminate\Support\Facades\Route;
             Route::get('/detailSubmit', [SupplierStatusController::class, 'detailSubmit'])->name('supplier.status.detailSubmit');
         });
     });
+    
     Route::group(['middleware' => ['role:dpal|warek|rektor']],function (){
         Route::prefix('dpal/pengadaanBarang')->group(function (){
             Route::get('/index', [PengadaanBarangController::class, 'index'])->name('dpal.pengadaanBarang.index');
@@ -106,7 +107,7 @@ use Illuminate\Support\Facades\Route;
             Route::patch('/formTolakEvaluasi/{id}', [PengadaanBarangController::class, 'formTolakEvaluasi'])->name('dpal.pengadaanBarang.formTolakEvaluasi');
             Route::get('/pemenang/{id}', [PengadaanBarangController::class, 'pemenang'])->name('dpal.pengadaanBarang.pemenang');
             Route::patch('/formBuktiTf/{id}', [PengadaanBarangController::class, 'formBuktiTf'])->name('dpal.pengadaanBarang.formBuktiTf');
-            
+            Route::post('/checkDetail',[PengadaanBarangController::class, 'checkDetail'])->name('dpal.pengadaanBarang.checkDetail');
         });
                     // Route::get('/download/{filename}', [ViewFileController::class,'download']);
 
@@ -149,35 +150,35 @@ use Illuminate\Support\Facades\Route;
             Route::delete('{id}/destroy', [EbudjetingController::class, 'destroy'])->name('dpal.ebudjeting.destroy');
         });
     });
-    Route::group(['middleware' => ['role:warek']], function (){
-        Route::prefix('warek/pengadaanBarang')->group(function (){
-            Route::get('/index', [warekPengadaanBarang::class, 'index'])->name('warek.pengadaanBarang.index');
-            Route::get('/create', [warekPengadaanBarang::class, 'create'])->name('warek.pengadaanBarang.create');
-            Route::get('/detail', [warekPengadaanBarang::class, 'detail'])->name('warek.pengadaanBarang.detail');
-            Route::get('/editTahap', [warekPengadaanBarang::class, 'editTahap'])->name('warek.pengadaanBarang.editTahap');
-            Route::get('/detailTahap', [warekPengadaanBarang::class, 'detailTahap'])->name('warek.pengadaanBarang.detailTahap');
-            Route::get('/pengumumanPengadaan', [warekPengadaanBarang::class, 'pengumumanPengadaan'])->name('warek.pengadaanBarang.pengumumanPengadaan');
-            Route::get('/pesertaPengadaan', [warekPengadaanBarang::class, 'pesertaPengadaan'])->name('warek.pengadaanBarang.pesertaPengadaan');
-            Route::get('/pesertaEvaluasi', [warekPengadaanBarang::class, 'pesertaEvaluasi'])->name('warek.pengadaanBarang.pesertaEvaluasi');
-            Route::get('/detailPesertaPengadaan', [warekPengadaanBarang::class, 'detailPesertaPengadaan'])->name('warek.pengadaanBarang.detailPesertaPengadaan');
-            Route::get('/detailProdukPesertaPengadaan', [warekPengadaanBarang::class, 'detailProdukPesertaPengadaan'])->name('warek.pengadaanBarang.detailProdukPesertaPengadaan');
-            Route::get('/hasilEvaluasi', [warekPengadaanBarang::class, 'hasilEvaluasi'])->name('warek.pengadaanBarang.hasilEvaluasi');
-            Route::get('/editHasilEvaluasi', [warekPengadaanBarang::class, 'editHasilEvaluasi'])->name('warek.pengadaanBarang.editHasilEvaluasi');
-            Route::get('/pemenang', [warekPengadaanBarang::class, 'pemenang'])->name('warek.pengadaanBarang.pemenang');
-        });
+    // Route::group(['middleware' => ['role:warek']], function (){
+    //     Route::prefix('warek/pengadaanBarang')->group(function (){
+    //         Route::get('/index', [warekPengadaanBarang::class, 'index'])->name('warek.pengadaanBarang.index');
+    //         Route::get('/create', [warekPengadaanBarang::class, 'create'])->name('warek.pengadaanBarang.create');
+    //         Route::get('/detail', [warekPengadaanBarang::class, 'detail'])->name('warek.pengadaanBarang.detail');
+    //         Route::get('/editTahap', [warekPengadaanBarang::class, 'editTahap'])->name('warek.pengadaanBarang.editTahap');
+    //         Route::get('/detailTahap', [warekPengadaanBarang::class, 'detailTahap'])->name('warek.pengadaanBarang.detailTahap');
+    //         Route::get('/pengumumanPengadaan', [warekPengadaanBarang::class, 'pengumumanPengadaan'])->name('warek.pengadaanBarang.pengumumanPengadaan');
+    //         Route::get('/pesertaPengadaan', [warekPengadaanBarang::class, 'pesertaPengadaan'])->name('warek.pengadaanBarang.pesertaPengadaan');
+    //         Route::get('/pesertaEvaluasi', [warekPengadaanBarang::class, 'pesertaEvaluasi'])->name('warek.pengadaanBarang.pesertaEvaluasi');
+    //         Route::get('/detailPesertaPengadaan', [warekPengadaanBarang::class, 'detailPesertaPengadaan'])->name('warek.pengadaanBarang.detailPesertaPengadaan');
+    //         Route::get('/detailProdukPesertaPengadaan', [warekPengadaanBarang::class, 'detailProdukPesertaPengadaan'])->name('warek.pengadaanBarang.detailProdukPesertaPengadaan');
+    //         Route::get('/hasilEvaluasi', [warekPengadaanBarang::class, 'hasilEvaluasi'])->name('warek.pengadaanBarang.hasilEvaluasi');
+    //         Route::get('/editHasilEvaluasi', [warekPengadaanBarang::class, 'editHasilEvaluasi'])->name('warek.pengadaanBarang.editHasilEvaluasi');
+    //         Route::get('/pemenang', [warekPengadaanBarang::class, 'pemenang'])->name('warek.pengadaanBarang.pemenang');
+    //     });
         
         
         
-        Route::prefix('warek/badanUsaha')->group(function (){
-            Route::get('/index', [BadanUsahaController::class, 'index'])->name('warek.badanUsaha.index');
-            Route::get('/detailBadanUsaha', [BadanUsahaController::class, 'detailBadanUsaha'])->name('warek.badanUsaha.detailBadanUsaha');
-        });
+    //     Route::prefix('warek/badanUsaha')->group(function (){
+    //         Route::get('/index', [BadanUsahaController::class, 'index'])->name('warek.badanUsaha.index');
+    //         Route::get('/detailBadanUsaha', [BadanUsahaController::class, 'detailBadanUsaha'])->name('warek.badanUsaha.detailBadanUsaha');
+    //     });
         
-        Route::prefix('warek/perorangan')->group(function (){
-            Route::get('/index', [PeroranganController::class, 'index'])->name('warek.perorangan.index');
-            Route::get('/detailPerorangan', [PeroranganController::class, 'detailPerorangan'])->name('warek.perorangan.detailPerorangan');
-        });
-    });
+    //     Route::prefix('warek/perorangan')->group(function (){
+    //         Route::get('/index', [PeroranganController::class, 'index'])->name('warek.perorangan.index');
+    //         Route::get('/detailPerorangan', [PeroranganController::class, 'detailPerorangan'])->name('warek.perorangan.detailPerorangan');
+    //     });
+    // });
 
     Route::get('/buktiTf/pengadaanBarang/bukti_tf/{filename}', [viewBuktiTfController::class,'buktiTf']);
     Route::get('/download/pengadaanBarang/proposal/{filename}', [ViewFileController::class,'download']);

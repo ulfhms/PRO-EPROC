@@ -304,10 +304,10 @@ class PengadaanBarangController extends Controller
             // $data[$key]['kegiatan'] = $pengsups;
             
             
-        }
+        // }
         
         // ddd($data);
-        return view('dpal/pengadaanBarang/pengadaanBarang/detail', );
+        return view('dpal/pengadaanBarang/pengadaanBarang/detail');
 
     }
     

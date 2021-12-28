@@ -21,8 +21,7 @@
         <a href="{{ route('dpal.pengadaanBarang.create') }}" class="btn btn-sm btn-primary rounded me-2 mt-1 text-center fw-bold text-white text-decoration-none">Tambah</a>
         @endif
       @endif
-  <button type="submit">Detail</button>
-    <a href="{{ route('dpal.pengadaanBarang.detail') }}" class="btn btn-sm btn-primary rounded mt-1 text-center fw-bold text-white text-decoration-none">Detail</a>
+  <button type="submit" class="btn btn-sm btn-primary rounded mt-1 text-center fw-bold text-white text-decoration-none">Detail</button>
   </div>
 </div>
 <table class="table">

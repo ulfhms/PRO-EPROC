@@ -1,6 +1,7 @@
 @extends('layouts/main-layout')
 @section('title','E-Budjeting')
 @section('content')
+@include('layouts/alert')
 <h5 class="bg-warning p-2 rounded col-lg-6 col-12">
   Penyusunan Rencana Kegiatan dan Anggaran
 </h5>

@@ -24,6 +24,8 @@ class CreateBudjetsTable extends Migration
             $table->date('waktu_mulai')->unsigned()->nullable();
             $table->date('waktu_selesai')->unsigned()->nullable();
             $table->text('uraian')->unsigned()->nullable();
+            $table->string('bukti_tf')->unsigned()->nullable();
+            $table->string('proposal_pengadaan')->unsigned()->nullable();
             $table->timestamps();
         });
     }

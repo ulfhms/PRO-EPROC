@@ -27,10 +27,6 @@ class PengadaanSeeder extends Seeder
                 'budjet_id' => 3,
                 'status_pengadaan' => 1,
             ],
-            [
-                'budjet_id' => 8,
-                'status_pengadaan' => 1,
-            ],
         ];
 
         foreach($pengadaans as $key => $value){

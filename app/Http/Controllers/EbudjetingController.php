@@ -47,6 +47,7 @@ class EbudjetingController extends Controller
             'waktu_mulai' => 'required',
             'waktu_selesai' => 'required',
             'uraian' => 'required',
+            'proposal_pengadaan' => 'required|mimetypes:application/pdf',
         ],[
             'nama_kegiatan.required' => 'Nama kegiatan wajib diisi',
             'status.required' => 'Status wajib diisi',
@@ -57,12 +58,19 @@ class EbudjetingController extends Controller
             'waktu_mulai.required' => 'Waktu mulai wajib diisi',
             'waktu_selesai.required' => 'Waktu selesai wajib diisi',
             'uraian.required' => 'Uraian wajib diisi',
+            'proposal_pengadaan.required' => 'Proposal pengadaan wajib diisi',
+            'proposal_pengadaan.mimetypes' => 'Proposal pengadaan wajib berformat pdf',
         ]);
 
+        
         $data = $request->all();
+        if($request->file('proposal_pengadaan')){
+            $proposal=$request->file('proposal_pengadaan')->store('pengadaanBarang/proposal_pengadaan');
+        }
+        $data['proposal_pengadaan']=$proposal;
         Budjet::create($data);
 
-        return redirect()->route('dpal.ebudjeting.index');
+        return redirect()->route('dpal.ebudjeting.index')->with(['success' => 'Pengadaan dapat berhasil ditambah']);
     }
 
     /**
@@ -97,8 +105,10 @@ class EbudjetingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( Request $request, $id)
     {
+        $budjet = Budjet::where('id',$id)->first();
+
         $request->validate([
             'nama_kegiatan' => 'required',
             'status' => 'required',
@@ -109,6 +119,8 @@ class EbudjetingController extends Controller
             'waktu_mulai' => 'required',
             'waktu_selesai' => 'required',
             'uraian' => 'required',
+            'proposal_pengadaan' => 'mimetypes:application/pdf',
+
         ],[
             'nama_kegiatan.required' => 'Nama kegiatan wajib diisi',
             'status.required' => 'Status wajib diisi',
@@ -119,7 +131,15 @@ class EbudjetingController extends Controller
             'waktu_mulai.required' => 'Waktu mulai wajib diisi',
             'waktu_selesai.required' => 'Waktu selesai wajib diisi',
             'uraian.required' => 'Uraian wajib diisi',
+            'proposal_pengadaan.mimetypes' => 'Proposal pengadaan wajib berformat pdf',
         ]);
+
+        if($request->file('proposal_pengadaan')){
+            \Storage::delete($budjet->proposal_pengadaan);
+            $proposal=$request->file('proposal_pengadaan')->store('pengadaanBarang/proposal_pengadaan');
+        }else{
+            $proposal=$budjet->proposal_pengadaan;
+        }
 
         $data = [
             'nama_kegiatan' => $request->nama_kegiatan,
@@ -130,7 +150,8 @@ class EbudjetingController extends Controller
             'sisa_anggaran' => $request->sisa_anggaran,
             'waktu_mulai' => $request->waktu_mulai,
             'waktu_selesai' => $request->waktu_selesai,
-            'uraian' => $request->uraian
+            'uraian' => $request->uraian,
+            'proposal_pengadaan' => $proposal
         ];
 
         Budjet::where('id',$id)->update($data);
@@ -146,6 +167,8 @@ class EbudjetingController extends Controller
      */
     public function destroy($id)
     {
+        $budjet = Budjet::where('id',$id)->first();
+        \Storage::delete($budjet->proposal_pengadaan);
         Budjet::destroy($id);
         return redirect()->route('dpal.ebudjeting.index');
     }

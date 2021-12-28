@@ -92,6 +92,16 @@
   @enderror
 </div>
 
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label fw-bold">Proposal Pengadaan</label>
+  <input type="file" class="form-control form-control-sm" id="exampleFormControlInput1" name="proposal_pengadaan" value="{{ old('proposal_pengadaan') ?? ucwords($budjet->proposal_pengadaan) }}">
+  @error('proposal_pengadaan')
+  <div class="name text-danger mt-1">
+      {{ $message }}
+  </div>
+  @enderror
+</div>
+
 <div class="d-flex justify-content-end mt-3">
   <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
 </div>

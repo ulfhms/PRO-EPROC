@@ -27,15 +27,16 @@ class PengadaanBarangController extends Controller
 
     public function create()
     {
-        // $test = DB::table('pengadaans')
-        // ->join('budjets', 'pengadaans.budjet_id', '=', 'budjets.id')
-        // ->whereNotIn('pengadaans.budjet_id','budjets.id')->get();
-        // dd($test);
-        $budjets = Budjet::where('status', 'dapat di ajukan')->get();
-        $pengadaans = PengadaanBarang::where('status_pengadaan',1)->get();
-        // dd($pengadaans);
-        
+        // $budjets = Budjet::where('status', 'dapat di ajukan')->get();
+
+        $budjets =  Budjet::doesntHave('pengadaan_barang')->where('status','dapat di ajukan')->get();
         // dd($budjets);
+            // $pengadaan=[];
+            // foreach ($budjets as $budjet) {
+            // # code...
+            //     // $pengadaans[] = PengadaanBarang::where('budjet_id', '!=', $budjet->id)->first();
+            //     ddd($pengadaans);
+            // }
         return view('dpal/pengadaanBarang/pengadaanBarang/create', compact('budjets'));   
     }
 
@@ -300,13 +301,18 @@ class PengadaanBarangController extends Controller
         //             $data[$key]['kegiatan'] = $pengsups;
         //         }
         //     }
-            // $data[$key]['supplier'] = ["nama_supplier" => $pengsups[$key]->nama_supplier];
-            // $data[$key]['kegiatan'] = $pengsups;
-            
-            
+        //     $data[$key]['supplier'] = ["nama_supplier" => $pengsups[$key]->nama_supplier];
+        //     $data[$key]['kegiatan'] = $pengsups;
         // }
-        
         // ddd($data);
+
+        // dd($request->pilih);
+        // foreach ($request->plih as $key ) {
+        //     dd($key);
+        //     $pengsups=PengadaanSupplier::where('pengadaan_id',$id)->first();
+        //     // ddd($pengsups);
+        // }
+
         return view('dpal/pengadaanBarang/pengadaanBarang/detail');
 
     }

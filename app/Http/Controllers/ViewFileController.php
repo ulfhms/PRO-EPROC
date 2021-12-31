@@ -26,4 +26,13 @@ class ViewFileController extends Controller
 
         return abort(404);
     }
+
+    public function proposal_pengadaan(Request $request, $filename){
+        $path = 'pengadaanBarang/proposal_pengadaan/'.$filename;
+        if(Storage::exists($path)){
+            return Storage::response($path);
+        }
+
+        return abort(404);
+    }
 }

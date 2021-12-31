@@ -22,7 +22,7 @@
     <div class="container">
         <div class="list-btn">
         <div class="d-flex justify-content-between">
-            <button type="button" class="btn btn-outline-light"><a href="announcemet.html">Pengumuman Pengadaan</a></button>
+            <button type="button" class="btn btn-outline-light"><a href="{{ route('home.announcement') }}">Pengumuman Pengadaan</a></button>
             <button type="button" class="btn btn-outline-light"><a href="list-finalis.html">Daftar Penyedia Terseleksi</a></button>
             <button type="button" class="btn btn-outline-light"><a href="pakta.html">Pakta Integritas</a></button>
         </div>

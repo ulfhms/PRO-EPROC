@@ -20,19 +20,19 @@ $kondisi = $pengsup->status_supplier === 'evaluasi'|| $pengsup->status_supplier 
       <th scope="row">Status</th>
       <td>
         @if ($pengsup->status_supplier === 'submitted')
-          <button class="btn btn-sm btn-secondary">{{ ucwords($pengsup->status_supplier) }}</button>   
+          <span class="badge bg-secondary">{{ ucwords($pengsup->status_supplier) }}</span>   
         @elseif ($pengsup->status_supplier === 'evaluasi')
-          <button class="btn btn-sm btn-warning">{{ ucwords($pengsup->status_supplier) }}</button>
+          <span class="badge bg-warning">{{ ucwords($pengsup->status_supplier) }}</span>
         @elseif ($pengsup->status_supplier === 'acc')
-          <button class="btn btn-sm btn-primary">{{ ucwords($pengsup->status_supplier) }}</button>
+          <span class="badge bg-primary">{{ ucwords($pengsup->status_supplier) }}</span>
         @elseif ($pengsup->status_supplier === 'validasi')
-          <button class="btn btn-sm btn-primary">{{ ucwords($pengsup->status_supplier) }}</button>
+          <span class="badge bg-primary">{{ ucwords($pengsup->status_supplier) }}</span>
         @elseif ($pengsup->status_supplier === 'selesai')
-          <button class="btn btn-sm btn-primary">Selesai</button>
+          <span class="badge bg-primary">Selesai</span>
         @elseif ($pengsup->status_supplier === 'belum_lunas')   
-          <button class="btn btn-sm btn-danger">Belum Lunas</button>
+          <bspanutton class="badge bg-danger">Belum Lunas</span>
         @elseif ($pengsup->status_supplier === 'tolak')   
-          <button class="btn btn-sm btn-danger">{{ ucwords($pengsup->status_supplier) }}</button>
+          <span class="badge bg-danger">{{ ucwords($pengsup->status_supplier) }}</span>
         @endif
       </td>
     </tr>

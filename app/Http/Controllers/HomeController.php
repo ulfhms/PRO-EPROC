@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Budjet;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -36,5 +37,11 @@ class HomeController extends Controller
     public function tataCara()
     {
         return view('home/tatacara');
+    }
+
+    public function announcement()
+    {
+        $budjets = Budjet::paginate(20);
+        return view('home/announcement',compact('budjets'));
     }
 }

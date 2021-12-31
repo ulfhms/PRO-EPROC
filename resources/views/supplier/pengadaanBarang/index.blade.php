@@ -24,19 +24,19 @@
             <td><a href="{{ route('supplier.pengadaanBarang.detail',$sups->id) }}" class="card-title text-decoration-none text-primary">{{ $sups->pengadaan->budjet->nama_kegiatan }}</a></td>
             <td class="text-center">
               @if ($sups->status_supplier === 'submitted')
-              <a href="#" class="badge badge-secondary text-decoration-none">Submited</a>              
+              <span class="badge bg-secondary text-decoration-none">Submited</span>              
               @elseif ($sups->status_supplier === 'evaluasi')
-              <a href="#" class="badge badge-warning text-decoration-none">Evaluasi</a>    
+              <span class="badge bg-warning text-decoration-none">Evaluasi</span>    
               @elseif ($sups->status_supplier === 'acc')
-              <a href="#" class="badge badge-primary text-decoration-none">Acc</a>    
+              <span class="badge bg-primary text-decoration-none">Acc</span>    
               @elseif ($sups->status_supplier === 'validasi')
-              <a href="#" class="badge badge-primary text-decoration-none">Validasi</a>    
+              <span class="badge bg-primary text-decoration-none">Validasi</span>    
               @elseif ($sups->status_supplier === 'selesai')
-              <a href="#" class="badge badge-primary text-decoration-none">Selesai</a>    
+              <span class="badge bg-primary text-decoration-none">Selesai</span>    
               @elseif ($sups->status_supplier === 'tolak')
-              <a href="#" class="badge badge-danger text-decoration-none">Tolak</a>    
+              <span class="badge bg-danger text-decoration-none">Tolak</span>    
               @elseif ($sups->status_supplier === 'belum_lunas')
-              <a href="#" class="badge badge-danger text-decoration-none">Belum Lunas</a>    
+              <span class="badge bg-danger text-decoration-none">Belum Lunas</span>    
               @endif
             </td>
             {{-- <td class="text-center"><a href="{{ route('supplier.pengadaanBarang.edit', $sups->id) }}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
@@ -51,7 +51,7 @@
 
 
 {{-- modal --}}
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-danger">
@@ -67,5 +67,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 @endsection

@@ -40,15 +40,22 @@ class SupplierPengadaanController extends Controller
             foreach ($pengsups as $pengsup ) {
                 $data['pengadaan_id'][] = $pengsup->pengadaan_id;
             }
-    
-            foreach ($pengadaans as $pengadaan ) {
-                if(!in_array($pengadaan->id, $data['pengadaan_id'])){
-                    $data['pengadaans'][]=$pengadaan;
+            
+            // dd(count($pengadaans)!=0);
+            // if(count($pengadaans)!=0){
+                foreach ($pengadaans as $pengadaan ) {
+                    if(!in_array($pengadaan->id, $data['pengadaan_id'])){
+                        $data['pengadaans'][]=$pengadaan;
+                    }
                 }
-            }
+            // }else{
+            //     $data['pengadaans'] = $pengadaans;
+            // }
         }else{
             $data['pengadaans'] = $pengadaans;
         }
+
+        // dd($data);
         
         return view('supplier/pengadaanBarang/create', compact('data'));
     }
@@ -70,12 +77,13 @@ class SupplierPengadaanController extends Controller
 
         $request->validate([
             'pengadaan_id' => 'required',
-            'harga_penawaran' => 'required',
+            'harga_penawaran' => 'required|numeric',
             'proposal' => 'required|mimetypes:application/pdf'
         ],[
             'pengadaan_id.required' => 'Pengadaan belum dipilih',
             // 'pengadaan_id.unique' => 'Pengadaan sudah dipilih',
             'harga_penawaran.required' => 'Harga penawaran wajib diisi',
+            'harga_penawaran.numeric' => 'Harga penawaran hanya berisi angka',
             'proposal.required' => 'Proposal wajib diisi',
             'proposal.mimetypes' => 'Proposal wajib berformat pdf',
         ]);

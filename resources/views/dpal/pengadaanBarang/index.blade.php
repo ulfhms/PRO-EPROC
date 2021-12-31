@@ -27,16 +27,17 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">CHECK</th>
-      {{-- <th scope="col">KODE</th> --}}
-      <th scope="col">NAMA PAKET</th>
-      <th scope="col">UNIT KERJA PENGUSUL</th>
-      <th scope="col">STATUS</th>
-      <th scope="col">HPS</th>
-      {{-- <th scope="col">PESERTA</th> --}}
+      {{-- <th scope="col">CHECK</th> --}}
+      <th scope="col">Checklist</th>
+      {{-- <th scope="col">Kode</th> --}}
+      <th scope="col">Nama Paket</th>
+      <th scope="col">Unit Kerja Pengusul</th>
+      <th class="text-center" scope="col">Status</th>
+      <th class="text-center" scope="col">HPS</th>
+      {{-- <th scope="col">Peserta</th> --}}
       @if ($user = Auth::user())
         @if ($user->hasRole('dpal'))
-      <th scope="col">OPSI</th>
+      <th class="text-center" scope="col">Opsi</th>
         @endif
       @endif
     </tr>

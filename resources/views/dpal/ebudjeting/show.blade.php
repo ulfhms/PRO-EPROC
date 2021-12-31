@@ -40,6 +40,11 @@
       <th scope="row">Uraian</th>
       <td>{!! $budjet->uraian !!}</td>
     </tr>
+    <tr>
+      <th scope="row">Proposal</th>
+      <td><a href="/proposal_pengadaan/{{ $budjet->proposal_pengadaan }}">File</a></td>
+    </tr>
+
     
   </tbody>
 @endsection

@@ -42,6 +42,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/about', [HomeController::class, 'about'])->name('home.about');
     Route::get('/tataCara', [HomeController::class, 'tataCara'])->name('home.tataCara');
     Route::get('/faq', [HomeController::class, 'faq'])->name('home.faq');
+    Route::get('/announcement', [HomeController::class, 'announcement'])->name('home.announcement');
 // });
 
 // Route::prefix('auth')->group(function(){
@@ -182,6 +183,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/buktiTf/pengadaanBarang/bukti_tf/{filename}', [viewBuktiTfController::class,'buktiTf']);
     Route::get('/download/pengadaanBarang/proposal/{filename}', [ViewFileController::class,'download']);
+    Route::get('/proposal_pengadaan/pengadaanBarang/proposal_pengadaan/{filename}', [ViewFileController::class,'proposal_pengadaan']);
 
 
 

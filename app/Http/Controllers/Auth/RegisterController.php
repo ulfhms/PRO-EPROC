@@ -92,6 +92,12 @@ class RegisterController extends Controller
     protected function create( array $data)
     {
         // dd($data);
+        // $image = $supplier->logo_supplier;
+        // if($request->hasFile('logo_supplier')){
+        //     Storage::delete($image);
+        //     $image = $request->file('logo_supplier')->store('images/logo_supplier');
+        // }
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -109,6 +115,7 @@ class RegisterController extends Controller
             'telepon' => $data['telepon'],
             'no_rek' => $data['no_rek'],
             'alamat' => $data['alamat'],
+            // 'logo_supplier' => $image,
         ]);
         return $user;
     }

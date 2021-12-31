@@ -58,11 +58,11 @@
                         <span>Pengadaan Barang</span></a>
                 </li>
 
-                <li class="nav-item {{ request()->is('supplier/status/index') ? 'active' : ''}}">
+                {{-- <li class="nav-item {{ request()->is('supplier/status/index') ? 'active' : ''}}">
                     <a class="nav-link" href="{{ route('supplier.status.index') }}">
                         <i class="far fa-envelope"></i>
                       <span>Status</span></a>
-                </li>
+                </li> --}}
                 
               @elseif($user->hasRole('dpal'))
                 <li class="nav-item {{ request()->is('dpal/pengadaanBarang/index') ? 'active' : ''}}">
@@ -148,7 +148,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                    {{-- <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -159,7 +159,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">

@@ -9,8 +9,8 @@
       <th scope="col">Peserta</th>
       <th scope="col">NPWP</th>
       <th scope="col">Harga Penawaran</th>
-      <th scope="col">Status</th>
-      <th scope="col">Opsi</th>
+      <th class="text-center" scope="col">Status</th>
+      <th class="text-center" scope="col">Opsi</th>
     </tr>
   </thead>
   <tbody>
@@ -20,8 +20,8 @@
       <th scope="row">{{ $no++ }}</th>
       <td><a href="{{ route('dpal.pengadaanBarang.detailPesertaPengadaan',$sups->supplier->id) }}">{{ $sups->supplier->nama_supplier }}</a></td>
       <td>{{ $sups->supplier->npwp }}</td>
-      <td>Rp {{ number_format($sups->harga_penawaran) }},-</td>
-      <td>
+      <td align="center">Rp {{ number_format($sups->harga_penawaran) }},-</td>
+      <td align="center">
         
         @if ($sups->status_supplier === 'submitted')
         <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#submit{{ $sups->id }}">
@@ -57,14 +57,16 @@
         @php (
             $kondisi = $sups->status_supplier==='tolak'||$sups->status_supplier === 'evaluasi'||$sups->status_supplier === 'acc'||$sups->status_supplier === 'validasi'||$sups->status_supplier === 'selesai'||$sups->status_supplier === 'belum_lunas')
         @if ($kondisi)
+        <div align="center">
           <button type="button" class="btn btn-sm btn-primary">
             Telah di proses
           </button>
+        </div>
         @else
+        <form action="{{ route('dpal.pengadaanBarang.formEvaluasi', $sups->id) }}" method="post" align="center">
           <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#formTolak{{ $sups->id }}">
             <i class="fas fa-times"></i>
           </button>
-          <form action="{{ route('dpal.pengadaanBarang.formEvaluasi', $sups->id) }}" method="post">
             @method('patch')
             @csrf
             <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>

@@ -15,11 +15,11 @@ class CreateSuppliersTable extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->integer('bidangusaha_id')->unsigned()->nullable();
+            $table->integer('bidangusaha_id');
             $table->foreign('bidangusaha_id')->references('id')->on('bidang_usahas')->onDelete('cascade');
-            $table->integer('bank_id')->unsigned()->nullable();
+            $table->integer('bank_id');
             $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('npwp')->unique()->nullable();
             $table->string('narahubung')->nullable();

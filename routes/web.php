@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccContorller;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BadanUsahaController;
 use App\Http\Controllers\BankController;
@@ -49,7 +50,7 @@ use Illuminate\Support\Facades\Route;
 //     Route::get('/login', [AuthController::class, 'login'])->name('login');
 //     Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('auth.proses_login');
 //     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-//     Route::get('/registrasi', [AuthController::class, 'registrasi'])->name('auth.registrasi');
+    // Route::get('/registrasi', [AuthController::class, 'registrasi'])->name('auth.registrasi');
 //     Route::post('/prosesRegistrasi', [AuthController::class, 'prosesRegistrasi'])->name('auth.prosesRegistrasi');
 //     Route::get('/forget', [AuthController::class, 'forget'])->name('auth.forget');
 // });
@@ -196,6 +197,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+// Route::get('register', [RegisterController::class,'dataRegister']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

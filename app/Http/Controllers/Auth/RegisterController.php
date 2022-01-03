@@ -83,6 +83,15 @@ class RegisterController extends Controller
         ]);
     }
 
+    // public function dataRegister(){
+    //     // \View::share([
+    //         $bingus =  BidangUsaha::get();
+    //         $banks = Bank::get();
+    //     // ]);
+
+    //     return view('auth/register',compact('bingus','banks'));
+    // }
+
     /**
      * Create a new user instance after a valid registration.
      *

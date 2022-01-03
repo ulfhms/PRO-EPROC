@@ -58,6 +58,11 @@ class AuthController extends Controller
 
     public function registrasi(){
         $bingus = BidangUsaha::get();
+        // \View::share([
+        //     'bingus' => BidangUsaha::get(),
+        //     'banks' => Bank::get(),
+        // ]);
+        // dd($bingus);
         return view('auth/register', compact('bingus'));
     }
     

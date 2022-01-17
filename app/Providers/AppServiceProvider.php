@@ -30,10 +30,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        // \View::share([
-        //     'bingus' => BidangUsaha::get(),
-        //     'banks' => Bank::get(),
-        // ]);
+         \View::share([
+             'bingus' => BidangUsaha::get(),
+             'banks' => Bank::get(),
+         ]);
         PaginationPaginator::useBootstrap();
 
     }

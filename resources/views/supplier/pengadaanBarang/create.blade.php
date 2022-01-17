@@ -13,11 +13,13 @@
       <div>
         <select class="form-select @error('pengadaan_id') is-invalid @enderror" name="pengadaan_id" aria-label="Default select example">
           <option selected disabled >Pilih Pengadaan</option>
-          @if ($data['pengadaans']!=null)              
-          @foreach ($data['pengadaans'] as $pengadaan)
-                <option value="{{ $pengadaan->id }}">{{ ucwords($pengadaan->budjet->nama_kegiatan) }}</option>
-            
-          @endforeach
+          @if (array_key_exists('pengadaans', $data))              
+            @foreach ($data['pengadaans'] as $pengadaan)
+                  <option value="{{ $pengadaan->id }}">{{ ucwords($pengadaan->budjet->nama_kegiatan) }}</option>
+              
+            @endforeach
+          @else 
+            {!!'<script>swal("Kamu telah mengikuti semua pengadaan", "Terima Kasih", "error");</script>'!!} 
           @endif
         </select>
         @error('pengadaan_id')

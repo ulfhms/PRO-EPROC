@@ -22,6 +22,7 @@ class SupplierController extends Controller
     public function index()
     {
         $profile = Supplier::where('user_id',auth()->id())->first();
+        // dd($profile);
         return view('supplier/profile/index', compact('profile'));
     }
 
@@ -34,21 +35,22 @@ class SupplierController extends Controller
     }
 
     public function updateProfile(Request $request, $id){
-        $user = User::find($id);
+        // dd($id);
+        // $user = User::find($id);
         // dd($profile);
-        $supplier = Supplier::where('user_id',$user->id)->first();
+        $supplier = Supplier::where('user_id',$id)->first();
 
         $request->validate([
             'nama_supplier' => 'required',
-            'npwp' => 'required',
+            // 'npwp' => 'required',
             'narahubung' => 'required',
             'telepon' => 'required',
             'no_rek' => 'required',
             'alamat' => 'required',
-            'logo_supplier' => 'mimes:jpg,png',
+            'logo_supplier' => 'mimes:jpg,jpeg,png',
         ],[
             'nama_supplier.required' => 'Nama supplier wajib diisi',
-            'npwp.required' => 'NPWP wajib diisi',
+            // 'npwp.required' => 'NPWP wajib diisi',
             'narahubung.required' => 'Narahubung wajib diisi',
             'telepon.required' => 'Telepon wajib diisi',
             'no_rek.required' => 'Nomor rekening wajib diisi',
@@ -65,7 +67,7 @@ class SupplierController extends Controller
         $supplier->update([
             'bidangusaha_id' => $request->bidangusaha,
             'bank_id' => $request->bank,
-            'npwp' => $request->npwp,
+            // 'npwp' => $request->npwp,
             'narahubung' => $request->narahubung,
             'nama_supplier' => $request->nama_supplier,
             'telepon' => $request->telepon,

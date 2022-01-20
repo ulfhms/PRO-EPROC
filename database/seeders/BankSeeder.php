@@ -15,15 +15,10 @@ class BankSeeder extends Seeder
     public function run()
     {
         $bank = [
-            [
-                'nama_bank' => 'BCA',
-                'nama_bank' => 'BRI',
-                'nama_bank' => 'Danamon',
-                'nama_bank' => 'BTN',
-                'nama_bank' => 'BRI',
-                'nama_bank' => 'BRI',
-                'nama_bank' => 'BRI',
-            ]
+            ['nama_bank' => 'BCA'],
+            ['nama_bank' => 'BRI'],
+            ['nama_bank' => 'Danamon'],
+            ['nama_bank' => 'BTN'],
         ];
 
         foreach($bank as $key => $value){

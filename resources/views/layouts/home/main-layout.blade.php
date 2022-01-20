@@ -65,7 +65,7 @@
               </li>
               <li class="nav-item dropdown">
                @if ($user = Auth::user())
-                @if ($user->hasRole('supplier'))
+                @if ($user->level === 'supplier')
                 <a class="nav-link text-decoration-none text-white" href="{{ route('supplier.profile') }}">
                   Dashboard
                 </a>

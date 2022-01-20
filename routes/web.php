@@ -46,42 +46,44 @@ use Illuminate\Support\Facades\Route;
     Route::get('/announcement', [HomeController::class, 'announcement'])->name('home.announcement');
 // });
 
-// Route::prefix('auth')->group(function(){
-//     Route::get('/login', [AuthController::class, 'login'])->name('login');
-//     Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('auth.proses_login');
-//     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-    // Route::get('/registrasi', [AuthController::class, 'registrasi'])->name('auth.registrasi');
-//     Route::post('/prosesRegistrasi', [AuthController::class, 'prosesRegistrasi'])->name('auth.prosesRegistrasi');
-//     Route::get('/forget', [AuthController::class, 'forget'])->name('auth.forget');
-// });
+Route::prefix('auth')->group(function(){
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('auth.proses_login');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/registrasi', [AuthController::class, 'registrasi'])->name('auth.registrasi');
+    Route::post('/prosesRegistrasi', [AuthController::class, 'prosesRegistrasi'])->name('auth.prosesRegistrasi');
+    Route::get('/forget', [AuthController::class, 'forget'])->name('auth.forget');
+});
 
 // auth
-    Route::group(['middleware' => ['role:supplier']], function (){
-        Route::prefix('supplier')->group(function (){
-            Route::get('/profile', [SupplierController::class, 'index'])->name('supplier.profile');
-            Route::get('{id}/editProfile', [SupplierController::class, 'editProfile'])->name('supplier.editProfile');
-            Route::patch('{id}/updateProfile', [SupplierController::class, 'updateProfile'])->name('supplier.updateProfile');
-        });
-        
-        Route::prefix('supplier/pengandaanBarang')->group(function (){
-            Route::get('/index', [SupplierPengadaanController::class, 'index'])->name('supplier.pengadaanBarang.index');
-            Route::get('{id}/detail', [SupplierPengadaanController::class, 'detail'])->name('supplier.pengadaanBarang.detail');
-            Route::get('/create', [SupplierPengadaanController::class, 'create'])->name('supplier.pengadaanBarang.create');
-            Route::post('/store', [SupplierPengadaanController::class, 'store'])->name('supplier.pengadaanBarang.store');
-            Route::get('{id}/edit', [SupplierPengadaanController::class, 'edit'])->name('supplier.pengadaanBarang.edit');
-            Route::patch('{id}/updateSubmit', [SupplierPengadaanController::class, 'updateSubmit'])->name('supplier.pengadaanBarang.updateSubmit');
-            Route::patch('{id}/updateSubmit2', [SupplierPengadaanController::class, 'updateSubmit2'])->name('supplier.pengadaanBarang.updateSubmit2');
-            Route::patch('/checkBuktiTf/{id}', [SupplierPengadaanController::class, 'checkBuktiTf'])->name('supplier.pengadaanBarang.checkBuktiTf');
-        });
-        
-        Route::prefix('supplier/status')->group(function (){
-            Route::get('/index', [SupplierStatusController::class, 'index'])->name('supplier.status.index');
-            Route::get('/detailProses', [SupplierStatusController::class, 'detailProses'])->name('supplier.status.detailProses');
-            Route::get('/detailAcc', [SupplierStatusController::class, 'detailAcc'])->name('supplier.status.detailAcc');
-            Route::get('/detailTolak', [SupplierStatusController::class, 'detailTolak'])->name('supplier.status.detailTolak');
-            Route::get('/detailValidasi', [SupplierStatusController::class, 'detailValidasi'])->name('supplier.status.detailValidasi');
-            Route::get('/detailSelesai', [SupplierStatusController::class, 'detailSelesai'])->name('supplier.status.detailSelesai');
-            Route::get('/detailSubmit', [SupplierStatusController::class, 'detailSubmit'])->name('supplier.status.detailSubmit');
+    Route::group(['middleware' => ['auth']], function (){
+        Route::group(['middleware' => ['cekLogin:supplier']], function(){
+            Route::prefix('supplier')->group(function (){
+                Route::get('/profile', [SupplierController::class, 'index'])->name('supplier.profile');
+                Route::get('{id}/editProfile', [SupplierController::class, 'editProfile'])->name('supplier.editProfile');
+                Route::patch('{id}/updateProfile', [SupplierController::class, 'updateProfile'])->name('supplier.updateProfile');
+            });
+            
+            Route::prefix('supplier/pengandaanBarang')->group(function (){
+                Route::get('/index', [SupplierPengadaanController::class, 'index'])->name('supplier.pengadaanBarang.index');
+                Route::get('{id}/detail', [SupplierPengadaanController::class, 'detail'])->name('supplier.pengadaanBarang.detail');
+                Route::get('/create', [SupplierPengadaanController::class, 'create'])->name('supplier.pengadaanBarang.create');
+                Route::post('/store', [SupplierPengadaanController::class, 'store'])->name('supplier.pengadaanBarang.store');
+                Route::get('{id}/edit', [SupplierPengadaanController::class, 'edit'])->name('supplier.pengadaanBarang.edit');
+                Route::patch('{id}/updateSubmit', [SupplierPengadaanController::class, 'updateSubmit'])->name('supplier.pengadaanBarang.updateSubmit');
+                Route::patch('{id}/updateSubmit2', [SupplierPengadaanController::class, 'updateSubmit2'])->name('supplier.pengadaanBarang.updateSubmit2');
+                Route::patch('/checkBuktiTf/{id}', [SupplierPengadaanController::class, 'checkBuktiTf'])->name('supplier.pengadaanBarang.checkBuktiTf');
+            });
+            
+            Route::prefix('supplier/status')->group(function (){
+                Route::get('/index', [SupplierStatusController::class, 'index'])->name('supplier.status.index');
+                Route::get('/detailProses', [SupplierStatusController::class, 'detailProses'])->name('supplier.status.detailProses');
+                Route::get('/detailAcc', [SupplierStatusController::class, 'detailAcc'])->name('supplier.status.detailAcc');
+                Route::get('/detailTolak', [SupplierStatusController::class, 'detailTolak'])->name('supplier.status.detailTolak');
+                Route::get('/detailValidasi', [SupplierStatusController::class, 'detailValidasi'])->name('supplier.status.detailValidasi');
+                Route::get('/detailSelesai', [SupplierStatusController::class, 'detailSelesai'])->name('supplier.status.detailSelesai');
+                Route::get('/detailSubmit', [SupplierStatusController::class, 'detailSubmit'])->name('supplier.status.detailSubmit');
+            });
         });
     });
     

@@ -15,7 +15,17 @@ class BidangUsahaSeeder extends Seeder
     public function run()
     {
         $bingus = [
-            ['nama_bingus' => 'IT']
+            [
+             'nama_bingus' => 'Pertanian',
+            ],[
+             'nama_bingus' => 'Manufaktur',
+            ],[
+             'nama_bingus' => 'Konstruksi',
+            ],[
+             'nama_bingus' => 'Jasa',
+            ],[
+             'nama_bingus' => 'Teknologi',
+             ]
         ];
 
         foreach($bingus as $key => $value){

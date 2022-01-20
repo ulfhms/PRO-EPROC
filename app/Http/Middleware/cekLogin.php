@@ -28,6 +28,6 @@ class cekLogin
             return $next($request);
         }
 
-        return redirect('/');
+        return redirect()->route('login');
     }
 }

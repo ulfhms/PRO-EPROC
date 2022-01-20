@@ -45,7 +45,7 @@
             <hr class="sidebar-divider my-0">
 
             @if ($user = Auth::user())
-              @if ($user->hasRole('supplier'))
+              @if ($user->level='supplier')
                 <li class="nav-item {{ request()->is('supplier/profile') ? 'active' : ''}}">
                   <a class="nav-link" href="{{ route('supplier.profile') }}">
                       <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -198,18 +198,18 @@
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                     {{ Auth::user()->name }}
                                 </span>
-                                <img class="img-profile rounded-circle"
-                                    src="{{ asset('template/img/undraw_profile.svg') }}">
+                                {{-- <img class="img-profile rounded-circle"
+                                    src="{{ asset('template/img/undraw_profile.svg') }}"> --}}
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                    <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                                    <a href="{{ route('auth.logout') }}" class="dropdown-item" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
                                     </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                             </div>

@@ -17,18 +17,18 @@
 <div class="row mb-2">
   <div class="col-sm-12 col-lg-12 d-flex justify-content-end">
     @if ($user = Auth::user())
-        @if ($user->hasRole('dpal'))
+        @if ($user->level==='dpal')
         <a href="{{ route('dpal.pengadaanBarang.create') }}" class="btn btn-sm btn-primary rounded me-2 mt-1 text-center fw-bold text-white text-decoration-none">Tambah</a>
         @endif
       @endif
-  <button type="submit" class="btn btn-sm btn-primary rounded mt-1 text-center fw-bold text-white text-decoration-none">Detail</button>
+  {{-- <button type="submit" class="btn btn-sm btn-primary rounded mt-1 text-center fw-bold text-white text-decoration-none">Detail</button> --}}
   </div>
 </div>
 <table class="table">
   <thead>
     <tr>
       {{-- <th scope="col">CHECK</th> --}}
-      <th scope="col">Checklist</th>
+      {{-- <th scope="col">Checklist</th> --}}
       {{-- <th scope="col">Kode</th> --}}
       <th scope="col">Nama Paket</th>
       <th scope="col">Unit Kerja Pengusul</th>
@@ -36,7 +36,7 @@
       <th class="text-center" scope="col">HPS</th>
       {{-- <th scope="col">Peserta</th> --}}
       @if ($user = Auth::user())
-        @if ($user->hasRole('dpal'))
+        @if ($user->level==='dpal')
       <th class="text-center" scope="col">Opsi</th>
         @endif
       @endif
@@ -45,11 +45,11 @@
   <tbody>
     @foreach ($pengadaans as $pengadaan)    
     <tr>
-      <th scope="row">
+      {{-- <th scope="row">
         <div class="form-check text-center">
           <input class="form-check-input" type="checkbox" name="pilih[]" value="{{ $pengadaan->id }}" id="flexCheckDefault">
         </div>
-      </th>
+      </th> --}}
       {{-- <th scope="row">PBA - 0001</th> --}}
       <td><a href="{{ route('dpal.pengadaanBarang.pengumumanPengadaan', $pengadaan->id) }}">{{ $pengadaan->budjet->nama_kegiatan }}</a></td>
       <td>{{ ucwords($pengadaan->budjet->unit_kerja_pengusul) }}</td>
@@ -59,7 +59,7 @@
             <a href="{{ route('dpal.pengadaanBarang.pengumumanPengadaan', $pengadaan->id) }}"></a>
       </td> --}}
       @if ($user = Auth::user())
-        @if ($user->hasRole('dpal'))
+        @if ($user->level==='dpal')
         <td><a href="{{ route('dpal.pengadaanBarang.edit',$pengadaan->id )}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
         @endif
       @endif

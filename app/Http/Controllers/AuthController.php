@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Bank;
 use App\Models\BidangUsaha;
+use App\Models\PengadaanBarang;
+use App\Models\PengadaanSupplier;
 use App\Models\User;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
@@ -13,14 +15,28 @@ class AuthController extends Controller
 {
     public function login(){
         if($user = Auth::user()){
-            if($user->level == 'supplier'){
-                return redirect()->route('supplier.profile');
+            if ($user->level == 'rektor') {
+                return redirect()->intended('rektor');
+            } else if ($user->level == 'warek') {
+                return redirect()->route('dpal.pengadaanBarang.index');
+
+                // return redirect()->intended('warek');
+            }else if ($user->level === 'dpal') {
+                // $pengadaans = PengadaanBarang::paginate(20);
+                // $pengsups = PengadaanSupplier::get();
+                // return view('dpal/pengadaanBarang/index', compact('pengadaans','pengsups'));
+                return redirect()->route('dpal.pengadaanBarang.index');
+
+            }else if ($user->level == 'supplier') {
+                return view('supplier/profile');
+
             }
         }
-        return view('auth/masuk');
+        return view('auth/login');
     }
     
     public function proses_login(Request $request){
+        // dd($request);
         request()->validate([
             'email' => 'required',
             'password' => 'required',
@@ -30,10 +46,21 @@ class AuthController extends Controller
 
         if (Auth::attempt($kredensil)){
             $user = Auth::user();
-            if($user->level == 'supplier'){
+            if ($user->level == 'rektor') {
+                return redirect()->intended('rektor');
+            } else if ($user->level == 'warek') {
+                return redirect()->route('dpal.pengadaanBarang.index');
+
+            }else if ($user->level == 'dpal') {
+                // $pengadaans = PengadaanBarang::paginate(20);
+                // $pengsups = PengadaanSupplier::get();
+                // return view('dpal/pengadaanBarang/index', compact('pengadaans','pengsups'));
+
+                return redirect()->route('dpal.pengadaanBarang.index');
+            }else if ($user->level == 'supplier') {
                 return redirect()->route('supplier.profile');
             }
-            return redirect()->intended('/');
+            // return redirect()->route('home.index');
         }
         return redirect()->route('login');
 

@@ -10,7 +10,7 @@
       <th scope="col">NPWP</th>
       <th scope="col">Harga Penawaran</th>
       @if ($user = Auth::user())
-        @if ($user->hasRole('dpal'))
+        @if ($user->level=='dpal')
         <th scope="col">Evaluasi</th>
         @endif
       @endif
@@ -26,7 +26,7 @@
       <td>{{ $sups->supplier->npwp }}</td>
       <td>Rp {{ number_format($sups->harga_penawaran) }},-</td>
       @if ($user = Auth::user())
-        @if ($user->hasRole('dpal'))
+        @if ($user->level=='dpal')
         <td class="text-center">
           <a href="{{ route('dpal.pengadaanBarang.editHasilEvaluasi',$sups->id) }}" class="btn btn-sm btn-primary"><i class="far fa-edit"></a></i>
         </td>

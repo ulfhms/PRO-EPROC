@@ -3,7 +3,7 @@
 @section('content')
 @include('dpal/pengadaanBarang/navbarPengadaan')
 @if ($user = Auth::user())
-  @if ($user->hasRole('dpal'))
+  @if ($user->level=='dpal')
     @if ($pengadaan->tgl_pengumuman_pemenang === null)    
     <div class="card">
       <h5 class="card-header bg-success text-white mt-3">Pilih Supplier yang di ACC</h5>

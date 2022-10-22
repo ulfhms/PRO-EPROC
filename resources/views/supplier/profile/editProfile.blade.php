@@ -1,9 +1,9 @@
 @extends('layouts/main-layout')
 @section('title', 'Edit Profile')
 @section('content')
-<form action="{{ route('supplier.updateProfile', $profile->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('supplier.updateProfile', $profile->user_id) }}" method="post" enctype="multipart/form-data">
   @csrf
-  @method('patch')
+  @method('put')
   <div class="m-2">
     <div class="bg-warning p-1 fw-bold mb-3">Edit Profile Perusahaan</div>
     <div class="mb-3">

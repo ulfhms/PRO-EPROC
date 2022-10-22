@@ -37,44 +37,44 @@ class SupplierController extends Controller
     public function updateProfile(Request $request, $id){
         // dd($id);
         // $user = User::find($id);
-        // dd($profile);
         $supplier = Supplier::where('user_id',$id)->first();
+        // dd($supplier);
 
         $request->validate([
             'nama_supplier' => 'required',
-            // 'npwp' => 'required',
+            'npwp' => 'required',
             'narahubung' => 'required',
             'telepon' => 'required',
             'no_rek' => 'required',
             'alamat' => 'required',
-            'logo_supplier' => 'mimes:jpg,jpeg,png',
+            // 'logo_supplier' => 'mimes:jpg,jpeg,png',
         ],[
             'nama_supplier.required' => 'Nama supplier wajib diisi',
-            // 'npwp.required' => 'NPWP wajib diisi',
+            'npwp.required' => 'NPWP wajib diisi',
             'narahubung.required' => 'Narahubung wajib diisi',
             'telepon.required' => 'Telepon wajib diisi',
             'no_rek.required' => 'Nomor rekening wajib diisi',
             'alamat.required' => 'Alamat wajib diisi',
-            'logo_supplier.mimes' => 'Format logo harus berformat jpg.png',
+            // 'logo_supplier.mimes' => 'Format logo harus berformat jpg.png',
         ]);
 
-        $image = $supplier->logo_supplier;
-        if($request->hasFile('logo_supplier')){
-            Storage::delete($image);
-            $image = $request->file('logo_supplier')->store('images/logo_supplier');
-        }
+        // $image = $supplier->logo_supplier;
+        // if($request->hasFile('logo_supplier')){
+        //     Storage::delete($image);
+        //     $image = $request->file('logo_supplier')->store('images/logo_supplier');
+        // }
 
         $supplier->update([
             'bidangusaha_id' => $request->bidangusaha,
             'bank_id' => $request->bank,
-            // 'npwp' => $request->npwp,
+            'npwp' => $request->npwp,
             'narahubung' => $request->narahubung,
             'nama_supplier' => $request->nama_supplier,
             'telepon' => $request->telepon,
             'no_rek' => $request->no_rek,
             'alamat' => $request->alamat,
             'email' => $request->email,
-            'logo_supplier' => $image
+            // 'logo_supplier' => $image
             ]);
             
         return redirect()->route('supplier.profile')->with(['success' => 'Data supplier berhasil di ubah']);

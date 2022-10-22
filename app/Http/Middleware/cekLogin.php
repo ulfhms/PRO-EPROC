@@ -15,7 +15,7 @@ class cekLogin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, $role)
+    public function handle(Request $request, Closure $next, $roles)
     {
         //jika tidak login
         if(!Auth::check()){ 
@@ -24,10 +24,10 @@ class cekLogin
 
         $user = Auth::user();
 
-        if($user->level == $role){
+        if($user->level == $roles){
             return $next($request);
         }
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('error',"kamu gak punya akses");
     }
 }

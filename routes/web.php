@@ -20,6 +20,7 @@ use App\Http\Controllers\SupplierStatusController;
 use App\Http\Controllers\viewBuktiTfController;
 use App\Http\Controllers\ViewFileController;
 use App\Http\Controllers\warekPengadaanBarang;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,7 +48,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::prefix('auth')->group(function(){
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
     Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('auth.proses_login');
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
     Route::get('/registrasi', [AuthController::class, 'registrasi'])->name('auth.registrasi');
@@ -61,7 +62,7 @@ Route::prefix('auth')->group(function(){
             Route::prefix('supplier')->group(function (){
                 Route::get('/profile', [SupplierController::class, 'index'])->name('supplier.profile');
                 Route::get('{id}/editProfile', [SupplierController::class, 'editProfile'])->name('supplier.editProfile');
-                Route::patch('{id}/updateProfile', [SupplierController::class, 'updateProfile'])->name('supplier.updateProfile');
+                Route::put('{id}/updateProfile', [SupplierController::class, 'updateProfile'])->name('supplier.updateProfile');
             });
             
             Route::prefix('supplier/pengandaanBarang')->group(function (){
@@ -85,75 +86,76 @@ Route::prefix('auth')->group(function(){
                 Route::get('/detailSubmit', [SupplierStatusController::class, 'detailSubmit'])->name('supplier.status.detailSubmit');
             });
         });
+        Route::group(['middleware' => ['cekLogin:dpal']],function (){
+            Route::prefix('dpal/pengadaanBarang')->group(function (){
+                Route::get('/index', [PengadaanBarangController::class, 'index'])->name('dpal.pengadaanBarang.index');
+                Route::get('/create', [PengadaanBarangController::class, 'create'])->name('dpal.pengadaanBarang.create');
+                Route::post('/store', [PengadaanBarangController::class, 'store'])->name('dpal.pengadaanBarang.store');
+                Route::get('/detail', [PengadaanBarangController::class, 'detail'])->name('dpal.pengadaanBarang.detail');
+                Route::get('{id}/edit', [PengadaanBarangController::class, 'edit'])->name('dpal.pengadaanBarang.edit');
+                Route::patch('{id}/update', [PengadaanBarangController::class, 'update'])->name('dpal.pengadaanBarang.update');
+                Route::get('/detailTahap/{id}', [PengadaanBarangController::class, 'detailTahap'])->name('dpal.pengadaanBarang.detailTahap');
+                Route::get('/pengumumanPengadaan/{id}', [PengadaanBarangController::class, 'pengumumanPengadaan'])->name('dpal.pengadaanBarang.pengumumanPengadaan');
+                Route::get('/pesertaPengadaan/{id}', [PengadaanBarangController::class, 'pesertaPengadaan'])->name('dpal.pengadaanBarang.pesertaPengadaan');
+                Route::patch('/formTolak/{id}', [PengadaanBarangController::class, 'formTolak'])->name('dpal.pengadaanBarang.formTolak');
+                Route::patch('/formEvaluasi/{id}', [PengadaanBarangController::class, 'formEvaluasi'])->name('dpal.pengadaanBarang.formEvaluasi');
+                Route::get('/pesertaEvaluasi/{id}', [PengadaanBarangController::class, 'pesertaEvaluasi'])->name('dpal.pengadaanBarang.pesertaEvaluasi');
+                Route::get('/editHasilEvaluasi/{id}', [PengadaanBarangController::class, 'editHasilEvaluasi'])->name('dpal.pengadaanBarang.editHasilEvaluasi');
+                Route::patch('/formDpalKeSupplier/{id}', [PengadaanBarangController::class, 'formDpalKeSupplier'])->name('dpal.pengadaanBarang.formDpalKeSupplier');
+                Route::get('/detailPesertaPengadaan/{id}', [PengadaanBarangController::class, 'detailPesertaPengadaan'])->name('dpal.pengadaanBarang.detailPesertaPengadaan');
+                Route::get('/detailProdukPesertaPengadaan/{id}', [PengadaanBarangController::class, 'detailProdukPesertaPengadaan'])->name('dpal.pengadaanBarang.detailProdukPesertaPengadaan');
+                Route::get('/hasilEvaluasi/{id}', [PengadaanBarangController::class, 'hasilEvaluasi'])->name('dpal.pengadaanBarang.hasilEvaluasi');
+                Route::patch('/formPemenang/{id}', [PengadaanBarangController::class, 'formPemenang'])->name('dpal.pengadaanBarang.formPemenang');
+                Route::get('/tolakEvaluasi/{id}', [PengadaanBarangController::class, 'tolakEvaluasi'])->name('dpal.pengadaanBarang.tolakEvaluasi');
+                Route::patch('/formTolakEvaluasi/{id}', [PengadaanBarangController::class, 'formTolakEvaluasi'])->name('dpal.pengadaanBarang.formTolakEvaluasi');
+                Route::get('/pemenang/{id}', [PengadaanBarangController::class, 'pemenang'])->name('dpal.pengadaanBarang.pemenang');
+                Route::patch('/formBuktiTf/{id}', [PengadaanBarangController::class, 'formBuktiTf'])->name('dpal.pengadaanBarang.formBuktiTf');
+                Route::post('/checkDetail',[PengadaanBarangController::class, 'checkDetail'])->name('dpal.pengadaanBarang.checkDetail');
+            });
+                        // Route::get('/download/{filename}', [ViewFileController::class,'download']);
+    
+    
+            Route::prefix('dpal/badanUsaha')->group(function (){
+                Route::get('/index', [dpalBadanUsahaController::class, 'index'])->name('dpal.badanUsaha.index');
+                Route::get('/detailBadanUsaha', [dpalBadanUsahaController::class, 'detailBadanUsaha'])->name('dpal.badanUsaha.detailBadanUsaha');
+            });
+            
+            Route::prefix('dpal/perorangan')->group(function (){
+                Route::get('/index', [dpalPeroranganController::class, 'index'])->name('dpal.perorangan.index');
+                Route::get('/detailPerorangan', [dpalPeroranganController::class, 'detailPerorangan'])->name('dpal.perorangan.detailPerorangan');
+            });
+    
+            Route::prefix('dpal/bidangUsaha')->group(function(){
+                Route::get('/index', [BidangUsahaController::class, 'index'])->name('bingus.index');
+                Route::get('/create', [BidangUsahaController::class, 'create'])->name('bingus.create');
+                Route::post('/store', [BidangUsahaController::class, 'store'])->name('bingus.store');
+                Route::get('/{id}/edit', [BidangUsahaController::class, 'edit'])->name('bingus.edit');
+                Route::patch('/{id}/update', [BidangUsahaController::class, 'update'])->name('bingus.update');
+                Route::delete('/{id}/destroy', [BidangUsahaController::class, 'destroy'])->name('bingus.delete');
+            });
+    
+            Route::resource('bank',BankController::class)->names([
+                'index' => 'bank.index',
+                'create' => 'bank.create',
+                'store' => 'bank.store',
+                'edit' => 'bank.edit',
+                'update' => 'bank.update',
+                'destroy' => 'bank.destroy',
+            ]);
+    
+            Route::prefix('dpal/ebudjeting')->group(function(){
+                Route::get('/index', [EbudjetingController::class, 'index'])->name('dpal.ebudjeting.index');
+                Route::get('/create', [EbudjetingController::class, 'create'])->name('dpal.ebudjeting.create');
+                Route::post('/store', [EbudjetingController::class, 'store'])->name('dpal.ebudjeting.store');
+                Route::get('{id}/show', [EbudjetingController::class, 'show'])->name('dpal.ebudjeting.show');
+                Route::get('{id}/edit', [EbudjetingController::class, 'edit'])->name('dpal.ebudjeting.edit');
+                Route::patch('{id}/update', [EbudjetingController::class, 'update'])->name('dpal.ebudjeting.update');
+                Route::delete('{id}/destroy', [EbudjetingController::class, 'destroy'])->name('dpal.ebudjeting.destroy');
+            });
+        });
     });
     
-    Route::group(['middleware' => ['role:dpal|warek|rektor']],function (){
-        Route::prefix('dpal/pengadaanBarang')->group(function (){
-            Route::get('/index', [PengadaanBarangController::class, 'index'])->name('dpal.pengadaanBarang.index');
-            Route::get('/create', [PengadaanBarangController::class, 'create'])->name('dpal.pengadaanBarang.create');
-            Route::post('/store', [PengadaanBarangController::class, 'store'])->name('dpal.pengadaanBarang.store');
-            Route::get('/detail', [PengadaanBarangController::class, 'detail'])->name('dpal.pengadaanBarang.detail');
-            Route::get('{id}/edit', [PengadaanBarangController::class, 'edit'])->name('dpal.pengadaanBarang.edit');
-            Route::patch('{id}/update', [PengadaanBarangController::class, 'update'])->name('dpal.pengadaanBarang.update');
-            Route::get('/detailTahap/{id}', [PengadaanBarangController::class, 'detailTahap'])->name('dpal.pengadaanBarang.detailTahap');
-            Route::get('/pengumumanPengadaan/{id}', [PengadaanBarangController::class, 'pengumumanPengadaan'])->name('dpal.pengadaanBarang.pengumumanPengadaan');
-            Route::get('/pesertaPengadaan/{id}', [PengadaanBarangController::class, 'pesertaPengadaan'])->name('dpal.pengadaanBarang.pesertaPengadaan');
-            Route::patch('/formTolak/{id}', [PengadaanBarangController::class, 'formTolak'])->name('dpal.pengadaanBarang.formTolak');
-            Route::patch('/formEvaluasi/{id}', [PengadaanBarangController::class, 'formEvaluasi'])->name('dpal.pengadaanBarang.formEvaluasi');
-            Route::get('/pesertaEvaluasi/{id}', [PengadaanBarangController::class, 'pesertaEvaluasi'])->name('dpal.pengadaanBarang.pesertaEvaluasi');
-            Route::get('/editHasilEvaluasi/{id}', [PengadaanBarangController::class, 'editHasilEvaluasi'])->name('dpal.pengadaanBarang.editHasilEvaluasi');
-            Route::patch('/formDpalKeSupplier/{id}', [PengadaanBarangController::class, 'formDpalKeSupplier'])->name('dpal.pengadaanBarang.formDpalKeSupplier');
-            Route::get('/detailPesertaPengadaan/{id}', [PengadaanBarangController::class, 'detailPesertaPengadaan'])->name('dpal.pengadaanBarang.detailPesertaPengadaan');
-            Route::get('/detailProdukPesertaPengadaan/{id}', [PengadaanBarangController::class, 'detailProdukPesertaPengadaan'])->name('dpal.pengadaanBarang.detailProdukPesertaPengadaan');
-            Route::get('/hasilEvaluasi/{id}', [PengadaanBarangController::class, 'hasilEvaluasi'])->name('dpal.pengadaanBarang.hasilEvaluasi');
-            Route::patch('/formPemenang/{id}', [PengadaanBarangController::class, 'formPemenang'])->name('dpal.pengadaanBarang.formPemenang');
-            Route::get('/tolakEvaluasi/{id}', [PengadaanBarangController::class, 'tolakEvaluasi'])->name('dpal.pengadaanBarang.tolakEvaluasi');
-            Route::patch('/formTolakEvaluasi/{id}', [PengadaanBarangController::class, 'formTolakEvaluasi'])->name('dpal.pengadaanBarang.formTolakEvaluasi');
-            Route::get('/pemenang/{id}', [PengadaanBarangController::class, 'pemenang'])->name('dpal.pengadaanBarang.pemenang');
-            Route::patch('/formBuktiTf/{id}', [PengadaanBarangController::class, 'formBuktiTf'])->name('dpal.pengadaanBarang.formBuktiTf');
-            Route::post('/checkDetail',[PengadaanBarangController::class, 'checkDetail'])->name('dpal.pengadaanBarang.checkDetail');
-        });
-                    // Route::get('/download/{filename}', [ViewFileController::class,'download']);
-
-
-        Route::prefix('dpal/badanUsaha')->group(function (){
-            Route::get('/index', [dpalBadanUsahaController::class, 'index'])->name('dpal.badanUsaha.index');
-            Route::get('/detailBadanUsaha', [dpalBadanUsahaController::class, 'detailBadanUsaha'])->name('dpal.badanUsaha.detailBadanUsaha');
-        });
-        
-        Route::prefix('dpal/perorangan')->group(function (){
-            Route::get('/index', [dpalPeroranganController::class, 'index'])->name('dpal.perorangan.index');
-            Route::get('/detailPerorangan', [dpalPeroranganController::class, 'detailPerorangan'])->name('dpal.perorangan.detailPerorangan');
-        });
-
-        Route::prefix('dpal/bidangUsaha')->group(function(){
-            Route::get('/index', [BidangUsahaController::class, 'index'])->name('bingus.index');
-            Route::get('/create', [BidangUsahaController::class, 'create'])->name('bingus.create');
-            Route::post('/store', [BidangUsahaController::class, 'store'])->name('bingus.store');
-            Route::get('/{id}/edit', [BidangUsahaController::class, 'edit'])->name('bingus.edit');
-            Route::patch('/{id}/update', [BidangUsahaController::class, 'update'])->name('bingus.update');
-            Route::delete('/{id}/destroy', [BidangUsahaController::class, 'destroy'])->name('bingus.delete');
-        });
-
-        Route::resource('bank',BankController::class)->names([
-            'index' => 'bank.index',
-            'create' => 'bank.create',
-            'store' => 'bank.store',
-            'edit' => 'bank.edit',
-            'update' => 'bank.update',
-            'destroy' => 'bank.destroy',
-        ]);
-
-        Route::prefix('dpal/ebudjeting')->group(function(){
-            Route::get('/index', [EbudjetingController::class, 'index'])->name('dpal.ebudjeting.index');
-            Route::get('/create', [EbudjetingController::class, 'create'])->name('dpal.ebudjeting.create');
-            Route::post('/store', [EbudjetingController::class, 'store'])->name('dpal.ebudjeting.store');
-            Route::get('{id}/show', [EbudjetingController::class, 'show'])->name('dpal.ebudjeting.show');
-            Route::get('{id}/edit', [EbudjetingController::class, 'edit'])->name('dpal.ebudjeting.edit');
-            Route::patch('{id}/update', [EbudjetingController::class, 'update'])->name('dpal.ebudjeting.update');
-            Route::delete('{id}/destroy', [EbudjetingController::class, 'destroy'])->name('dpal.ebudjeting.destroy');
-        });
-    });
+    
     // Route::group(['middleware' => ['role:warek']], function (){
     //     Route::prefix('warek/pengadaanBarang')->group(function (){
     //         Route::get('/index', [warekPengadaanBarang::class, 'index'])->name('warek.pengadaanBarang.index');

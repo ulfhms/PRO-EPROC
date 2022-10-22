@@ -69,17 +69,17 @@
                 <a class="nav-link text-decoration-none text-white" href="{{ route('supplier.profile') }}">
                   Dashboard
                 </a>
-                @elseif($user->hasRole('dpal'))
+                @elseif($user->level === 'dpal')
                 <a class="nav-link text-decoration-none text-white" href="{{ route('dpal.pengadaanBarang.index') }}">
-                  Dashboard
+                  Dashboard dpal
                 </a>
-                @elseif($user->hasRole('warek'))
+                @elseif($user->level === 'warek')
                 <a class="nav-link text-decoration-none text-white" href="{{ route('dpal.pengadaanBarang.index') }}">
                   Dashboard
                 </a>
                 @endif
                 @else
-                <a class="nav-link text-decoration-none text-white" href="{{ route('login') }}">
+                <a class="nav-link text-decoration-none text-white" href="{{ route('auth.login') }}">
                   Login
                 </a>
                 

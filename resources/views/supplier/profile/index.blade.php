@@ -11,7 +11,7 @@
       </div>
       <div class="col">
         <h3 class="">
-          {{ $profile->nama_supplier }}
+          {{ $profile->nama_supplier ?? 'Tambah Nama' }}
           <a href="{{ route('supplier.editProfile', auth()->id()) }}" class="btn btn-sm bg-warning"><i class="far fa-edit"></i></a>
         </h3>
         <p class="card-text">Supplier</p>

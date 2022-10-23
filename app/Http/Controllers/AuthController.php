@@ -37,9 +37,17 @@ class AuthController extends Controller
     
     public function proses_login(Request $request){
         // dd($request);
-        request()->validate([
+        // request()->validate([
+        //     'email' => 'required',
+        //     'password' => 'required',
+        // ]);
+
+        $request->validate([
             'email' => 'required',
             'password' => 'required',
+        ],[
+            'email.required' => 'Email supplier wajib diisi',
+            'password.required' => 'Password wajib diisi',
         ]);
             
             $kredensil = $request->only('email','password');
@@ -83,6 +91,7 @@ class AuthController extends Controller
         // dd($request->all());
         $request->validate([
             'name' => 'required',
+            'username' => 'required',
             'email' => 'required|unique:users|email',
             'password' => 'required|min:8|confirmed',
             'bidangUsaha' => 'required',
@@ -95,6 +104,7 @@ class AuthController extends Controller
             'logo_supplier' => 'required|mimes:jpg,jpeg,png',
         ],[
             'name.required' => 'Nama wajib diisi',
+            'username.required' => 'Username wajib diisi',
             'email.required' => 'Email wajib diisi',
             'email.email' => 'Masukkan email dengan benar',
             'email.unique' => 'Email telah dipakai',
@@ -122,20 +132,21 @@ class AuthController extends Controller
 
         $userRequest = [
             'name' => request()->name,
+            'username' => request()->username,
             'email' => request()->email,
             'password' => bcrypt(request()->password),
             'level' => 'supplier'
         ];
         // dd($user);
         $user = User::create($userRequest);
-
+        $akun = User::where('id',$user->id)->first();
         $supplierRequest = [
             'bidangusaha_id' => request()->bidangUsaha,
             'bank_id' => request()->bank,
-            'user_id' => $user->id,
+            'user_id' => $akun->id,
             'npwp' => request()->npwp,
             'narahubung' => request()->narahubung,
-            'nama_supplier' => $user->name,
+            'nama_supplier' => $akun->name,
             'telepon' => request()->telepon,
             'no_rek' => request()->no_rek,
             'alamat' => request()->alamat,
@@ -143,8 +154,11 @@ class AuthController extends Controller
         ];
         // dd($supplierRequest);
         Supplier::create($supplierRequest);
+        // $profile = Supplier::where('user_id',auth()->id())->first();
 
         return redirect()->route('supplier.profile');
+        // return view('supplier/profile/index', compact('profile'));
+
 
     }
 

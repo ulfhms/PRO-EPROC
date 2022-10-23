@@ -47,7 +47,7 @@ class SupplierController extends Controller
             'telepon' => 'required',
             'no_rek' => 'required',
             'alamat' => 'required',
-            // 'logo_supplier' => 'mimes:jpg,jpeg,png',
+            'logo_supplier' => 'mimes:jpg,jpeg,png',
         ],[
             'nama_supplier.required' => 'Nama supplier wajib diisi',
             'npwp.required' => 'NPWP wajib diisi',
@@ -55,14 +55,14 @@ class SupplierController extends Controller
             'telepon.required' => 'Telepon wajib diisi',
             'no_rek.required' => 'Nomor rekening wajib diisi',
             'alamat.required' => 'Alamat wajib diisi',
-            // 'logo_supplier.mimes' => 'Format logo harus berformat jpg.png',
+            'logo_supplier.mimes' => 'Format logo harus berformat jpg.png',
         ]);
 
-        // $image = $supplier->logo_supplier;
-        // if($request->hasFile('logo_supplier')){
-        //     Storage::delete($image);
-        //     $image = $request->file('logo_supplier')->store('images/logo_supplier');
-        // }
+        $image = $supplier->logo_supplier;
+        if($request->hasFile('logo_supplier')){
+            Storage::delete($image);
+            $image = $request->file('logo_supplier')->store('images/logo_supplier');
+        }
 
         $supplier->update([
             'bidangusaha_id' => $request->bidangusaha,
@@ -74,7 +74,7 @@ class SupplierController extends Controller
             'no_rek' => $request->no_rek,
             'alamat' => $request->alamat,
             'email' => $request->email,
-            // 'logo_supplier' => $image
+            'logo_supplier' => $image
             ]);
             
         return redirect()->route('supplier.profile')->with(['success' => 'Data supplier berhasil di ubah']);

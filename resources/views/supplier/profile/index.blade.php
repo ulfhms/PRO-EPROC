@@ -7,7 +7,7 @@
   <div class="card-body">
     <div class="row">
       <div class="col-2">
-        {{-- <img src="{{ asset('storage/'.$profile->logo_supplier) }}" alt="" class="img-fluid"> --}}
+        <img src="{{ asset('storage/'.$profile->logo_supplier) }}" alt="" class="img-fluid" width="150px">
       </div>
       <div class="col">
         <h3 class="">

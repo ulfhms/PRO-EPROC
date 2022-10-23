@@ -10,7 +10,7 @@
     </div>
     <div class="col">
         <h3 class="">{{ ucwords($pengsup->supplier->nama_supplier) }}</h3>
-        <p class="card-text">{{ ucwords($user->name)  }}</p>
+        {{-- <p class="card-text">{{ ucwords($user->name)  }}</p> --}}
     </div>
   </div>
   <div class="row pt-4">

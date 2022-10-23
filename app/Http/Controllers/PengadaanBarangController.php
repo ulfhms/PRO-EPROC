@@ -43,7 +43,7 @@ class PengadaanBarangController extends Controller
     public function store(Request $request)
     {
         PengadaanBarang::create([
-            'budjet_id' => $request->nama_kegiatan,
+            'budjet_id' => $request->id,
             'status_pengadaan' => 1,
             'status_proses' => 'proses',
             'tgl_pengumuman_pemenang' =>null,
@@ -166,12 +166,12 @@ class PengadaanBarangController extends Controller
     public function detailPesertaPengadaan($id){
         $pengadaan = PengadaanBarang::where('id',$id)->first();
         $supplier = Supplier::where('id',$id)->first();
-        $roleId = DB::table('model_has_roles')->where('model_id',$supplier->id)->first();
-        $user = DB::table('roles')->where('id',$roleId->role_id)->first();
+        // $roleId = DB::table('model_has_roles')->where('model_id',$supplier->id)->first();
+        // $user = DB::table('roles')->where('id',$roleId->role_id)->first();
         // dd($user);
         $pengsup = PengadaanSupplier::where('supplier_id',$supplier->id)->first();
         // dd($pengsup);
-        return view('dpal/pengadaanBarang/pesertaPengadaan/detailPesertaPengadaan',compact('pengadaan','pengsup', 'user','supplier'));
+        return view('dpal/pengadaanBarang/pesertaPengadaan/detailPesertaPengadaan',compact('pengadaan','pengsup','supplier'));
 
     }
     

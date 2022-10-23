@@ -91,7 +91,7 @@ class AuthController extends Controller
         // dd($request->all());
         $request->validate([
             'name' => 'required',
-            'username' => 'required',
+            'username' => 'required|unique:users',
             'email' => 'required|unique:users|email',
             'password' => 'required|min:8|confirmed',
             'bidangUsaha' => 'required',
